@@ -1,0 +1,96 @@
+.logo {
+  font-weight: bold;
+}
+
+.logo,
+.text-col {
+  color: #000 !important;
+  font-family: var(--font-pro);
+}
+
+.footer {
+  background: var(--color-background);
+}
+
+.footer .copyright>span {
+  color: var(--color-background)
+}
+
+.footer .fa-facebook {
+  background-color: #fff;
+  color: #000;
+  transition: .3s ease;
+}
+
+.footer .fa-facebook:hover {
+  background-color: #c2c2c2
+}
+
+.footer .fa-instagram {
+  background-color: #fff;
+  color: #000;
+  transition: .3s ease;
+}
+
+.footer .fa-instagram:hover {
+  background-color: #c2c2c2
+}
+
+.footer .fa-youtube {
+  background-color: #fff;
+  color: #000;
+  transition: .3s ease;
+}
+
+.footer .fa-youtube:hover {
+  background-color: #c2c2c2
+}
+
+.footer .fa-x-twitter {
+  background-color: #fff;
+  color: #000;
+  transition: .3s ease;
+}
+
+.footer .fa-x-twitter:hover {
+  background-color: #c2c2c2
+}
+
+.link a {
+  position: relative;
+  font-weight: 500;
+  font-size: 1em;
+  text-decoration: none;
+  color: #00000093 !important;
+}
+
+
+
+.text-logo {
+  color: #00000093 !important;
+}
+
+.payment-img {
+  width: 40px;
+  height: auto;
+  margin: 0 5px;
+
+}
+
+
+.bord{
+  background-color: #ffffff93;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: .3s ease;
+}
+
+.bord:hover{
+  background-color: #cacaca;
+}
+
+.text-rg{
+  color: #00000093;
+  font-weight: 500;
+}

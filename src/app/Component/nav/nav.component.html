@@ -1,36 +1,57 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<div *ngIf="showAlert" class="bg-black text-white fade show d-flex align-items-center" role="alert">
+  <div class="text-center flex-grow-1">
+    <p>{{message}} <a class="text-white" routerLink="/">{{button}}</a></p>
+  </div>
+  <div class="close">
+    <button type="button" class="btn icn-close" aria-label="Close" (click)="hideMessage()">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+  </div>
+</div>
+<nav class="navbar navbar-expand-lg bg-body-white">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01"
+      aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
+    <a class="navbar-brand fw-bold fs-3 text-uppercase text-logo" routerLink="/">SHOP.CO</a>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 link-nav">
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
+            Shop
           </a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="#">Action</a></li>
             <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">On Sale</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">New Arrivals</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Brnds</a>
+        </li>
+
       </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
+      <form class="d-flex w-50" role="search">
+        <div class="input-container position-relative w-100">
+          <i
+            class="fa-solid fa-magnifying-glass search-icon position-absolute top-50 start-0 translate-middle-y mx-3"></i>
+          <input class="form-control me-2 rounded-5 pt-2 pb-2 ps-5" type="search" placeholder="Search"
+            aria-label="Search">
+        </div>
+        <i class="fa-solid fa-cart-shopping mx-2 mt-3 ms-3"></i>
+        <i class="fa-solid fa-user mx-2 mt-3 ms-3"></i>
       </form>
+
     </div>
   </div>
 </nav>

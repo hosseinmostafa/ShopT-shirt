@@ -1,0 +1,251 @@
+.home-color {
+  background-color: rgb(242 240 241) !important;
+}
+
+.home-container .media-icons {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding-top: 2rem;
+  margin-right: 40px;
+}
+
+.home-container .info .nam-home {
+  color: #000;
+  font-size: 4rem;
+  font-weight: bold;
+  line-height: 70px;
+  font-family: var(--font-pro);
+}
+
+.home-container .info h3 {
+  color: var(--third-color);
+  font-feature-settings: 1.3em;
+  font-weight: 600;
+  line-height: 50px;
+  font-family: var(--font-pro);
+
+}
+
+.home-container .info p {
+  font-family: var(--font-pro);
+  color: var(--third-color);
+  font-size: var(--normal-font-size);
+  font-weight: 500;
+}
+
+.btn {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background: var(--second-color);
+  color: #fff;
+  font-size: var(--normal-font-size);
+  font-weight: 500;
+  border-radius: 0.5rem;
+  margin-top: 25px;
+  transition: .3s ease;
+}
+
+.btn:hover {
+  background: var(--hover-color);
+}
+
+.home-img .img-box img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.home-container .image {
+  width: 90%;
+  transform: translate(-10px, 10px);
+}
+
+.home .scroll-down {
+  color: var(--first-color);
+  font-size: var(--normal-font-size);
+  font-weight: 500;
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home .scroll-down i {
+  color: var(--first-color);
+  font-size: 1.2rem;
+  margin-left: 0.5rem;
+
+}
+
+
+/* Common styles for all sections */
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.section {
+  position: relative;
+  max-width: 1150px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 6rem 2rem 2rem;
+}
+
+
+.shop-now {
+  border: none;
+  background: black;
+  color: #fff;
+}
+
+.shop-now:hover {
+  color: #000;
+  background: rgba(0, 0, 0, 0.185);
+}
+
+.line-home {
+  background: #000;
+  height: 9em;
+  width: 100%;
+}
+
+.img-icon {
+  width: 10%;
+}
+
+.img-gucci {
+  width: 5%;
+}
+
+.text-iconn {
+  font-size: 47px;
+  font-family: var(--font-pro);
+  color: white;
+}
+
+.logo__img {
+  width: 20%;
+  display: block;
+  height: 33px;
+}
+
+
+.line-home {
+  background: #000;
+  height: 9em;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  /* يسمح بتوزيع العناصر داخل الحاوية بشكل مرن */
+  padding: 0 10px;
+  /* لضمان وجود مسافة حول العناصر */
+  box-sizing: border-box;
+  /* التأكد من أن البادينج لا يؤثر على العرض الكلي */
+}
+
+.text-iconn {
+  font-size: 47px;
+  font-family: var(--font-pro);
+  color: white;
+  margin: 0 15px;
+  text-align: center;
+  /* محاذاة النص في وسط المساحة المتاحة */
+  flex: 1 1 auto;
+  /* يجعل النصوص تتوزع بشكل مرن داخل الحاوية */
+  white-space: nowrap;
+  /* لضمان أن النصوص لا تنكسر */
+}
+
+.img-icon,
+.img-gucci {
+  width: 10%;
+}
+
+@media (max-width: 768px) {
+  .line-home {
+    flex-direction: row;
+    /* عرض العناصر بجانب بعضها */
+    height: auto;
+    /* تغيير الارتفاع ليكون تلقائي */
+    padding: 1rem 0;
+    /* إضافة مسافة حول العناصر */
+    justify-content: space-between;
+    /* توزيع العناصر بشكل متساوي */
+  }
+
+  .text-iconn {
+    font-size: 36px;
+    margin-bottom: 10px;
+    text-align: center;
+    /* محاذاة النص في وسط المساحة المتاحة */
+  }
+
+  .img-icon,
+  .img-gucci {
+    width: 20%;
+    /* تغيير حجم الأيقونات */
+    margin-bottom: 10px;
+    /* إضافة مسافة أسفل الأيقونات */
+  }
+}
+
+@media (max-width: 480px) {
+  .text-iconn {
+    font-size: 30px;
+    /* تقليل حجم النصوص في الشاشات الصغيرة */
+    margin: 5px 0;
+  }
+
+  .img-icon,
+  .img-gucci {
+    width: 30%;
+    /* تكبير الأيقونات لتناسب الشاشة الصغيرة */
+  }
+}
+
+
+.home-color {
+  background-color: rgb(242 240 241) !important;
+}
+
+.line-home {
+  background: #000;
+  height: auto;
+  /* تغيرنا من 9em إلى auto حتى يتكيف مع محتوى السطور */
+  width: 100%;
+  padding: 20px 0;
+  /* توفير مسافة بين العناصر */
+}
+
+.text-iconn {
+  font-size: 47px;
+  font-family: var(--font-pro);
+  color: white;
+  padding: 10px;
+}
+
+@media (max-width: 768px) {
+  .line-home {
+    padding: 1rem 0;
+    /* تقليل البادينج عند الشاشات الصغيرة */
+  }
+
+  .text-iconn {
+    font-size: 36px;
+    margin-bottom: 10px;
+    /* إضافة مسافة بين العناصر عند الشاشات الصغيرة */
+  }
+}
+
+@media (max-width: 480px) {
+  .text-iconn {
+    font-size: 30px;
+    /* تقليل حجم النصوص في الشاشات الصغيرة */
+    margin: 5px 0;
+  }
+}

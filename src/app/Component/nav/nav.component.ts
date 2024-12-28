@@ -20,8 +20,6 @@ export class NavComponent implements OnInit{
 
   private currentIndex: number = 0;
 
-
-
   ngOnInit(): void {
     this.startMessageRotation();
   }

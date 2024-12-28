@@ -141,11 +141,8 @@
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  /* يسمح بتوزيع العناصر داخل الحاوية بشكل مرن */
   padding: 0 10px;
-  /* لضمان وجود مسافة حول العناصر */
   box-sizing: border-box;
-  /* التأكد من أن البادينج لا يؤثر على العرض الكلي */
 }
 
 .text-iconn {
@@ -154,11 +151,8 @@
   color: white;
   margin: 0 15px;
   text-align: center;
-  /* محاذاة النص في وسط المساحة المتاحة */
   flex: 1 1 auto;
-  /* يجعل النصوص تتوزع بشكل مرن داخل الحاوية */
   white-space: nowrap;
-  /* لضمان أن النصوص لا تنكسر */
 }
 
 .img-icon,
@@ -169,42 +163,33 @@
 @media (max-width: 768px) {
   .line-home {
     flex-direction: row;
-    /* عرض العناصر بجانب بعضها */
     height: auto;
-    /* تغيير الارتفاع ليكون تلقائي */
     padding: 1rem 0;
-    /* إضافة مسافة حول العناصر */
     justify-content: space-between;
-    /* توزيع العناصر بشكل متساوي */
   }
 
   .text-iconn {
     font-size: 36px;
     margin-bottom: 10px;
     text-align: center;
-    /* محاذاة النص في وسط المساحة المتاحة */
   }
 
   .img-icon,
   .img-gucci {
     width: 20%;
-    /* تغيير حجم الأيقونات */
     margin-bottom: 10px;
-    /* إضافة مسافة أسفل الأيقونات */
   }
 }
 
 @media (max-width: 480px) {
   .text-iconn {
     font-size: 30px;
-    /* تقليل حجم النصوص في الشاشات الصغيرة */
     margin: 5px 0;
   }
 
   .img-icon,
   .img-gucci {
     width: 30%;
-    /* تكبير الأيقونات لتناسب الشاشة الصغيرة */
   }
 }
 
@@ -216,10 +201,8 @@
 .line-home {
   background: #000;
   height: auto;
-  /* تغيرنا من 9em إلى auto حتى يتكيف مع محتوى السطور */
   width: 100%;
   padding: 20px 0;
-  /* توفير مسافة بين العناصر */
 }
 
 .text-iconn {
@@ -232,20 +215,17 @@
 @media (max-width: 768px) {
   .line-home {
     padding: 1rem 0;
-    /* تقليل البادينج عند الشاشات الصغيرة */
   }
 
   .text-iconn {
     font-size: 36px;
     margin-bottom: 10px;
-    /* إضافة مسافة بين العناصر عند الشاشات الصغيرة */
   }
 }
 
 @media (max-width: 480px) {
   .text-iconn {
     font-size: 30px;
-    /* تقليل حجم النصوص في الشاشات الصغيرة */
     margin: 5px 0;
   }
 }

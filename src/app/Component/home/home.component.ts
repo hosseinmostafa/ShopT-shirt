@@ -1,10 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
+
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
+  constructor() { }
+
 
 }

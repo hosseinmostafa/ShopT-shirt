@@ -1,0 +1,217 @@
+<div class="container py-5">
+  <!-- Top Bar -->
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <nav
+      style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);"
+      aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Library</li>
+      </ol>
+    </nav>
+    <div class="d-flex gap-2 align-items-center">
+      <span class="text-muted">Showing 1-10 of 100 Products Sort by</span>
+      <button class="sort-btn ">
+        Most Popular <i class="fa-solid fa-chevron-down"></i>
+      </button>
+    </div>
+  </div>
+
+  <div class="row g-4">
+    <!-- Filters Sidebar -->
+    <div class="col-lg-3">
+      <div class="filter-sidebar p-4 shadow-sm">
+        <div class="filter-group">
+          <div class="filter-icon d-flex justify-content-between">
+            <h5 class="mb-3 fw-bold fs-4">Filters</h5>
+            <i class="fa-solid fa-filter mt-2"></i>
+          </div>
+          <div class="form-check mb-2">
+            <input class="form-check-input" type="checkbox" id="electronics">
+            <label class="form-check-label" for="electronics">
+              T-shirts
+            </label>
+          </div>
+          <div class="form-check mb-2">
+            <input class="form-check-input" type="checkbox" id="clothing">
+            <label class="form-check-label" for="clothing">
+              Shorts
+            </label>
+          </div>
+          <div class="form-check mb-2">
+            <input class="form-check-input" type="checkbox" id="accessories">
+            <label class="form-check-label" for="accessories">
+              Hoodies
+            </label>
+          </div>
+          <div class="form-check mb-2">
+            <input class="form-check-input" type="checkbox" id="accessories">
+            <label class="form-check-label" for="accessories">
+              Jeans
+            </label>
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <h6 class="mb-3">Price Range</h6>
+          <label for="customRange3" class="form-label">Example range</label>
+          <input type="range" class="form-range" min="0" max="5" step="0.5" id="customRange3">
+          <div class="d-flex justify-content-between">
+            <span class="text-muted">$0</span>
+            <span class="text-muted">$1000</span>
+          </div>
+        </div>
+
+        <div class="accordion accordion-flush" id="accordionFlushExample">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                <div class="">
+                  <h6 class="mb-3">Colors</h6>
+                  <div class="d-flex flex-wrap gap-3">
+                    <div class="color-option selected p-3" style="background: #000000;"></div>
+                    <div class="color-option p-3" style="background: #dc2626;"></div>
+                    <div class="color-option p-3" style="background: #2563eb;"></div>
+                    <div class="color-option p-3" style="background: #16a34a;"></div>
+                    <div class="color-option p-3" style="background: yellow;"></div>
+                    <div class="color-option p-3" style="background: #8b5cf6;"></div>
+                    <div class="color-option p-3" style="background: orange"></div>
+                  </div>
+                </div>
+              </button>
+            </h2>
+            <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body">
+                <div class="d-flex flex-wrap gap-3">
+
+                  <div class="color-option p-3" style="background: skyblue"></div>
+                  <div class="color-option p-3" style="background: palevioletred"></div>
+                  <div class="color-option p-3" style="background: white;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <h6 class="mb-3">Rating</h6>
+          <div class="form-check mb-2">
+            <input class="form-check-input" type="radio" name="rating" id="rating4">
+            <label class="form-check-label" for="rating4">
+              <i class="bi bi-star-fill text-warning"></i> 4 & above
+            </label>
+          </div>
+          <div class="form-check mb-2">
+            <input class="form-check-input" type="radio" name="rating" id="rating3">
+            <label class="form-check-label" for="rating3">
+              <i class="bi bi-star-fill text-warning"></i> 3 & above
+            </label>
+          </div>
+        </div>
+
+        <button class="btn btn-outline-primary w-100">Apply Filters</button>
+      </div>
+    </div>
+
+    <!-- Product Grid -->
+    <div class="col-lg-9">
+      <div class="row g-4">
+        <!-- Product Card 1 -->
+        <div class="col-md-4">
+          <div class="product-card shadow-sm">
+            <div class="position-relative">
+              <img src="https://via.placeholder.com/300x200" class="product-image w-100" alt="Product">
+              <span class="discount-badge">-20%</span>
+              <button class="wishlist-btn">
+                <i class="bi bi-heart"></i>
+              </button>
+            </div>
+            <div class="p-3">
+              <span class="category-badge mb-2 d-inline-block">Electronics</span>
+              <h6 class="mb-1">Wireless Headphones</h6>
+              <div class="rating-stars mb-2">
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-half"></i>
+                <span class="text-muted ms-2">(4.5)</span>
+              </div>
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="price">$129.99</span>
+                <button class="btn cart-btn">
+                  <i class="bi bi-cart-plus"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product Card 2 -->
+        <div class="col-md-4">
+          <div class="product-card shadow-sm">
+            <div class="position-relative">
+              <img src="https://via.placeholder.com/300x200" class="product-image w-100" alt="Product">
+              <button class="wishlist-btn">
+                <i class="bi bi-heart"></i>
+              </button>
+            </div>
+            <div class="p-3">
+              <span class="category-badge mb-2 d-inline-block">Electronics</span>
+              <h6 class="mb-1">Smart Watch Pro</h6>
+              <div class="rating-stars mb-2">
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star"></i>
+                <span class="text-muted ms-2">(4.0)</span>
+              </div>
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="price">$299.99</span>
+                <button class="btn cart-btn">
+                  <i class="bi bi-cart-plus"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product Card 3 -->
+        <div class="col-md-4">
+          <div class="product-card shadow-sm">
+            <div class="position-relative">
+              <img src="https://via.placeholder.com/300x200" class="product-image w-100" alt="Product">
+              <span class="discount-badge">-15%</span>
+              <button class="wishlist-btn">
+                <i class="bi bi-heart"></i>
+              </button>
+            </div>
+            <div class="p-3">
+              <span class="category-badge mb-2 d-inline-block">Accessories</span>
+              <h6 class="mb-1">Leather Wallet</h6>
+              <div class="rating-stars mb-2">
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <span class="text-muted ms-2">(5.0)</span>
+              </div>
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="price">$59.99</span>
+                <button class="btn cart-btn">
+                  <i class="bi bi-cart-plus"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- More product cards can be added here -->
+
+      </div>
+    </div>
+  </div>
+</div>

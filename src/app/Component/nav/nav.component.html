@@ -17,29 +17,28 @@
     <a class="navbar-brand fw-bold fs-3 text-uppercase text-logo" routerLink="/">SHOP.CO</a>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 link-nav">
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <!-- <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" routerLink="/shop" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Shop
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><a class="dropdown-item" routerLink="/shop">Action</a></li>
+            <li><a class="dropdown-item" routerLink="/shop">Another action</a></li>
+            <li><a class="dropdown-item" routerLink="/shop">Something else here</a></li>
           </ul>
+        </li> -->
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/shop">Shop</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link active" aria-current="page" routerLink="/on-sale">On Sale</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">On Sale</a>
+          <a class="nav-link active" aria-current="page" routerLink="/arrivals">New Arrivals</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">New Arrivals</a>
+          <a class="nav-link active" aria-current="page" routerLink="/brnds">Brnds</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Brnds</a>
-        </li>
-
       </ul>
       <form class="d-flex w-50" role="search">
         <div class="input-container position-relative w-100">
@@ -51,7 +50,6 @@
         <i class="fa-solid fa-cart-shopping mx-2 mt-3 ms-3"></i>
         <i class="fa-solid fa-user mx-2 mt-3 ms-3"></i>
       </form>
-
     </div>
   </div>
 </nav>

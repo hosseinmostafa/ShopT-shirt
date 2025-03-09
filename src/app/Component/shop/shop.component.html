@@ -11,9 +11,16 @@
     </nav>
     <div class="d-flex gap-2 align-items-center">
       <span class="text-muted">Showing 1-10 of 100 Products Sort by</span>
-      <button class="sort-btn ">
-        Most Popular <i class="fa-solid fa-chevron-down"></i>
-      </button>
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Most Popular 
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">All</a></li>
+          <li><a class="dropdown-item" href="#">Man</a></li>
+          <li><a class="dropdown-item" href="#">Woman</a></li>
+        </ul>
+      </div>
     </div>
   </div>
 
@@ -27,26 +34,26 @@
             <i class="fa-solid fa-filter mt-2"></i>
           </div>
           <div class="form-check mb-2">
-            <input class="form-check-input" type="checkbox" id="electronics">
-            <label class="form-check-label" for="electronics">
+            <input class="form-check-input" type="checkbox" id="t-shirts" (change)="toggleCategory('T-shirts')">
+            <label class="form-check-label" for="t-shirts">
               T-shirts
             </label>
           </div>
           <div class="form-check mb-2">
-            <input class="form-check-input" type="checkbox" id="clothing">
-            <label class="form-check-label" for="clothing">
+            <input class="form-check-input" type="checkbox" id="shorts" (change)="toggleCategory('Shorts')">
+            <label class="form-check-label" for="shorts">
               Shorts
             </label>
           </div>
           <div class="form-check mb-2">
-            <input class="form-check-input" type="checkbox" id="accessories">
-            <label class="form-check-label" for="accessories">
+            <input class="form-check-input" type="checkbox" id="hoodies" (change)="toggleCategory('Hoodies')">
+            <label class="form-check-label" for="hoodies">
               Hoodies
             </label>
           </div>
           <div class="form-check mb-2">
-            <input class="form-check-input" type="checkbox" id="accessories">
-            <label class="form-check-label" for="accessories">
+            <input class="form-check-input" type="checkbox" id="jeans" (change)="toggleCategory('Jeans')">
+            <label class="form-check-label" for="jeans">
               Jeans
             </label>
           </div>
@@ -55,56 +62,47 @@
         <div class="filter-group">
           <h6 class="mb-3">Price Range</h6>
           <label for="customRange3" class="form-label">Example range</label>
-          <input type="range" class="form-range reversed-slider"  min="0" max="5" step="0.5" id="customRange3"
+          <input type="range" class="form-range reversed-slider" min="0" max="1000" step="50" id="customRange3"
             (input)="updatePrice($event)">
+            <!-- class="form-range reversed-slider" min="0" max="5" step="0.5" id="customRange3"
+            (input)="updatePrice($event)" -->
           <div class="d-flex justify-content-between">
-            <!-- <span class="text-muted">$0</span> -->
-            <span id="priceValue" class="text-muted">${{ price }}</span>
+            <span id="priceValue" class="text-muted">${{ selectedPriceRange }}</span>
           </div>
         </div>
 
         <div class="accordion accordion-flush mb-3" id="accordionFlushExample">
           <div class="accordion-item">
             <h2 class="accordion-header">
-                <div class="">
-                  <h6 class="mb-3">Colors</h6>
-                  <div class="d-flex flex-wrap gap-3">
-                    <div *ngFor="let color of colors" class="color-option p-3" [@colorAnimation]="getAnimationState(color)"
-                      [ngClass]="{'selected': selectedColor === color}" [style.background]="color" (click)="selectColor(color)">
-                    </div>
-                  </div>
-                </div>
-            </h2>
-            <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-              <div class="accordion-body">
+              <div class="">
+                <h6 class="mb-3">Colors</h6>
                 <div class="d-flex flex-wrap gap-3">
-                  <div *ngFor="let color of additionalColors" class="color-option p-3"
-                    [@colorAnimation]="getAnimationState(color)" [ngClass]="{'selected': selectedColor === color}"
-                    [style.background]="color" (click)="selectColor(color)">
+                  <div *ngFor="let color of colors" class="color-option p-3" [style.background]="color"
+                    [ngClass]="{'selected': selectedColor === color}" (click)="selectColor(color)">
                   </div>
                 </div>
               </div>
-            </div>
+            </h2>
           </div>
         </div>
 
         <div class="filter-group">
           <h6 class="mb-3">Rating</h6>
           <div class="form-check mb-2">
-            <input class="form-check-input" type="radio" name="rating" id="rating4">
+            <input class="form-check-input" type="radio" name="rating" id="rating4" (change)="selectRating(4)">
             <label class="form-check-label" for="rating4">
               <i class="bi bi-star-fill text-warning"></i> 4 & above
             </label>
           </div>
           <div class="form-check mb-2">
-            <input class="form-check-input" type="radio" name="rating" id="rating3">
+            <input class="form-check-input" type="radio" name="rating" id="rating3" (change)="selectRating(3)">
             <label class="form-check-label" for="rating3">
               <i class="bi bi-star-fill text-warning"></i> 3 & above
             </label>
           </div>
         </div>
 
-        <button class="btn btn-outline-primary w-100">Apply Filters</button>
+        <button class="btn btn-outline-primary w-100" (click)="applyFilters()">Apply Filters</button>
       </div>
     </div>
 
@@ -115,10 +113,9 @@
           <div class="d-flex flex-wrap justify-content-between align-items-center mb-3">
             <h4 class="text-uppercase">Casual</h4>
           </div>
-          <div class="swiper product-swiper  open-up" data-aos="zoom-out">
+          <div class="swiper product-swiper open-up" data-aos="zoom-out">
             <div class="swiper-wrapper d-flex">
               <div class="row">
-                <!-- Use *ngFor to loop through filteredProducts -->
                 <div class="swiper-slide col-6 col-sm-4 col-md-4" *ngFor="let product of filteredProducts">
                   <div class="product-item image-zoom-effect link-effect">
                     <div class="image-holder position-relative">

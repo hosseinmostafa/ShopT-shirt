@@ -10,7 +10,7 @@ export class ProductService {
   private apiUrl = 'https://shop-tt-default-rtdb.firebaseio.com/Products.json';
 
   private productsSubject = new BehaviorSubject<Iproduct[]>([]);
-  constructor(private http : HttpClient){
+  constructor(private http: HttpClient) {
     this.loadProducts();
   }
 
@@ -38,7 +38,11 @@ export class ProductService {
             id: key,  // Convert Firebase key to id
             name: response[key].name,
             price: response[key].price,
-            image: response[key].image
+            image: response[key].image,
+            // filtter
+            category: response[key].category,
+            color: response[key].color,
+            rating: response[key].rating
           }));
       }),
       catchError((err) => {
@@ -48,4 +52,5 @@ export class ProductService {
     );
   }
 }
+
 

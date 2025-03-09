@@ -10,7 +10,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
   animations: [
     trigger('colorAnimation', [
       state('selected', style({
-        transform: 'scale(1.1)', 
+        transform: 'scale(1.1)',
         boxShadow: '0 0 10px rgba(0, 0, 0, 0.5)'
       })),
       state('notSelected', style({
@@ -32,6 +32,10 @@ export class ShopComponent implements OnInit {
   additionalColors: string[] = ['skyblue', 'palevioletred', 'white'];
   selectedColor: string | null = null;
 
+  selectedCategories: string[] = []; // لتخزين الفئات المحددة
+  selectedPriceRange: number = 0; // لتخزين نطاق السعر المحدد
+  selectedRating: number | null = null; // لتخزين التقييم المحدد
+
   constructor(private productService: ProductService) { }
 
   ngOnInit(): void {
@@ -42,7 +46,7 @@ export class ShopComponent implements OnInit {
     this.productService.getProducts().subscribe({
       next: (data) => {
         this.products = data;
-        this.filteredProducts = data;
+        this.filteredProducts = data; // تعيين جميع المنتجات في البداية
       },
       error: (err) => {
         this.errMsg = err;
@@ -53,12 +57,35 @@ export class ShopComponent implements OnInit {
 
   updatePrice(event: Event): void {
     const target = event.target as HTMLInputElement;
-    const value = parseFloat(target.value);
-    this.price = 1000 - (value * 200);
+    this.selectedPriceRange = parseFloat(target.value);
   }
 
   selectColor(color: string): void {
     this.selectedColor = this.selectedColor === color ? null : color;
+  }
+
+  toggleCategory(category: string): void {
+    if (this.selectedCategories.includes(category)) {
+      this.selectedCategories = this.selectedCategories.filter(cat => cat !== category);
+    } else {
+      this.selectedCategories.push(category);
+    }
+  }
+
+  selectRating(rating: number): void {
+    this.selectedRating = rating;
+  }
+
+  // fillter
+  applyFilters(): void {
+    this.filteredProducts = this.products.filter(product => {
+      const matchesCategory = this.selectedCategories.length === 0 ||
+        this.selectedCategories.includes(product.category);
+      const matchesColor = this.selectedColor ? product.color === this.selectedColor : true;
+      const matchesPrice = product.price <= this.selectedPriceRange;
+      const matchesRating = this.selectedRating ? product.rating >= this.selectedRating : true;
+      return matchesCategory || matchesColor || matchesPrice || matchesRating;
+    });
   }
 
   getAnimationState(color: string): string {

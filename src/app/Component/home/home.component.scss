@@ -1,7 +1,9 @@
+
 .home-color {
   background-color: rgb(242 240 241) !important;
   scroll-behavior: smooth !important;
 }
+
 
 .home-container .media-icons {
   display: flex;
@@ -661,3 +663,15 @@ a.btn-link.text-light:after {
   left: 0;
   z-index: 0;
 }
+
+// .home-page {
+//   padding-top: 100px;
+//   /* ارتفاع الـ Alert + ارتفاع الـ Navbar */
+//   transition: padding-top 0.3s;
+//   /* إضافة انتقال سلس */
+// }
+
+// .home-page.no-alert {
+//   padding-top: 50px;
+//   /* ارتفاع الـ Navbar فقط */
+// }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { FooterService } from '../../Service/footer.service';
 import { Subscription } from 'rxjs';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -8,8 +8,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.scss'
 })
-export class FooterComponent {
-
+export class FooterComponent implements OnDestroy {
   showFooter: boolean = true;
   subscription: Subscription;
 
@@ -22,13 +21,5 @@ export class FooterComponent {
   ngOnDestroy(): void {
     this.subscription.unsubscribe()
     this.footerServes.displayFooter()
-  }
-
-  openSpinner1() {
-    this.spinner.show();
-
-    setTimeout(() => {
-      this.spinner.hide();
-    }, 2000);
   }
 }

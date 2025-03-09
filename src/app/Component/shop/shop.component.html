@@ -55,39 +55,33 @@
         <div class="filter-group">
           <h6 class="mb-3">Price Range</h6>
           <label for="customRange3" class="form-label">Example range</label>
-          <input type="range" class="form-range" min="0" max="5" step="0.5" id="customRange3">
+          <input type="range" class="form-range reversed-slider"  min="0" max="5" step="0.5" id="customRange3"
+            (input)="updatePrice($event)">
           <div class="d-flex justify-content-between">
-            <span class="text-muted">$0</span>
-            <span class="text-muted">$1000</span>
+            <!-- <span class="text-muted">$0</span> -->
+            <span id="priceValue" class="text-muted">${{ price }}</span>
           </div>
         </div>
 
-        <div class="accordion accordion-flush" id="accordionFlushExample">
+        <div class="accordion accordion-flush mb-3" id="accordionFlushExample">
           <div class="accordion-item">
             <h2 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
                 <div class="">
                   <h6 class="mb-3">Colors</h6>
                   <div class="d-flex flex-wrap gap-3">
-                    <div class="color-option selected p-3" style="background: #000000;"></div>
-                    <div class="color-option p-3" style="background: #dc2626;"></div>
-                    <div class="color-option p-3" style="background: #2563eb;"></div>
-                    <div class="color-option p-3" style="background: #16a34a;"></div>
-                    <div class="color-option p-3" style="background: yellow;"></div>
-                    <div class="color-option p-3" style="background: #8b5cf6;"></div>
-                    <div class="color-option p-3" style="background: orange"></div>
+                    <div *ngFor="let color of colors" class="color-option p-3" [@colorAnimation]="getAnimationState(color)"
+                      [ngClass]="{'selected': selectedColor === color}" [style.background]="color" (click)="selectColor(color)">
+                    </div>
                   </div>
                 </div>
-              </button>
             </h2>
             <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
               <div class="accordion-body">
                 <div class="d-flex flex-wrap gap-3">
-
-                  <div class="color-option p-3" style="background: skyblue"></div>
-                  <div class="color-option p-3" style="background: palevioletred"></div>
-                  <div class="color-option p-3" style="background: white;"></div>
+                  <div *ngFor="let color of additionalColors" class="color-option p-3"
+                    [@colorAnimation]="getAnimationState(color)" [ngClass]="{'selected': selectedColor === color}"
+                    [style.background]="color" (click)="selectColor(color)">
+                  </div>
                 </div>
               </div>
             </div>
@@ -124,74 +118,23 @@
           <div class="swiper product-swiper  open-up" data-aos="zoom-out">
             <div class="swiper-wrapper d-flex">
               <div class="row">
-                <div class="swiper-slide col-6 col-sm-4 col-md-3">
+                <!-- Use *ngFor to loop through filteredProducts -->
+                <div class="swiper-slide col-6 col-sm-4 col-md-4" *ngFor="let product of filteredProducts">
                   <div class="product-item image-zoom-effect link-effect">
                     <div class="image-holder position-relative">
                       <a href="index.html">
-                        <img src="./img-home/product-item-1.jpg" alt="categories" class="product-image img-fluid">
+                        <img [src]="product.image" alt="categories" class="product-image img-fluid">
                       </a>
                       <a href="index.html" class="btn-icon btn-wishlist">
                         <i class="fa-regular fa-heart"></i>
                       </a>
                       <div class="product-content">
                         <h5 class="element-title text-uppercase fs-5 mt-3">
-                          <a href="index.html">Dark florish onepiece</a>
+                          <a href="index.html">{{ product.name }}</a>
                         </h5>
-                        <a href="#" class="text-decoration-none" data-after="Add to cart"><span>$95.00</span></a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="swiper-slide col-6 col-sm-4 col-md-3">
-                  <div class="product-item image-zoom-effect link-effect">
-                    <div class="image-holder position-relative">
-                      <a href="index.html">
-                        <img src="./img-home/product-item-2.jpg" alt="categories" class="product-image img-fluid">
-                      </a>
-                      <a href="index.html" class="btn-icon btn-wishlist">
-                        <i class="fa-regular fa-heart"></i>
-                      </a>
-                      <div class="product-content">
-                        <h5 class="text-uppercase fs-5 mt-3">
-                          <a href="index.html">Baggy Shirt</a>
-                        </h5>
-                        <a href="#" class="text-decoration-none" data-after="Add to cart"><span>$55.00</span></a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="swiper-slide col-6 col-sm-4 col-md-3">
-                  <div class="product-item image-zoom-effect link-effect">
-                    <div class="image-holder position-relative">
-                      <a href="index.html">
-                        <img src="./img-home/product-item-3.jpg" alt="categories" class="product-image img-fluid">
-                      </a>
-                      <a href="index.html" class="btn-icon btn-wishlist">
-                        <i class="fa-regular fa-heart"></i>
-                      </a>
-                      <div class="product-content">
-                        <h5 class="text-uppercase fs-5 mt-3">
-                          <a href="index.html">Cotton off-white shirt</a>
-                        </h5>
-                        <a href="#" class="text-decoration-none" data-after="Add to cart"><span>$65.00</span></a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="swiper-slide col-6 col-sm-4 col-md-3">
-                  <div class="product-item image-zoom-effect link-effect">
-                    <div class="image-holder position-relative">
-                      <a href="index.html">
-                        <img src="./img-home/product-item-4.jpg" alt="categories" class="product-image img-fluid">
-                      </a>
-                      <a href="index.html" class="btn-icon btn-wishlist">
-                        <i class="fa-regular fa-heart"></i>
-                      </a>
-                      <div class="product-content">
-                        <h5 class="text-uppercase fs-5 mt-3">
-                          <a href="index.html">Crop sweater</a>
-                        </h5>
-                        <a href="#" class="text-decoration-none" data-after="Add to cart"><span>$50.00</span></a>
+                        <a href="#" class="text-decoration-none" data-after="Add to cart">
+                          <span>{{ product.price | currency }}</span>
+                        </a>
                       </div>
                     </div>
                   </div>

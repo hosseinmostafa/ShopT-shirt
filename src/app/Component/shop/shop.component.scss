@@ -257,3 +257,20 @@ a.btn-link.text-light:after {
     background-image: var(--bs-accordion-btn-active-icon);
     transform: none !important;
 }
+
+.reversed-slider{
+    direction: rtl;
+}
+
+.color-option {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.color-option.selected {
+    border: 2px solid #000;
+    /* إضافة حدود للون المحدد */
+}

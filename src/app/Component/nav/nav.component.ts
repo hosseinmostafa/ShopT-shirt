@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { NavbarService } from '../../Service/navbar.service';
 
 @Component({
   selector: 'app-nav',
@@ -9,8 +11,16 @@ export class NavComponent implements OnInit{
   showAlert: boolean = true;
   message: string = 'Sign up and get 20% off to your first order 🎉';
   button: string = 'Sign Up Now';
+  showNavbar: boolean = true;
+  subscription: Subscription;
+  
 
-  constructor() { }
+  constructor(
+    private navbarService: NavbarService
+  ) {
+    this.subscription = this.navbarService.showNavbar.subscribe((value) => {
+      this.showNavbar = value;
+    }); }
 
   private messages = [
     { message: 'Sign up and get 20% off to your first order 🎉', button: 'Sign Up Now' },
@@ -32,7 +42,12 @@ export class NavComponent implements OnInit{
     }, 5000);
   }
 
+
   hideMessage() {
-    this.showAlert = false;
+    this.showAlert = false; // إخفاء الـ Alert
+
+    // إضافة كلاس "no-alert" إلى الـ Navbar و body
+    document.querySelector('.navbar')?.classList.add('no-alert');
+    document.querySelector('body')?.classList.add('no-alert');
   }
 }

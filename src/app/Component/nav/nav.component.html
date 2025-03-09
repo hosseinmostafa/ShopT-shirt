@@ -1,4 +1,5 @@
-<div *ngIf="showAlert" class="bg-black text-white fade show d-flex align-items-center " role="alert">
+<!-- Alert -->
+<div *ngIf="showAlert" class="alert-container bg-black text-white fade show d-flex align-items-center" role="alert">
   <div class="text-center flex-grow-1">
     <p>{{message}} <a class="text-white" routerLink="/">{{button}}</a></p>
   </div>
@@ -8,7 +9,9 @@
     </button>
   </div>
 </div>
-<nav class="navbar navbar-expand-lg bg-body-white ">
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg bg-body-white p-2">
   <div class="container-fluid">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01"
       aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
@@ -17,16 +20,6 @@
     <a class="navbar-brand fw-bold fs-3 text-uppercase text-logo" routerLink="/">SHOP.CO</a>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 link-nav">
-        <!-- <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" routerLink="/shop" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Shop
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" routerLink="/shop">Action</a></li>
-            <li><a class="dropdown-item" routerLink="/shop">Another action</a></li>
-            <li><a class="dropdown-item" routerLink="/shop">Something else here</a></li>
-          </ul>
-        </li> -->
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" routerLink="/shop">Shop</a>
         </li>

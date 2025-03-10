@@ -44,37 +44,12 @@
   padding-left: 30px;
 }
 
-
-// /* تثبيت الـ Alert في الأعلى */
-// .alert-container {
-//   position: fixed;
-//   top: 0;
-//   left: 0;
-//   width: 100%;
-//   z-index: 1050;
-//   /* تأكد من أن الـ Alert يظهر فوق الـ Navbar */
-//   background-color: black;
-//   /* لون الخلفية */
-//   color: white;
-//   /* لون النص */
-//   // padding: 10px 0;
-//   /* تعديل الحشو حسب الحاجة */
-//   text-align: center;
-//   /* توسيط النص */
-// }
-
-// /* تثبيت الـ Navbar أسفل الـ Alert */
-// .navbar {
-//   position: fixed;
-//   top: 40px;
-//   left: 0;
-//   width: 100%;
-//   z-index: 1040;
-//   transition: top 0.3s;
-//   background: white;
-// }
-
-// .navbar.no-alert {
-//   top: 0;
-// }
-
+.shop-icon{
+  border: none !important;
+  position: relative;
+  bottom: 4px;
+}
+.shop-icon:hover{
+  color: rgb(129, 129, 129) !important;
+  transition: .3s ease;
+}

@@ -1,0 +1,168 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+.section-cont {
+    padding: 2rem 0;
+}
+
+.card-registration {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: none;
+}
+
+.card-registration-2 {
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.card-body {
+    padding: 0;
+}
+
+/* Header Styles */
+.d-flex.justify-content-between.align-items-center.mb-5 h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.d-flex.justify-content-between.align-items-center.mb-5 h6 {
+    font-size: 1rem;
+    color: #6c757d;
+}
+
+/* Product Item Styles */
+.row.mb-4 {
+    padding: 1rem 0;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.row.mb-4:last-child {
+    border-bottom: none;
+}
+
+.col-md-2 img {
+    border-radius: 10px;
+}
+
+.col-md-3 h6 {
+    font-size: 1rem;
+    color: #6c757d;
+}
+
+.col-md-3 h6.mb-0 {
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.col-md-3.col-lg-2.col-xl-2 h6.mb-0 {
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.col-md-1.col-lg-1.col-xl-1.text-end a {
+    color: #6c757d;
+    text-decoration: none;
+}
+
+.col-md-1.col-lg-1.col-xl-1.text-end a:hover {
+    color: #dc3545;
+}
+
+/* Quantity Input Styles */
+.col-md-3.col-lg-3.col-xl-2.d-flex {
+    align-items: center;
+}
+
+.btn.btn-link {
+    color: #6c757d;
+    text-decoration: none;
+}
+
+.btn.btn-link:hover {
+    color: #333;
+}
+
+.form-control.form-control-sm {
+    width: 50px;
+    text-align: center;
+    margin: 0 0.5rem;
+}
+
+/* Summary Section Styles */
+.bg-body-tertiary {
+    background-color: #f8f9fa;
+}
+
+.bg-body-tertiary h3 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.bg-body-tertiary h5 {
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.bg-body-tertiary h5.text-uppercase {
+    font-size: 1rem;
+    color: #6c757d;
+}
+
+.bg-body-tertiary select {
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+}
+
+.bg-body-tertiary .form-outline input {
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+}
+
+.bg-body-tertiary .btn-dark {
+    background-color: #333;
+    border: none;
+    padding: 0.75rem;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.bg-body-tertiary .btn-dark:hover {
+    background-color: #555;
+}
+
+/* Back to Shop Link */
+.pt-5 h6 a {
+    color: #333;
+    text-decoration: none;
+}
+
+.pt-5 h6 a:hover {
+    color: #555;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+
+    .col-lg-8,
+    .col-lg-4 {
+        width: 100%;
+    }
+
+    .col-lg-4 {
+        margin-top: 2rem;
+    }
+
+    .card-registration-2 {
+        border-radius: 0;
+    }
+}

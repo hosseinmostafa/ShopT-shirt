@@ -1,5 +1,6 @@
 <!-- Alert -->
 <div *ngIf="showAlert" class="alert-container bg-black text-white fade show d-flex align-items-center" role="alert">
+  
   <div class="text-center flex-grow-1">
     <p>{{message}} <a class="text-white" routerLink="/">{{button}}</a></p>
   </div>
@@ -40,9 +41,20 @@
           <input class="form-control me-2 rounded-5 pt-2 pb-2 ps-5" type="search" placeholder="Search"
             aria-label="Search">
         </div>
-        <i class="fa-solid fa-cart-shopping mx-2 mt-3 ms-3"></i>
-        <i class="fa-solid fa-user mx-2 mt-3 ms-3"></i>
+
+        <div class="btn shop-icon" routerLink="/cart">
+          <i class="fa-solid fa-cart-shopping mx-1 mt-3 "></i>
+        </div>
+        <div class="btn shop-icon">
+          <i class="fas fa-heart  mt-3"></i>
+        </div>
+        <div class="btn shop-icon" routerLink="/product-details">
+          <i class="fa-solid fa-user mx-2 mt-3 "></i>
+        </div>
+
       </form>
+      
     </div>
+    
   </div>
 </nav>

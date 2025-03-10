@@ -11,6 +11,9 @@ import { HttpClient, HttpClientJsonpModule, HttpClientModule } from '@angular/co
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CartComponent } from './Component/cart/cart.component';
+import { LoginComponent } from './Component/login/login.component';
+import { ProductDetailsComponent } from './Component/product-details/product-details.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FooterComponent,
     NavComponent,
     HomeComponent,
-    ShopComponent
+    ShopComponent,
+    CartComponent,
+    LoginComponent,
+    ProductDetailsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
-/* General Styles */
+
 body {
     font-family: 'Arial', sans-serif;
     background-color: #f8f9fa;
@@ -23,7 +23,6 @@ body {
     padding: 0;
 }
 
-/* Header Styles */
 .d-flex.justify-content-between.align-items-center.mb-5 h1 {
     font-size: 2rem;
     font-weight: bold;
@@ -35,7 +34,6 @@ body {
     color: #6c757d;
 }
 
-/* Product Item Styles */
 .row.mb-4 {
     padding: 1rem 0;
     border-bottom: 1px solid #e9ecef;
@@ -73,7 +71,7 @@ body {
     color: #dc3545;
 }
 
-/* Quantity Input Styles */
+
 .col-md-3.col-lg-3.col-xl-2.d-flex {
     align-items: center;
 }
@@ -92,8 +90,6 @@ body {
     text-align: center;
     margin: 0 0.5rem;
 }
-
-/* Summary Section Styles */
 .bg-body-tertiary {
     background-color: #f8f9fa;
 }
@@ -140,7 +136,7 @@ body {
     background-color: #555;
 }
 
-/* Back to Shop Link */
+
 .pt-5 h6 a {
     color: #333;
     text-decoration: none;
@@ -150,7 +146,6 @@ body {
     color: #555;
 }
 
-/* Responsive Styles */
 @media (max-width: 768px) {
 
     .col-lg-8,

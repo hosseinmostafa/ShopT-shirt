@@ -32,9 +32,9 @@ export class ShopComponent implements OnInit {
   additionalColors: string[] = ['skyblue', 'palevioletred', 'white'];
   selectedColor: string | null = null;
 
-  selectedCategories: string[] = []; // لتخزين الفئات المحددة
-  selectedPriceRange: number = 0; // لتخزين نطاق السعر المحدد
-  selectedRating: number | null = null; // لتخزين التقييم المحدد
+  selectedCategories: string[] = []; 
+  selectedPriceRange: number = 0; 
+  selectedRating: number | null = null; 
 
   constructor(private productService: ProductService) { }
 
@@ -46,7 +46,7 @@ export class ShopComponent implements OnInit {
     this.productService.getProducts().subscribe({
       next: (data) => {
         this.products = data;
-        this.filteredProducts = data; // تعيين جميع المنتجات في البداية
+        this.filteredProducts = data; 
       },
       error: (err) => {
         this.errMsg = err;
@@ -76,7 +76,7 @@ export class ShopComponent implements OnInit {
     this.selectedRating = rating;
   }
 
-  // fillter
+  // fillte
   applyFilters(): void {
     this.filteredProducts = this.products.filter(product => {
       const matchesCategory = this.selectedCategories.length === 0 ||

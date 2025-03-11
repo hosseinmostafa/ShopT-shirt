@@ -49,7 +49,7 @@
   display: inline-block;
   padding: 1rem 2rem;
   background: var(--second-color);
-  // color: #fff;
+
   font-size: var(--normal-font-size);
   font-weight: 500;
   border-radius: 0.5rem;
@@ -560,7 +560,7 @@ a.btn-link.text-light:after {
 }
 
 
-// "Playfair Display", serif;
+
 .element-title {
   font-family: "Playfair Display", serif !important;
   font-size: 2.5em;
@@ -664,14 +664,3 @@ a.btn-link.text-light:after {
   z-index: 0;
 }
 
-// .home-page {
-//   padding-top: 100px;
-//   /* ارتفاع الـ Alert + ارتفاع الـ Navbar */
-//   transition: padding-top 0.3s;
-//   /* إضافة انتقال سلس */
-// }
-
-// .home-page.no-alert {
-//   padding-top: 50px;
-//   /* ارتفاع الـ Navbar فقط */
-// }

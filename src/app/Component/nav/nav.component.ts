@@ -44,9 +44,9 @@ export class NavComponent implements OnInit{
 
 
   hideMessage() {
-    this.showAlert = false; // إخفاء الـ Alert
+    this.showAlert = false; 
 
-    // إضافة كلاس "no-alert" إلى الـ Navbar و body
+    
     document.querySelector('.navbar')?.classList.add('no-alert');
     document.querySelector('body')?.classList.add('no-alert');
   }

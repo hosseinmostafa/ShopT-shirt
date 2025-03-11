@@ -10,10 +10,6 @@ export class NavbarService {
     this.showNavbar = new BehaviorSubject<boolean>(true);
   }
 
-  // toggleNavbar(): void {
-  //   this.showNavbar.next(!this.showNavbar.value);
-  // }
-
   hideNavbar(): void {
     this.showNavbar.next(false);
   }

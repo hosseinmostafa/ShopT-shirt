@@ -24,18 +24,16 @@ export class ProductService {
   }
   getProducts(): Observable<Iproduct[]> {
     const url = `https://shop-tt-default-rtdb.firebaseio.com/Products.json`;
-    console.log('Fetching products from:', url); // Debugging line
 
     return this.http.get<{ [key: string]: any }>(url).pipe(
       map(response => {
-        console.log('Response from Firebase:', response); // Debugging line
         if (!response) {
           throw new Error('No data found in Firebase.');
         }
         return Object.keys(response)
-          .filter(key => response[key] !== null) // Filter out null values
+          .filter(key => response[key] !== null)
           .map(key => ({
-            id: key,  // Convert Firebase key to id
+            id: key,
             name: response[key].name,
             price: response[key].price,
             image: response[key].image,

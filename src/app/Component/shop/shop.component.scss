@@ -273,4 +273,17 @@ a.btn-link.text-light:after {
     border: 2px solid #000;
 }
 
+.color-option.selected::after {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: 50%;
+}
 
+.color-option:hover {
+    border: 2px solid #000;
+}
+
+// .prod-details{
+//     left: 20px;
+// }

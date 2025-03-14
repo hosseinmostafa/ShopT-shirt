@@ -7,3 +7,28 @@
 .icon-hover:hover i {
     color: #3b71ca !important;
 }
+
+.border {
+  border: 1px solid #ddd;
+}
+
+.rounded-4 {
+  border-radius: 1rem;
+}
+
+.rounded-2 {
+  border-radius: 0.5rem;
+}
+
+.fit {
+  object-fit: cover;
+}
+
+.item-thumb {
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.item-thumb:hover {
+  transform: scale(1.05);
+}

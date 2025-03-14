@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../Service/product.service';
 import { Iproduct } from '../interface/Iproduct';
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-shop',
@@ -23,6 +24,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
   ]
 })
 export class ShopComponent implements OnInit {
+  
   products: Iproduct[] = [];
   filteredProducts: Iproduct[] = [];
   errMsg: string | null = null;
@@ -36,7 +38,7 @@ export class ShopComponent implements OnInit {
   selectedPriceRange: number = 0; 
   selectedRating: number | null = null; 
 
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService, private router: Router) { }
 
   ngOnInit(): void {
     this.loadProducts();
@@ -77,18 +79,24 @@ export class ShopComponent implements OnInit {
   }
 
   // fillte
-  applyFilters(): void {
-    this.filteredProducts = this.products.filter(product => {
-      const matchesCategory = this.selectedCategories.length === 0 ||
-        this.selectedCategories.includes(product.category);
-      const matchesColor = this.selectedColor ? product.color === this.selectedColor : true;
-      const matchesPrice = product.price <= this.selectedPriceRange;
-      const matchesRating = this.selectedRating ? product.rating >= this.selectedRating : true;
-      return matchesCategory || matchesColor || matchesPrice || matchesRating;
-    });
-  }
+  // applyFilters(): void {
+  //   this.filteredProducts = this.products.filter(product => {
+  //     const matchesCategory = this.selectedCategories.length === 0 ||
+  //       this.selectedCategories.includes(product.category);
+  //     const matchesColor = this.selectedColor ? product.color === this.selectedColor : true;
+  //     const matchesPrice = product.price <= this.selectedPriceRange;
+  //     const matchesRating = this.selectedRating ? product.rating >= this.selectedRating : true;
+  //     return matchesCategory || matchesColor || matchesPrice || matchesRating;
+  //   });
+  // }
 
   getAnimationState(color: string): string {
     return this.selectedColor === color ? 'selected' : 'notSelected';
   }
+
+  goToProductDetails(id: string): void {
+    this.router.navigate(['/product', id]);
+    
+  }
 }
+

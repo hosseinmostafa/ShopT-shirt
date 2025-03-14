@@ -100,7 +100,8 @@
           </div>
         </div>
 
-        <button class="btn btn-outline-primary w-100" (click)="applyFilters()">Apply Filters</button>
+        <!-- (click)="applyFilters()" -->
+        <button class="btn btn-outline-primary w-100" >Apply Filters</button>
       </div>
     </div>
 
@@ -118,7 +119,7 @@
                   <div class="product-item image-zoom-effect link-effect pb-3">
                     <div class="image-holder position-relative">
                       <a href="index.html">
-                        <img [src]="product.image" alt="categories" class="product-image img-fluid">
+                        <img [src]="product.images" alt="categories" class="product-image img-fluid">
                       </a>
                       <a href="index.html" class="btn-icon btn-wishlist">
                         <i class="fa-regular fa-heart"></i>
@@ -129,6 +130,9 @@
                         </h5>
                         <a href="#" class="text-decoration-none" data-after="Add to cart">
                           <span>{{ product.price | currency }}</span>
+                        </a>
+                        <a [routerLink]="['/product-details', product.id]" class="text-decoration-none" data-after="Show Details">
+                          <span>Show Details</span>
                         </a>
                       </div>
                     </div>
@@ -142,3 +146,4 @@
     </div>
   </div>
 </div>
+

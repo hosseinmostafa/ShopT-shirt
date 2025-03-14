@@ -1,50 +1,24 @@
-
-
 <!-- content -->
 <section class="py-5">
     <div class="container">
         <div class="row gx-5">
             <aside class="col-lg-6">
+
                 <div class="border rounded-4 mb-3 d-flex justify-content-center">
-                    <a data-fslightbox="mygalley" class="rounded-4" target="_blank" data-type="image"
-                        href="https://mdbcdn.b-cdn.net/img/bootstrap-ecommerce/items/detail1/big.webp">
+                    <a data-fslightbox="mygalley" class="rounded-4" data-type="image">
                         <img style="max-width: 100%; max-height: 100vh; margin: auto;" class="rounded-4 fit"
-                            src="https://mdbcdn.b-cdn.net/img/bootstrap-ecommerce/items/detail1/big.webp" />
-                    </a>
-                </div>
-                <div class="d-flex justify-content-center mb-3">
-                    <a data-fslightbox="mygalley" class="border mx-1 rounded-2" target="_blank" data-type="image"
-                        href="https://mdbcdn.b-cdn.net/img/bootstrap-ecommerce/items/detail1/big1.webp"
-                        class="item-thumb">
-                        <img width="60" height="60" class="rounded-2"
-                            src="https://mdbcdn.b-cdn.net/img/bootstrap-ecommerce/items/detail1/big1.webp" />
-                    </a>
-                    <a data-fslightbox="mygalley" class="border mx-1 rounded-2" target="_blank" data-type="image"
-                        href="https://mdbcdn.b-cdn.net/img/bootstrap-ecommerce/items/detail1/big2.webp"
-                        class="item-thumb">
-                        <img width="60" height="60" class="rounded-2"
-                            src="https://mdbcdn.b-cdn.net/img/bootstrap-ecommerce/items/detail1/big2.webp" />
-                    </a>
-                    <a data-fslightbox="mygalley" class="border mx-1 rounded-2" target="_blank" data-type="image"
-                        href="https://mdbcdn.b-cdn.net/img/bootstrap-ecommerce/items/detail1/big3.webp"
-                        class="item-thumb">
-                        <img width="60" height="60" class="rounded-2"
-                            src="https://mdbcdn.b-cdn.net/img/bootstrap-ecommerce/items/detail1/big3.webp" />
-                    </a>
-                    <a data-fslightbox="mygalley" class="border mx-1 rounded-2" target="_blank" data-type="image"
-                        href="https://mdbcdn.b-cdn.net/img/bootstrap-ecommerce/items/detail1/big4.webp"
-                        class="item-thumb">
-                        <img width="60" height="60" class="rounded-2"
-                            src="https://mdbcdn.b-cdn.net/img/bootstrap-ecommerce/items/detail1/big4.webp" />
-                    </a>
-                    <a data-fslightbox="mygalley" class="border mx-1 rounded-2" target="_blank" data-type="image"
-                        href="https://mdbcdn.b-cdn.net/img/bootstrap-ecommerce/items/detail1/big.webp"
-                        class="item-thumb">
-                        <img width="60" height="60" class="rounded-2"
-                            src="https://mdbcdn.b-cdn.net/img/bootstrap-ecommerce/items/detail1/big.webp" />
+                            [src]="mainImage" />
                     </a>
                 </div>
 
+                <div class="d-flex justify-content-center mb-3" *ngIf="oneProduct?.images">
+                    <ng-container *ngFor="let image of oneProduct.images; let i = index">
+                        <a data-fslightbox="mygalley" class="border mx-1 rounded-2" data-type="image" class="item-thumb"
+                            (click)="changeMainImage(image)">
+                            <img width="100" height="100" class="rounded-2" [src]="image" />
+                        </a>
+                    </ng-container>
+                </div>
             </aside>
             <main class="col-lg-6">
                 <div class="ps-lg-3">
@@ -104,7 +78,7 @@
                                 <option>Large</option>
                             </select>
                         </div>
-                      
+
                         <div class="col-md-4 col-6 mb-3">
                             <label class="mb-2 d-block">Quantity</label>
                             <div class="input-group mb-3" style="width: 170px;">
@@ -132,6 +106,8 @@
         </div>
     </div>
 </section>
+
+
 <!-- content -->
 
 <section class="bg-light border-top py-4">

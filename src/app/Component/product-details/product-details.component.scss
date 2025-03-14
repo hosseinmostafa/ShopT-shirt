@@ -8,27 +8,25 @@
     color: #3b71ca !important;
 }
 
-.border {
-  border: 1px solid #ddd;
+.img-small {
+    width: 150px;
+    height: 180px;
+    object-fit: contain;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-right: 10px;
+    margin-bottom: 10px;
 }
 
-.rounded-4 {
-  border-radius: 1rem;
-}
+.carousel-item img {
 
-.rounded-2 {
-  border-radius: 0.5rem;
+    object-fit: cover;
 }
-
-.fit {
-  object-fit: cover;
-}
-
-.item-thumb {
-  cursor: pointer;
-  transition: transform 0.2s ease-in-out;
-}
-
-.item-thumb:hover {
-  transform: scale(1.05);
+.carousel-indicators [data-bs-target] {
+    border-radius: 50% !important;
+    width: 10px !important;
+    height: 10px !important;
+    margin: 0 5px !important;
+    border: 3px solid #000 !important;
+    padding: 5px !important;
 }

@@ -5,6 +5,8 @@ import { ShopComponent } from './Component/shop/shop.component';
 import { CartComponent } from './Component/cart/cart.component';
 import { LoginComponent } from './Component/login/login.component';
 import { ProductDetailsComponent } from './Component/product-details/product-details.component';
+import { ErrorPageComponent } from './Component/error-page/error-page.component';
+import { WritProblemComponent } from './Component/writ-problem/writ-problem.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -12,6 +14,8 @@ const routes: Routes = [
   { path: 'cart', component: CartComponent},
   { path: 'login', component: LoginComponent},
   { path: 'product-details/:id', component: ProductDetailsComponent},
+  { path: 'writ-problem', component: WritProblemComponent},
+  { path: '**', component: ErrorPageComponent},
 
 ];
 

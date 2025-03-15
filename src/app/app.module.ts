@@ -14,6 +14,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CartComponent } from './Component/cart/cart.component';
 import { LoginComponent } from './Component/login/login.component';
 import { ProductDetailsComponent } from './Component/product-details/product-details.component';
+import { PayServesesInDashpordComponent } from './Component/pay-serveses-in-dashpord/pay-serveses-in-dashpord.component';
+import { ErrorPageComponent } from './Component/error-page/error-page.component';
+import { WritProblemComponent } from './Component/writ-problem/writ-problem.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,10 @@ import { ProductDetailsComponent } from './Component/product-details/product-det
     ShopComponent,
     CartComponent,
     LoginComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    PayServesesInDashpordComponent,
+    ErrorPageComponent,
+    WritProblemComponent
   ],
   imports: [
     BrowserModule,

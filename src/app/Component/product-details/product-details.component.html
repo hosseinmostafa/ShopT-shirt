@@ -167,115 +167,17 @@
 <section id="new-arrival" class="new-arrival product-carousel py-5 position-relative overflow-hidden">
     <div class="container">
         <div class="d-flex flex-wrap justify-content-between align-items-center mt-5 mb-3">
-            <h4 class="text-uppercase">People Also Bought</h4>
-            <a routerLink="/shop" class="btn-link">View All Products</a>
-        </div>
-        <div class="swiper product-swiper open-up" data-aos="zoom-out">
-            <div class="swiper-wrapper d-flex">
-                <div class="row">
-
-                    <div class="swiper-slide col-6 col-sm-4 col-md-3">
-                        <div class="product-item image-zoom-effect link-effect">
-                            <div class="image-holder position-relative">
-                                <a href="index.html">
-                                    <img src="./img-home/product-item-1.jpg" alt="categories"
-                                        class="product-image img-fluid">
-                                </a>
-                                <a href="index.html" class="btn-icon btn-wishlist">
-                                    <i class="fa-regular fa-heart"></i>
-                                </a>
-                                <div class="product-content">
-                                    <h5 class="element-title text-uppercase fs-5 mt-3">
-                                        <a href="index.html">Dark florish onepiece</a>
-                                    </h5>
-                                    <a href="#" class="text-decoration-none"
-                                        data-after="Add to cart"><span>$95.00</span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide col-6 col-sm-4 col-md-3">
-                        <div class="product-item image-zoom-effect link-effect">
-                            <div class="image-holder position-relative">
-                                <a href="index.html">
-                                    <img src="./img-home/product-item-2.jpg" alt="categories"
-                                        class="product-image img-fluid">
-                                </a>
-                                <a href="index.html" class="btn-icon btn-wishlist">
-                                    <i class="fa-regular fa-heart"></i>
-                                </a>
-                                <div class="product-content">
-                                    <h5 class="text-uppercase fs-5 mt-3">
-                                        <a href="index.html">Baggy Shirt</a>
-                                    </h5>
-                                    <a href="#" class="text-decoration-none"
-                                        data-after="Add to cart"><span>$55.00</span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide col-6 col-sm-4 col-md-3">
-                        <div class="product-item image-zoom-effect link-effect">
-                            <div class="image-holder position-relative">
-                                <a href="index.html">
-                                    <img src="./img-home/product-item-3.jpg" alt="categories"
-                                        class="product-image img-fluid">
-                                </a>
-                                <a href="index.html" class="btn-icon btn-wishlist">
-                                    <i class="fa-regular fa-heart"></i>
-                                </a>
-                                <div class="product-content">
-                                    <h5 class="text-uppercase fs-5 mt-3">
-                                        <a href="index.html">Cotton off-white shirt</a>
-                                    </h5>
-                                    <a href="#" class="text-decoration-none"
-                                        data-after="Add to cart"><span>$65.00</span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide col-6 col-sm-4 col-md-3">
-                        <div class="product-item image-zoom-effect link-effect">
-                            <div class="image-holder position-relative">
-                                <a href="index.html">
-                                    <img src="./img-home/product-item-4.jpg" alt="categories"
-                                        class="product-image img-fluid">
-                                </a>
-                                <a href="index.html" class="btn-icon btn-wishlist">
-                                    <i class="fa-regular fa-heart"></i>
-                                </a>
-                                <div class="product-content">
-                                    <h5 class="text-uppercase fs-5 mt-3">
-                                        <a href="index.html">Crop sweater</a>
-                                    </h5>
-                                    <a href="#" class="text-decoration-none"
-                                        data-after="Add to cart "><span>$50.00</span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-<section id="new-arrival" class="new-arrival product-carousel py-5 position-relative overflow-hidden">
-    <div class="container">
-        <div class="d-flex flex-wrap justify-content-between align-items-center mt-5 mb-3">
             <h4 class="text-uppercase">You may also like</h4>
             <a routerLink="/shop" class="btn-link">View All Products</a>
         </div>
         <div class="swiper product-swiper open-up" data-aos="zoom-out">
             <div class="swiper-wrapper d-flex">
                 <div class="row">
-
-                    <div class="swiper-slide col-6 col-sm-4 col-md-3">
+                    <div class="swiper-slide col-6 col-sm-4 col-md-3" *ngFor="let product of products">
                         <div class="product-item image-zoom-effect link-effect">
                             <div class="image-holder position-relative">
-                                <a href="index.html">
-                                    <img src="./img-home/product-item-1.jpg" alt="categories"
+                                <a [routerLink]="['/product-details', product.id]">
+                                    <img [src]="product.images" alt="categories"
                                         class="product-image img-fluid">
                                 </a>
                                 <a href="index.html" class="btn-icon btn-wishlist">
@@ -283,167 +185,10 @@
                                 </a>
                                 <div class="product-content">
                                     <h5 class="element-title text-uppercase fs-5 mt-3">
-                                        <a href="index.html">Dark florish onepiece</a>
+                                        <a href="index.html">{{ product.name }}</a>
                                     </h5>
                                     <a href="#" class="text-decoration-none"
-                                        data-after="Add to cart"><span>$95.00</span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide col-6 col-sm-4 col-md-3">
-                        <div class="product-item image-zoom-effect link-effect">
-                            <div class="image-holder position-relative">
-                                <a href="index.html">
-                                    <img src="./img-home/product-item-2.jpg" alt="categories"
-                                        class="product-image img-fluid">
-                                </a>
-                                <a href="index.html" class="btn-icon btn-wishlist">
-                                    <i class="fa-regular fa-heart"></i>
-                                </a>
-                                <div class="product-content">
-                                    <h5 class="text-uppercase fs-5 mt-3">
-                                        <a href="index.html">Baggy Shirt</a>
-                                    </h5>
-                                    <a href="#" class="text-decoration-none"
-                                        data-after="Add to cart"><span>$55.00</span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide col-6 col-sm-4 col-md-3">
-                        <div class="product-item image-zoom-effect link-effect">
-                            <div class="image-holder position-relative">
-                                <a href="index.html">
-                                    <img src="./img-home/product-item-3.jpg" alt="categories"
-                                        class="product-image img-fluid">
-                                </a>
-                                <a href="index.html" class="btn-icon btn-wishlist">
-                                    <i class="fa-regular fa-heart"></i>
-                                </a>
-                                <div class="product-content">
-                                    <h5 class="text-uppercase fs-5 mt-3">
-                                        <a href="index.html">Cotton off-white shirt</a>
-                                    </h5>
-                                    <a href="#" class="text-decoration-none"
-                                        data-after="Add to cart"><span>$65.00</span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide col-6 col-sm-4 col-md-3">
-                        <div class="product-item image-zoom-effect link-effect">
-                            <div class="image-holder position-relative">
-                                <a href="index.html">
-                                    <img src="./img-home/product-item-4.jpg" alt="categories"
-                                        class="product-image img-fluid">
-                                </a>
-                                <a href="index.html" class="btn-icon btn-wishlist">
-                                    <i class="fa-regular fa-heart"></i>
-                                </a>
-                                <div class="product-content">
-                                    <h5 class="text-uppercase fs-5 mt-3">
-                                        <a href="index.html">Crop sweater</a>
-                                    </h5>
-                                    <a href="#" class="text-decoration-none"
-                                        data-after="Add to cart "><span>$50.00</span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-<section id="new-arrival" class="new-arrival product-carousel py-5 position-relative overflow-hidden">
-    <div class="container">
-        <div class="d-flex flex-wrap justify-content-between align-items-center mt-5 mb-3">
-            <h4 class="text-uppercase">Recently viewed</h4>
-            <a routerLink="/shop" class="btn-link">View All Products</a>
-        </div>
-        <div class="swiper product-swiper open-up" data-aos="zoom-out">
-            <div class="swiper-wrapper d-flex">
-                <div class="row">
-
-                    <div class="swiper-slide col-6 col-sm-4 col-md-3">
-                        <div class="product-item image-zoom-effect link-effect">
-                            <div class="image-holder position-relative">
-                                <a href="index.html">
-                                    <img src="./img-home/product-item-1.jpg" alt="categories"
-                                        class="product-image img-fluid">
-                                </a>
-                                <a href="index.html" class="btn-icon btn-wishlist">
-                                    <i class="fa-regular fa-heart"></i>
-                                </a>
-                                <div class="product-content">
-                                    <h5 class="element-title text-uppercase fs-5 mt-3">
-                                        <a href="index.html">Dark florish onepiece</a>
-                                    </h5>
-                                    <a href="#" class="text-decoration-none"
-                                        data-after="Add to cart"><span>$95.00</span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide col-6 col-sm-4 col-md-3">
-                        <div class="product-item image-zoom-effect link-effect">
-                            <div class="image-holder position-relative">
-                                <a href="index.html">
-                                    <img src="./img-home/product-item-2.jpg" alt="categories"
-                                        class="product-image img-fluid">
-                                </a>
-                                <a href="index.html" class="btn-icon btn-wishlist">
-                                    <i class="fa-regular fa-heart"></i>
-                                </a>
-                                <div class="product-content">
-                                    <h5 class="text-uppercase fs-5 mt-3">
-                                        <a href="index.html">Baggy Shirt</a>
-                                    </h5>
-                                    <a href="#" class="text-decoration-none"
-                                        data-after="Add to cart"><span>$55.00</span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide col-6 col-sm-4 col-md-3">
-                        <div class="product-item image-zoom-effect link-effect">
-                            <div class="image-holder position-relative">
-                                <a href="index.html">
-                                    <img src="./img-home/product-item-3.jpg" alt="categories"
-                                        class="product-image img-fluid">
-                                </a>
-                                <a href="index.html" class="btn-icon btn-wishlist">
-                                    <i class="fa-regular fa-heart"></i>
-                                </a>
-                                <div class="product-content">
-                                    <h5 class="text-uppercase fs-5 mt-3">
-                                        <a href="index.html">Cotton off-white shirt</a>
-                                    </h5>
-                                    <a href="#" class="text-decoration-none"
-                                        data-after="Add to cart"><span>$65.00</span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide col-6 col-sm-4 col-md-3">
-                        <div class="product-item image-zoom-effect link-effect">
-                            <div class="image-holder position-relative">
-                                <a href="index.html">
-                                    <img src="./img-home/product-item-4.jpg" alt="categories"
-                                        class="product-image img-fluid">
-                                </a>
-                                <a href="index.html" class="btn-icon btn-wishlist">
-                                    <i class="fa-regular fa-heart"></i>
-                                </a>
-                                <div class="product-content">
-                                    <h5 class="text-uppercase fs-5 mt-3">
-                                        <a href="index.html">Crop sweater</a>
-                                    </h5>
-                                    <a href="#" class="text-decoration-none"
-                                        data-after="Add to cart "><span>$50.00</span></a>
+                                        data-after="Add to cart"><span>{{ product.price | currency }}</span></a>
                                 </div>
                             </div>
                         </div>

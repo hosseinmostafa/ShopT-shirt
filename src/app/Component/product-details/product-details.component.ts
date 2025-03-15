@@ -43,4 +43,18 @@ export class ProductDetailsComponent {
       });
     }
   }
+  quantity: number = 1; // القيمة الافتراضية للعداد
+
+  // زيادة الكمية
+  increaseQuantity(): void {
+    this.quantity++;
+  }
+
+  // تقليل الكمية
+  decreaseQuantity(): void {
+    if (this.quantity > 1) {
+      this.quantity--;
+    }
+  }
 }
+

@@ -1,4 +1,3 @@
-
 .home-color {
   background-color: rgb(242 240 241) !important;
   scroll-behavior: smooth !important;
@@ -48,8 +47,8 @@
 .btn {
   display: inline-block;
   padding: 1rem 2rem;
-  background: var(--second-color);
-
+  // background: var(--second-color);
+  // color: #fff;
   font-size: var(--normal-font-size);
   font-weight: 500;
   border-radius: 0.5rem;
@@ -58,6 +57,7 @@
 }
 
 .btn:hover {
+  // color: #000;
   background: var(--hover-color);
 }
 
@@ -110,12 +110,12 @@
   border: none;
   background: black;
   color: #fff;
-  transition: .6s ease;
+  transition: .3s ease;
 }
 
 .shop-now:hover {
-  color: #000;
-  background: rgba(0, 0, 0, 0.185);
+  // color: #000;
+  background: #313131;
 }
 
 .line-home {
@@ -664,3 +664,19 @@ a.btn-link.text-light:after {
   z-index: 0;
 }
 
+.text-fars {
+  font-family: var(--color-small-font-family);
+  // color: var(--bs-gray-300);
+  font-size: 20px !important;
+}
+
+.text-small {
+  font-family: var(--color-small-font-family);
+  color: var(--color-small-font-family) !important;
+  font-size: var(--small-font-size) !important;
+  font-weight: var(--small-font-weight) !important;
+}
+
+.icon-ho{
+  font-size: 3em;
+}

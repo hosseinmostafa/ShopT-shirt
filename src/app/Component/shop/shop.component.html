@@ -118,17 +118,17 @@
                 <div class="swiper-slide col-6 col-sm-4 col-md-4" *ngFor="let product of filteredProducts">
                   <div class="product-item image-zoom-effect link-effect pb-3">
                     <div class="image-holder position-relative">
-                      <a href="index.html">
+                      <a [routerLink]="['/product-details', product.id]">
                         <img [src]="product.images" alt="categories" class="product-image img-fluid">
                       </a>
-                      <a href="index.html" class="btn-icon btn-wishlist">
+                      <a  class="btn-icon btn-wishlist">
                         <i class="fa-regular fa-heart"></i>
                       </a>
                       <div class="product-content">
                         <h5 class="element-title text-uppercase fs-5 mt-3">
-                          <a href="index.html">{{ product.name }}</a>
+                          <a >{{ product.name }}</a>
                         </h5>
-                        <a href="#" class="text-decoration-none" data-after="Add to cart">
+                        <a class="text-decoration-none" data-after="Add to cart">
                           <span>{{ product.price | currency }}</span>
                         </a>
                         <a [routerLink]="['/product-details', product.id]" class="text-decoration-none mt-2 prod-details" data-after="Show Details">
@@ -144,6 +144,8 @@
         </div>
       </section>
     </div>
+
+
   </div>
 </div>
 

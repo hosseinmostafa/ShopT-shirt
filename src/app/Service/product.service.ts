@@ -71,13 +71,15 @@ export class ProductService {
             price: response[key].price,
             images: response[key].images || [response[key].image],
             description: response[key].description || 'No description available.',
-            category: response[key].category || 'Uncategorized',
-            color: response[key].color || 'N/A',
+            category: response[key].category || [response[key].category] || 'Uncategorized',
+            color: response[key].color ||[response[key].color] || 'N/A',
             rating: response[key].rating || 0,
-            material: response[key].material || 'N/A',
+            material: response[key].material || [response[key].material] || 'N/A',
             dimensions: response[key].dimensions || 'N/A',
             date: response[key].date || 'N/A',
             quantity: response[key].quantity || 0,
+            type: response[key].type || "N/A",
+            sizes: response[key].sizes || [response[key].sizes] || "N/A"
           }));
       }),
       catchError((err) => {

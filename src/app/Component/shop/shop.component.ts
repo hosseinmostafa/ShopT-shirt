@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
   selector: 'app-shop',
   templateUrl: './shop.component.html',
   styleUrls: ['./shop.component.scss'],
+  
 })
 export class ShopComponent implements OnInit {
   
@@ -68,8 +69,8 @@ export class ShopComponent implements OnInit {
   applyFilters(): void {
     this.filteredProducts = this.products.filter(product => {
       const matchesCategory = this.selectedCategories.length === 0 ||
-        this.selectedCategories.includes(product.category);
-      const matchesColor = this.selectedColor ? product.color === this.selectedColor : true;
+        this.selectedCategories.includes(product.category[0]);
+      const matchesColor = this.selectedColor ? product.color[0] === this.selectedColor : true;
       const matchesPrice = product.price <= this.selectedPriceRange;
       const matchesRating = this.selectedRating ? product.rating >= this.selectedRating : true;
       return matchesCategory || matchesColor || matchesPrice || matchesRating;

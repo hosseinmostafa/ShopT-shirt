@@ -1,12 +1,14 @@
-.icon-hover:hover {
-    border-color: #3b71ca !important;
-    background-color: white !important;
-    color: #3b71ca !important;
+.section-cont {
+    font-family: var(--font-pro);
 }
 
-.icon-hover:hover i {
-    color: #3b71ca !important;
+
+.icon-hover:hover {
+    // border-color: #3b71ca !important;
+    background-color: white !important;
+    color: rgb(214, 0, 0) !important;
 }
+
 
 .img-small {
     width: 150px;
@@ -16,17 +18,102 @@
     border-radius: 5px;
     margin-right: 10px;
     margin-bottom: 10px;
+    // transition: all 0.3s ease-in-out;
+    // transform: scale(1);
+}
+
+div .item-thumb {
+    transition: all 0.3s ease-in-out;
+    transform: scale(1);
+}
+
+div .item-thumb:hover {
+    transform: scale(1.05);
 }
 
 .carousel-item img {
 
     object-fit: cover;
 }
+
 .carousel-indicators [data-bs-target] {
     border-radius: 50% !important;
-    width: 5px !important;
-    height: 5px !important;
+    width: 3px !important;
+    height: 3px !important;
     margin: 0 5px !important;
     border: 3px solid #000 !important;
     padding: 5px !important;
 }
+a{
+    text-decoration: none !important;
+
+}
+
+a.btn-link,
+a.btn-link:after {
+    transition: all .5s;
+}
+
+a.btn-link {
+    position: relative;
+}
+
+a.btn-link:before,
+a.btn-link:after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    background-color: var(--bs-dark);
+    height: 1px;
+}
+
+[data-bs-theme=dark] a.btn-link:after {
+    background-color: var(--bs-white);
+}
+
+a.btn-link:before {
+    background-color: var(--bs-gray);
+    width: 100%;
+}
+
+a.btn-link.is-checked:after,
+a.btn-link:hover:after {
+    width: 100%;
+}
+
+a.btn-link.text-white:after {
+    background-color: var(--bs-white);
+}
+
+a.btn-link.text-light:after {
+    background-color: var(--bs-light);
+}
+
+.text-small{
+    color: var(--color-small-font-family) !important;
+    font-size: var(--small-font-size) !important;
+    font-weight: var(--small-font-weight) !important;
+}
+
+
+h4 {
+    font-size: calc(1.275rem + .3vw);
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--bs-heading-color);
+    text-transform: uppercase !important;
+
+}
+h6{
+    text-transform: uppercase !important;
+    font-weight: 600;
+}
+.price-text{
+    font-weight: 600;
+    font-size: 1.2rem;
+    text-transform: uppercase !important;
+}
+

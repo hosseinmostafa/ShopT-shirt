@@ -1,10 +1,10 @@
 <!-- content -->
-<section class="py-5">
+<section class="py-5 section-cont">
     <div class="container">
         <div class="row">
             <aside class="col-lg-6">
-                
-                <div class="d-block d-lg-none mb-3"> 
+
+                <div class="d-block d-lg-none mb-3">
                     <div id="carouselExampleIndicators" class="carousel slide">
                         <div class="carousel-indicators">
                             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
@@ -14,22 +14,22 @@
                             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
                                 aria-label="Slide 3"></button>
                             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
-                                aria-label="Slide 3"></button>
+                                aria-label="Slide 4"></button>
                             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4"
-                                aria-label="Slide 3"></button>
+                                aria-label="Slide 5"></button>
                             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="5"
-                                aria-label="Slide 3"></button>
+                                aria-label="Slide 6"></button>
                             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="6"
-                                aria-label="Slide 3"></button>
+                                aria-label="Slide 7"></button>
                             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="7"
-                                aria-label="Slide 3"></button>
+                                aria-label="Slide 8"></button>
                             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="8"
-                                aria-label="Slide 3"></button>
+                                aria-label="Slide 9"></button>
                             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="9"
-                                aria-label="Slide 3"></button>
+                                aria-label="Slide 10"></button>
                             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="10"
-                                aria-label="Slide 3"></button>
-                            
+                                aria-label="Slide 11"></button>
+
                         </div>
                         <div class="carousel-inner">
                             <div class="carousel-item active">
@@ -54,17 +54,17 @@
                     </div>
                 </div>
 
-                
-                <div class="d-none d-lg-block"> 
-                    
+
+                <div class="d-none d-lg-block">
+
                     <div class="mb-3 d-flex justify-content-center">
                         <a data-fslightbox="mygalley" data-type="image">
                             <img class="fit" [src]="mainImage" />
                         </a>
                     </div>
 
-                    
-                    <div class="d-flex flex-wrap justify-content-center mb-3" *ngIf="oneProduct?.images">
+
+                    <div class="d-flex flex-wrap justify-content-center mb-3 img-cont" *ngIf="oneProduct?.images">
                         <ng-container *ngFor="let image of oneProduct.images; let i = index">
                             <a data-fslightbox="mygalley" class="mx-1 mb-2 item-thumb" data-type="image"
                                 (click)="changeMainImage(image)">
@@ -77,8 +77,7 @@
             <main class="col-lg-6">
                 <div class="ps-lg-3">
                     <h4 class="title text-dark">
-                        Quality Men's Hoodie for Winter, Men's Fashion <br />
-                        Casual Hoodie
+                        {{ oneProduct?.name }}
                     </h4>
                     <div class="d-flex flex-row my-3">
                         <div class="text-warning mb-1 me-2">
@@ -91,70 +90,72 @@
                                 4.5
                             </span>
                         </div>
-                        <span class="text-muted"><i class="fas fa-shopping-basket fa-sm mx-1"></i>154 orders</span>
+                        <span class="text-muted text-small"><i class="fas fa-shopping-basket fa-sm mx-1"></i>154 orders</span>
                         <span class="text-success ms-2">In stock</span>
                     </div>
 
-                    <div class="mb-3">
-                        <span class="h5">$75.00</span>
-                        <span class="text-muted">/per box</span>
+                    <div class="mb-3 price-text">
+                        <span class="h5">{{oneProduct?.price | currency }}</span>
                     </div>
 
-                    <p>
-                        Modern look and quality demo item is a streetwear-inspired collection that continues to break
-                        away from the conventions of mainstream fashion. Made in Italy, these black and brown clothing
-                        low-top shirts for
-                        men.
+                    <p class="text-small">
+                        {{ oneProduct?.description }}
                     </p>
 
                     <div class="row">
-                        <dt class="col-3">Type:</dt>
-                        <dd class="col-9">Regular</dd>
+                        <h6 class="col-3">Type:</h6>
+                        <dd class="col-9 text-small">{{ oneProduct?.type }}</dd>
 
-                        <dt class="col-3">Color</dt>
-                        <dd class="col-9">Brown</dd>
+                        <h6 class="col-3">Category</h6>
+                        <dd class="col-9 text-small">{{ oneProduct?.category }}</dd>
 
-                        <dt class="col-3">Material</dt>
-                        <dd class="col-9">Cotton, Jeans</dd>
+                        <h6 class="col-3 mb-3">Color</h6>
+                        <dd class="col-9 text-small">{{ oneProduct?.color }}</dd>
 
-                        <dt class="col-3">Brand</dt>
-                        <dd class="col-9">Reebook</dd>
+                        <h6 class="col-3">Material</h6>
+                        <dd class="col-9 text-small">{{ oneProduct?.material }}</dd>
+
                     </div>
 
                     <hr />
 
-                    <div class="row mb-4">
-                        <div class="col-md-4 col-6">
-                            <label class="mb-2">Size</label>
-                            <select class="form-select border border-secondary" style="height: 35px;">
-                                <option>Small</option>
-                                <option>Medium</option>
-                                <option>Large</option>
-                            </select>
-                        </div>
-
-                        <div class="col-md-4 col-6 mb-3">
-                            <label class="mb-2 d-block">Quantity</label>
-                            <div class="input-group mb-3" style="width: 170px;">
-                                <button class="btn btn-white border border-secondary px-3" type="button"
-                                    id="button-addon1" data-mdb-ripple-color="dark">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                                <input type="text" class="form-control text-center border border-secondary"
-                                    placeholder="14" aria-label="Example text with button addon"
-                                    aria-describedby="button-addon1" />
-                                <button class="btn btn-white border border-secondary px-3" type="button"
-                                    id="button-addon2" data-mdb-ripple-color="dark">
-                                    <i class="fas fa-plus"></i>
-                                </button>
+                    <div class="  ">
+                        <div class="row mb-4">
+                            <div class="col-md-6 col-6">
+                                <label class="mb-2">Size</label>
+                                <select class="form-select border border-secondary">
+                                    <option selected disabled>{{ oneProduct?.sizes.join(', ') }}</option>
+                                    <option>Small</option>
+                                    <option>Medium</option>
+                                    <option>Large</option>
+                                    <option>X Large</option>
+                                </select>
+                            </div>
+    
+                            <div class="col-md-6 col-6 mb-3">
+                                <label class="mb-2 d-block">Quantity</label>
+                                <div class="input-group mb-3">
+                                    <button class="btn btn-white border border-secondary px-3" type="button"
+                                        (click)="decreaseQuantity()" data-mdb-ripple-color="dark">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <input type="text" class="form-control text-center border border-secondary"
+                                        [(ngModel)]="quantity" aria-label="Quantity" readonly />
+                                    <button class="btn btn-white border border-secondary px-3" type="button"
+                                        (click)="increaseQuantity()" data-mdb-ripple-color="dark">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <a href="#" class="btn btn-warning shadow-0"> Buy now </a>
-                    <a href="#" class="btn btn-primary shadow-0"> <i class="me-1 fa fa-shopping-basket"></i> Add to cart
-                    </a>
-                    <a href="#" class="btn btn-light border border-secondary py-2 icon-hover px-3"> <i
-                            class="me-1 fa fa-heart fa-lg"></i> Save </a>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <a href="#" class="btn btn-link"> Buy now </a>
+                        <a href="#" class="btn btn-link"> <i class="me-1 fa fa-shopping-basket"></i> Add to cart
+                        </a>
+                        <a href="#" class="btn py-2 icon-hover px-3 btn-link"> <i
+                                class="me-1 fa fa-heart fa-lg"></i> Save </a>
+                    </div>
                 </div>
             </main>
         </div>

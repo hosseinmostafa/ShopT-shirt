@@ -11,25 +11,25 @@
             <p class="text-cn">Browse Through our diverse range of meticulously crafted garments. designed <br>
               to bring out your individuality and cater to your sense of style.
             </p>
-            <div class="btn rounded-5 col-lg-6 col-md-12 col-sm-12 shop-now" target="_blank">Shop Now <i
-                class="fas fa-arrow-circle-right"></i></div>
+            <div class="btn rounded-5 col-lg-6 col-md-12 col-sm-12 shop-now " target="_blank" routerLink="/shop">Shop
+              Now <i class="fas fa-arrow-circle-right"></i></div>
             <div class="container">
               <div class="row justify-content-center gy-4 mt-3">
                 <div class="col-12 col-sm-6 col-md-4 col-lg-3 text-center text-lg-start">
                   <div>
-                    <h1>200+</h1>
+                    <h1 @countAnimation>{{ brandCount1 }}+</h1>
                     <p>International Brands</p>
                   </div>
                 </div>
                 <div class="col-12 col-sm-6 col-md-4 col-lg-3 text-center text-lg-start">
                   <div>
-                    <h1>200+</h1>
+                    <h1 @countAnimation>{{ brandCount2 }}+</h1>
                     <p>International Brands</p>
                   </div>
                 </div>
                 <div class="col-12 col-sm-6 col-md-4 col-lg-3 text-center text-lg-start">
                   <div>
-                    <h1>200+</h1>
+                    <h1 @countAnimation>{{ brandCount3 }}+</h1>
                     <p>International Brands</p>
                   </div>
                 </div>
@@ -61,6 +61,41 @@
   </section>
 </div>
 
+<section class="features py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3 text-center" data-aos="fade-in" data-aos-delay="0">
+        <div class="py-5 text-fars">
+          <i class="fa-regular fa-calendar icon-ho"></i>
+          <h4 class="element-title text-capitalize my-3">Book An Appointment</h4>
+          <p class="text-small">At imperdiet dui accumsan sit amet nulla risus est ultricies quis.</p>
+        </div>
+      </div>
+      <div class="col-md-3 text-center" data-aos="fade-in" data-aos-delay="300">
+        <div class="py-5 text-fars">
+          <i class="fa-solid fa-bag-shopping icon-ho"></i>
+          <h4 class="element-title text-capitalize my-3">Pick up in store</h4>
+          <p class="text-small">At imperdiet dui accumsan sit amet nulla risus est ultricies quis.</p>
+        </div>
+      </div>
+      <div class="col-md-3 text-center" data-aos="fade-in" data-aos-delay="600">
+        <div class="py-5 text-fars">
+          <i class="fa-solid fa-gift icon-ho"></i>
+          <h4 class="element-title text-capitalize my-3">Special packaging</h4>
+          <p class="text-small">At imperdiet dui accumsan sit amet nulla risus est ultricies quis.</p>
+        </div>
+      </div>
+      <div class="col-md-3 text-center" data-aos="fade-in" data-aos-delay="900">
+        <div class="py-5 text-fars">
+          <i class="fa-solid fa-rotate-right icon-ho"></i>
+          <h4 class="element-title text-capitalize my-3">free global returns</h4>
+          <p class="text-small">At imperdiet dui accumsan sit amet nulla risus est ultricies quis.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- Categories -->
 <section class="categories overflow-hidden mt-5">
   <div class="container">
@@ -76,7 +111,7 @@
             </div>
             <div class="category-content">
               <div class="product-button">
-                <a href="index.html" class="btn btn-common text-uppercase">Shop for men</a>
+                <a href="index.html" class="btn btn-common text-uppercase btn-link">Shop for men</a>
               </div>
             </div>
           </div>
@@ -90,7 +125,7 @@
             </div>
             <div class="category-content">
               <div class="product-button">
-                <a href="index.html" class="btn btn-common text-uppercase">Shop for women</a>
+                <a href="index.html" class="btn btn-common text-uppercase btn-link">Shop for women</a>
               </div>
             </div>
           </div>
@@ -104,7 +139,7 @@
             </div>
             <div class="category-content">
               <div class="product-button">
-                <a href="index.html" class="btn btn-common text-uppercase">Shop accessories</a>
+                <a href="index.html" class="btn btn-common text-uppercase btn-link">Shop accessories</a>
               </div>
             </div>
           </div>
@@ -192,7 +227,7 @@
                   <h5 class="text-uppercase fs-5 mt-3">
                     <a href="index.html">Crop sweater</a>
                   </h5>
-                  <a href="#" class="text-decoration-none" data-after="Add to cart"><span>$50.00</span></a>
+                  <a href="#" class="text-decoration-none" data-after="Add to cart "><span>$50.00</span></a>
                 </div>
               </div>
             </div>
@@ -221,7 +256,7 @@
               fringilla odio mi. Consequat pharetra at magna imperdiet cursus ac faucibus sit libero. Ultricies quam
               nunc, lorem sit lorem urna, pretium aliquam ut. In vel, quis donec dolor id in. Pulvinar commodo mollis
               diam sed facilisis at cursus imperdiet cursus ac faucibus sit faucibus sit libero.</p>
-            <a href="#" class="btn  text-uppercase mt-3">Shop Collection</a>
+            <a href="#" class="btn  text-uppercase mt-3 btn-link">Shop Collection</a>
           </div>
         </div>
       </div>
@@ -247,7 +282,7 @@
     <div class="carousel-item active">
       <div class="testimonial-item text-center">
         <blockquote>
-          <p>“More than expected crazy soft, <br> flexible and best fitted white simple denim shirt.”</p>
+          <p>More than expected crazy soft, <br> flexible and best fitted white simple denim shirt.</p>
           <div class="review-title text-uppercase">casual way</div>
         </blockquote>
       </div>
@@ -255,7 +290,7 @@
     <div class="carousel-item">
       <div class="testimonial-item text-center">
         <blockquote>
-          <p>“Best fitted white denim shirt more <br> than expected crazy soft, flexible”</p>
+          <p>Best fitted white denim shirt more <br> than expected crazy soft, flexible</p>
           <div class="review-title text-uppercase">uptop</div>
         </blockquote>
       </div>
@@ -263,7 +298,7 @@
     <div class="carousel-item">
       <div class="testimonial-item text-center">
         <blockquote>
-          <p>“Best fitted white denim shirt more white denim <br> than expected flexible crazy soft.”</p>
+          <p>Best fitted white denim shirt more white denim <br> than expected flexible crazy soft.</p>
           <div class="review-title text-uppercase">Denim craze</div>
         </blockquote>
       </div>
@@ -278,6 +313,3 @@
     <span class="visually-hidden">Next</span>
   </button>
 </section>
-
-
-

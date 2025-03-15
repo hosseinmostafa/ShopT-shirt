@@ -6,11 +6,7 @@
 :root{
   --font-pro: 'Poppins', sans-serif;
   --color-background: #f2f0f1;
-
-
-
-
-
+  --second-color: #000;
 
     --bs-primary-rgb: 140, 144, 126;
     --bs-secondary-rgb: 108, 117, 125;
@@ -23,4 +19,10 @@
     --bs-link-decoration: underline;
     --bs-link-hover-color: #111;
     --bs-link-hover-color-rgb: 17, 17, 17;
+
+    --color-small-font-family: rgba(0, 0, 0, 0.445) !important;
+    --small-font-size: 1.1em;
+    --small-font-weight: 600 !important;
+
+
 }

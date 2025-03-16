@@ -30,7 +30,7 @@ import { WritProblemComponent } from './Component/writ-problem/writ-problem.comp
     ProductDetailsComponent,
     PayServesesInDashpordComponent,
     ErrorPageComponent,
-    WritProblemComponent
+    WritProblemComponent,
   ],
   imports: [
     BrowserModule,

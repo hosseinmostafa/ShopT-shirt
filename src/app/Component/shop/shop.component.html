@@ -13,7 +13,7 @@
       <span class="text-muted">Showing 1-10 of 100 Products Sort by</span>
       <div class="dropdown">
         <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-          Most Popular 
+          Most Popular
         </button>
         <ul class="dropdown-menu">
           <li><a class="dropdown-item" href="#">All</a></li>
@@ -26,8 +26,17 @@
 
   <div class="row g-4">
     <!-- Filters Sidebar -->
-    <div class="col-lg-3">
+    <!-- زر الفلتر للشاشات الصغيرة -->
+    <div class="col-12 d-lg-none">
+      <button class="btn btn-outline-primary w-100" (click)="toggleFilter()">
+        <i class="fa-solid fa-filter"></i> Filters
+      </button>
+    </div>
+    
+    <!-- الفلتر للشاشات الكبيرة -->
+    <div class="col-lg-3 d-none d-lg-block">
       <div class="filter-sidebar p-4 shadow-sm">
+        <!-- محتوى الفلتر -->
         <div class="filter-group">
           <div class="filter-icon d-flex justify-content-between">
             <h5 class="mb-3 fw-bold fs-4">Filters</h5>
@@ -35,30 +44,22 @@
           </div>
           <div class="form-check mb-2">
             <input class="form-check-input" type="checkbox" id="t-shirts" (change)="toggleCategory('T-shirts')">
-            <label class="form-check-label" for="t-shirts">
-              T-shirts
-            </label>
+            <label class="form-check-label" for="t-shirts">T-shirts</label>
           </div>
           <div class="form-check mb-2">
             <input class="form-check-input" type="checkbox" id="shorts" (change)="toggleCategory('Shorts')">
-            <label class="form-check-label" for="shorts">
-              Shorts
-            </label>
+            <label class="form-check-label" for="shorts">Shorts</label>
           </div>
           <div class="form-check mb-2">
             <input class="form-check-input" type="checkbox" id="hoodies" (change)="toggleCategory('Hoodies')">
-            <label class="form-check-label" for="hoodies">
-              Hoodies
-            </label>
+            <label class="form-check-label" for="hoodies">Hoodies</label>
           </div>
           <div class="form-check mb-2">
             <input class="form-check-input" type="checkbox" id="jeans" (change)="toggleCategory('Jeans')">
-            <label class="form-check-label" for="jeans">
-              Jeans
-            </label>
+            <label class="form-check-label" for="jeans">Jeans</label>
           </div>
         </div>
-
+    
         <div class="filter-group">
           <h6 class="mb-3">Price Range</h6>
           <label for="customRange3" class="form-label">Example range</label>
@@ -68,22 +69,6 @@
             <span id="priceValue" class="text-muted">${{ selectedPriceRange }}</span>
           </div>
         </div>
-
-        <div class="accordion accordion-flush mb-3" id="accordionFlushExample">
-          <div class="accordion-item">
-            <h2 class="accordion-header">
-              <div class="">
-                <h6 class="mb-3">Colors</h6>
-                <div class="d-flex flex-wrap gap-3">
-                  <div *ngFor="let color of colors" class="color-option p-3" [style.background]="color"
-                    [ngClass]="{'selected': selectedColor === color}" (click)="selectColor(color)">
-                  </div>
-                </div>
-              </div>
-            </h2>
-          </div>
-        </div>
-
         <div class="filter-group">
           <h6 class="mb-3">Rating</h6>
           <div class="form-check mb-2">
@@ -99,11 +84,58 @@
             </label>
           </div>
         </div>
-
-        <!-- (click)="applyFilters()" -->
+    
         <button class="btn btn-outline-primary w-100" (click)="applyFilters()">Apply Filters</button>
       </div>
     </div>
+    
+    <!-- small screen filters -->
+    <div *ngIf="isFilterOpen" class="filter-modal-overlay">
+      <div class="filter-modal">
+        <div class="filter-modal-header">
+          <h5 class="modal-title">Filters</h5>
+          <button type="button" class="btn-close" (click)="toggleFilter()"></button>
+        </div>
+        <div class="filter-modal-body">
+          <div class="filter-group">
+            <div class="filter-icon d-flex justify-content-between">
+              <h5 class="mb-3 fw-bold fs-4">Filters</h5>
+              <i class="fa-solid fa-filter mt-2"></i>
+            </div>
+            <div class="form-check mb-2">
+              <input class="form-check-input" type="checkbox" id="t-shirts-modal" (change)="toggleCategory('T-shirts')">
+              <label class="form-check-label" for="t-shirts-modal">T-shirts</label>
+            </div>
+            <div class="form-check mb-2">
+              <input class="form-check-input" type="checkbox" id="shorts-modal" (change)="toggleCategory('Shorts')">
+              <label class="form-check-label" for="shorts-modal">Shorts</label>
+            </div>
+            <div class="form-check mb-2">
+              <input class="form-check-input" type="checkbox" id="hoodies-modal" (change)="toggleCategory('Hoodies')">
+              <label class="form-check-label" for="hoodies-modal">Hoodies</label>
+            </div>
+            <div class="form-check mb-2">
+              <input class="form-check-input" type="checkbox" id="jeans-modal" (change)="toggleCategory('Jeans')">
+              <label class="form-check-label" for="jeans-modal">Jeans</label>
+            </div>
+          </div>
+    
+          <div class="filter-group">
+            <h6 class="mb-3">Price Range</h6>
+            <label for="customRange3" class="form-label">Example range</label>
+            <input type="range" class="form-range reversed-slider" min="0" max="1000" step="50" id="customRange3"
+              (input)="updatePrice($event)">
+            <div class="d-flex justify-content-between">
+              <span id="priceValue" class="text-muted">${{ selectedPriceRange }}</span>
+            </div>
+          </div>
+        </div>
+        <div class="filter-modal-footer">
+          <button class="btn btn-outline-primary w-100" (click)="applyFilters()">Apply Filters</button>
+        </div>
+      </div>
+    </div>
+    
 
     <div class="col-lg-9">
       <!-- New Arrivals -->
@@ -121,17 +153,18 @@
                       <a [routerLink]="['/product-details', product.id]">
                         <img [src]="product.images" alt="categories" class="product-image img-fluid">
                       </a>
-                      <a  class="btn-icon btn-wishlist">
+                      <a class="btn-icon btn-wishlist">
                         <i class="fa-regular fa-heart"></i>
                       </a>
                       <div class="product-content">
                         <h5 class="element-title text-uppercase fs-5 mt-3">
-                          <a >{{ product.name }}</a>
+                          <a>{{ product.name }}</a>
                         </h5>
                         <a class="text-decoration-none" data-after="Add to cart">
                           <span>{{ product.price | currency }}</span>
                         </a>
-                        <a [routerLink]="['/product-details', product.id]" class="text-decoration-none mt-2 prod-details" data-after="Show Details">
+                        <a [routerLink]="['/product-details', product.id]"
+                          class="text-decoration-none mt-2 prod-details" data-after="Show Details">
                           <span></span>
                         </a>
                       </div>
@@ -148,4 +181,3 @@
 
   </div>
 </div>
-

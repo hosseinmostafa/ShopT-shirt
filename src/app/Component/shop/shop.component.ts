@@ -17,13 +17,14 @@ export class ShopComponent implements OnInit {
   errMsg: string | null = null;
   price: number = 0;
 
-  colors: string[] = ['#000000', '#dc2626', '#2563eb', '#16a34a', 'yellow', '#8b5cf6', 'orange'];
-  additionalColors: string[] = ['skyblue', 'palevioletred', 'white'];
+
   selectedColor: string | null = null;
 
   selectedCategories: string[] = []; 
   selectedPriceRange: number = 0; 
   selectedRating: number | null = null; 
+  isFilterOpen: boolean = false; 
+
 
   constructor(private productService: ProductService, private router: Router) { }
 
@@ -68,23 +69,26 @@ export class ShopComponent implements OnInit {
   // fillte
   applyFilters(): void {
     this.filteredProducts = this.products.filter(product => {
-      const matchesCategory = this.selectedCategories.length === 0 ||
-        this.selectedCategories.includes(product.category[0]);
-      const matchesColor = this.selectedColor ? product.color[0] === this.selectedColor : true;
+      const matchesCategory = this.selectedCategories.length === 0 || this.selectedCategories.includes(product.category[0]);
+      
       const matchesPrice = product.price <= this.selectedPriceRange;
       const matchesRating = this.selectedRating ? product.rating >= this.selectedRating : true;
-      return matchesCategory || matchesColor || matchesPrice || matchesRating;
+      return matchesCategory || matchesPrice || matchesRating;
     });
+    this.isFilterOpen = false;
   }
 
-  getAnimationState(color: string): string {
-    return this.selectedColor === color ? 'selected' : 'notSelected';
-  }
 
   // Product-details
   goToProductDetails(id: string): void {
     this.router.navigate(['/product', id]);
     
   }
+
+  // Filter open small
+  toggleFilter() {
+    this.isFilterOpen = !this.isFilterOpen;
+  }
+ 
 }
 

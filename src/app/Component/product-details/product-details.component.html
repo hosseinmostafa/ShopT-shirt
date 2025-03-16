@@ -90,7 +90,8 @@
                                 4.5
                             </span>
                         </div>
-                        <span class="text-muted text-small"><i class="fas fa-shopping-basket fa-sm mx-1"></i>154 orders</span>
+                        <span class="text-muted text-small"><i class="fas fa-shopping-basket fa-sm mx-1"></i>154
+                            orders</span>
                         <span class="text-success ms-2">In stock</span>
                     </div>
 
@@ -131,7 +132,7 @@
                                     <option>X Large</option>
                                 </select>
                             </div>
-    
+
                             <div class="col-md-6 col-6 mb-3">
                                 <label class="mb-2 d-block">Quantity</label>
                                 <div class="input-group mb-3">
@@ -153,8 +154,8 @@
                         <a href="#" class="btn btn-link"> Buy now </a>
                         <a href="#" class="btn btn-link"> <i class="me-1 fa fa-shopping-basket"></i> Add to cart
                         </a>
-                        <a href="#" class="btn py-2 icon-hover px-3 btn-link"> <i
-                                class="me-1 fa fa-heart fa-lg"></i> Save </a>
+                        <a href="#" class="btn py-2 icon-hover px-3 btn-link"> <i class="me-1 fa fa-heart fa-lg"></i>
+                            Save </a>
                     </div>
                 </div>
             </main>
@@ -177,8 +178,7 @@
                         <div class="product-item image-zoom-effect link-effect">
                             <div class="image-holder position-relative">
                                 <a [routerLink]="['/product-details', product.id]">
-                                    <img [src]="product.images" alt="categories"
-                                        class="product-image img-fluid">
+                                    <img [src]="product.images" alt="categories" class="product-image img-fluid">
                                 </a>
                                 <a href="index.html" class="btn-icon btn-wishlist">
                                     <i class="fa-regular fa-heart"></i>
@@ -187,8 +187,12 @@
                                     <h5 class="element-title text-uppercase fs-5 mt-3">
                                         <a href="index.html">{{ product.name }}</a>
                                     </h5>
-                                    <a href="#" class="text-decoration-none"
-                                        data-after="Add to cart"><span>{{ product.price | currency }}</span></a>
+                                    <a href="#" class="text-decoration-none" data-after="Add to cart"><span>{{
+                                            product.price | currency }}</span></a>
+                                    <a routerLink="/detiles-inproduct"
+                                        class="text-decoration-none mt-2 prod-details" data-after="Show Details">
+                                        <span></span>
+                                    </a>
                                 </div>
                             </div>
                         </div>

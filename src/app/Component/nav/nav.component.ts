@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { NavbarService } from '../../Service/navbar.service';
+import { CartService } from '../../Service/cart.service';
 
 @Component({
   selector: 'app-nav',
@@ -13,10 +14,11 @@ export class NavComponent implements OnInit{
   button: string = 'Sign Up Now';
   showNavbar: boolean = true;
   subscription: Subscription;
+  cartItemCount: number = 0;
   
 
   constructor(
-    private navbarService: NavbarService
+    private navbarService: NavbarService, private cartService: CartService
   ) {
     this.subscription = this.navbarService.showNavbar.subscribe((value) => {
       this.showNavbar = value;
@@ -32,6 +34,12 @@ export class NavComponent implements OnInit{
 
   ngOnInit(): void {
     this.startMessageRotation();
+    this.cartService.cartItems$.subscribe(items => {
+      // this.cartItemCount = items.length; 
+      this.cartItemCount = this.cartService.getCartItemCount();
+      
+
+    });
   }
 
   startMessageRotation() {

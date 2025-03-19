@@ -3,6 +3,8 @@ import { ProductService } from '../../Service/product.service';
 import { Iproduct } from '../interface/Iproduct';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Router } from '@angular/router';
+import { CartService } from '../../Service/cart.service';
+import { WhatchlaterHarteService } from '../../Service/whatchlater-harte.service';
 
 @Component({
   selector: 'app-shop',
@@ -26,10 +28,13 @@ export class ShopComponent implements OnInit {
   isFilterOpen: boolean = false; 
 
 
-  constructor(private productService: ProductService, private router: Router) { }
+  constructor(private productService: ProductService, private watchlater: WhatchlaterHarteService, private router: Router, private cartService: CartService) { }
 
   ngOnInit(): void {
     this.loadProducts();
+    this.watchlater.getImages().subscribe((data: any) => {
+      this.products = Object.keys(data).map(key => data[key]);
+    });
   }
 
   loadProducts(): void {
@@ -44,6 +49,7 @@ export class ShopComponent implements OnInit {
       },
     });
   }
+
 
   updatePrice(event: Event): void {
     const target = event.target as HTMLInputElement;
@@ -80,7 +86,7 @@ export class ShopComponent implements OnInit {
 
 
   // Product-details
-  goToProductDetails(id: string): void {
+  getOneProduct(id: string): void {
     this.router.navigate(['/product', id]);
     
   }
@@ -90,5 +96,13 @@ export class ShopComponent implements OnInit {
     this.isFilterOpen = !this.isFilterOpen;
   }
  
+  addToCart(product: Iproduct): void {
+    this.cartService.addToCart(product);
+  }
+
+  saveImage(product: any): void {
+    this.watchlater.saveImage(product);
+  }
 }
+
 

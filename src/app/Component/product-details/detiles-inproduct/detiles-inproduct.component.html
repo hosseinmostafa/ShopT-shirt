@@ -1,8 +1,10 @@
-<!-- content -->
+<!-- detiles-inproduct
+
 <section class="py-5 section-cont">
     <div class="container">
         <div class="row">
             <aside class="col-lg-6">
+
                 <div class="d-block d-lg-none mb-3">
                     <div id="carouselExampleIndicators" class="carousel slide">
                         <div class="carousel-indicators">
@@ -28,6 +30,7 @@
                                 aria-label="Slide 10"></button>
                             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="10"
                                 aria-label="Slide 11"></button>
+
                         </div>
                         <div class="carousel-inner">
                             <div class="carousel-item active">
@@ -51,14 +54,19 @@
                         </button>
                     </div>
                 </div>
+
+
                 <div class="d-none d-lg-block">
+
                     <div class="mb-3 d-flex justify-content-center">
                         <a data-fslightbox="mygalley" data-type="image">
                             <img class="fit" [src]="mainImage" />
                         </a>
                     </div>
+
+
                     <div class="d-flex flex-wrap justify-content-center mb-3 img-cont" *ngIf="oneProduct?.images">
-                        <ng-container *ngFor="let image of oneProduct?.images; let i = index">
+                        <ng-container *ngFor="let image of oneProduct.images; let i = index">
                             <a data-fslightbox="mygalley" class="mx-1 mb-2 item-thumb" data-type="image"
                                 (click)="changeMainImage(image)">
                                 <img class="img-small" [src]="image" />
@@ -67,7 +75,7 @@
                     </div>
                 </div>
             </aside>
-            <main class="col-lg-6" >
+            <main class="col-lg-6">
                 <div class="ps-lg-3">
                     <h4 class="title text-dark">
                         {{ oneProduct?.name }}
@@ -87,57 +95,67 @@
                             orders</span>
                         <span class="text-success ms-2">In stock</span>
                     </div>
+
                     <div class="mb-3 price-text">
                         <span class="h5">{{oneProduct?.price | currency }}</span>
                     </div>
+
                     <p class="text-small">
                         {{ oneProduct?.description }}
                     </p>
+
                     <div class="row">
                         <h6 class="col-3">Type:</h6>
                         <dd class="col-9 text-small">{{ oneProduct?.type }}</dd>
+
                         <h6 class="col-3">Category</h6>
                         <dd class="col-9 text-small">{{ oneProduct?.category }}</dd>
+
                         <h6 class="col-3 mb-3">Color</h6>
                         <dd class="col-9 text-small">{{ oneProduct?.color }}</dd>
+
                         <h6 class="col-3">Material</h6>
                         <dd class="col-9 text-small">{{ oneProduct?.material }}</dd>
+
                     </div>
+
                     <hr />
-                    <div class="  " >
+
+                    <div class="">
                         <div class="row mb-4">
-                            <div class="col-md-12 col-12" >
+                            <div class="col-md-6 col-6">
                                 <label class="mb-2">Size</label>
                                 <select class="form-select border border-secondary">
-                                    <option selected disabled>{{ oneProduct?.sizes?.join(', ') }}</option>
+                                    <option selected disabled>{{ oneProduct?.sizes.join(', ') }}</option>
                                     <option>Small</option>
                                     <option>Medium</option>
                                     <option>Large</option>
                                     <option>X Large</option>
                                 </select>
                             </div>
-                            <!-- <div class="col-md-6 col-6 mb-3">
+
+                            <div class="col-md-6 col-6 mb-3">
                                 <label class="mb-2 d-block">Quantity</label>
                                 <div class="input-group mb-3">
-                                    <button class="btn btn-white border border-secondary px-3" type="button" (click)="decreaseQuantity(oneProduct!)"
-                                        data-mdb-ripple-color="dark">
+                                    <button class="btn btn-white border border-secondary px-3" type="button"
+                                        (click)="decreaseQuantity()" data-mdb-ripple-color="dark">
                                         <i class="fas fa-minus"></i>
                                     </button>
-                                    <input type="text" class="form-control text-center border border-secondary" [ngModel]="oneProduct?.quantity"
-                                        (ngModelChange)="updateQuantity($event)" aria-label="Quantity" readonly />
-                                    <button class="btn btn-white border border-secondary px-3" type="button" (click)="increaseQuantity(oneProduct!)"
-                                        data-mdb-ripple-color="dark">
+                                    <input type="text" class="form-control text-center border border-secondary"
+                                        [(ngModel)]="quantity" aria-label="Quantity" readonly />
+                                    <button class="btn btn-white border border-secondary px-3" type="button"
+                                        (click)="increaseQuantity()" data-mdb-ripple-color="dark">
                                         <i class="fas fa-plus"></i>
                                     </button>
                                 </div>
-                            </div> -->
+                            </div>
                         </div>
                     </div>
-                    <div class="d-flex justify-content-between align-items-center" >
-                        <a class="btn btn-link"> Buy now </a>
-                        <a class="btn btn-link" (click)="addToCart()"> <i class="me-1 fa fa-shopping-basket"></i> Add to cart
+                    <div class="d-flex justify-content-between align-items-center">
+                        <a href="#" class="btn btn-link"> Buy now </a>
+                        <a href="#" class="btn btn-link"> <i class="me-1 fa fa-shopping-basket"></i> Add to cart
                         </a>
-                        <a class="btn py-2 icon-hover px-3 btn-link" (click)="saveImage(oneProduct)"> <i class="me-1 fa fa-heart fa-lg"></i>
+                        <a href="#" class="btn py-2 icon-hover px-3 btn-link"> <i class="me-1 fa fa-heart fa-lg"></i>
                             Save </a>
                     </div>
                 </div>
@@ -147,46 +165,4 @@
 </section>
 
 
-
-
-
-
-
-
-<!-- content -->
-<!-- <section id="new-arrival" class="new-arrival product-carousel py-5 position-relative overflow-hidden">
-    <div class="container">
-        <div class="d-flex flex-wrap justify-content-between align-items-center mt-5 mb-3">
-            <h4 class="text-uppercase">You may also like</h4>
-            <a routerLink="/shop" class="btn-link">View All Products</a>
-        </div>
-        <div class="swiper product-swiper open-up" data-aos="zoom-out">
-            <div class="swiper-wrapper d-flex">
-                <div class="row">
-                    <div class="swiper-slide col-6 col-sm-4 col-md-3" *ngFor="let product of products">
-                        <div class="product-item image-zoom-effect link-effect">
-                            <div class="image-holder position-relative">
-                                <a [routerLink]="['/product-details', product.id]">
-                                    <img [src]="product.images" alt="categories" class="product-image img-fluid">
-                                </a>
-                                <a href="index.html" class="btn-icon btn-wishlist">
-                                    <i class="fa-regular fa-heart"></i>
-                                </a>
-                                <div class="product-content">
-                                    <h5 class="element-title text-uppercase fs-5 mt-3">
-                                        <a href="index.html">{{ product.name }}</a>
-                                    </h5>
-                                    <a href="#" class="text-decoration-none" data-after="Add to cart"><span>{{
-                                            product.price | currency }}</span></a>
-                                    <a [routerLink]='["/product-details/detiles-inproduct", product.id]' class="text-decoration-none mt-2 prod-details" data-after="Show Details">
-                                        <span></span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section> -->
+ -->

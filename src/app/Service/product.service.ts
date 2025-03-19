@@ -7,12 +7,10 @@ import { Iproduct } from '../Component/interface/Iproduct';
   providedIn: 'root'
 })
 export class ProductService {
-  private apiUrl = 'https://shop-tt-default-rtdb.firebaseio.com/Products.json';
-
   private productsSubject = new BehaviorSubject<Iproduct[]>([]);
   constructor(private http: HttpClient) {
     this.loadProducts();
-    this.loadProductsDetills();
+    this.loadProductsHome();
   }
 
   loadProducts(): void {
@@ -58,16 +56,17 @@ export class ProductService {
     );
   }
 
-  loadProductsDetills(): void {
-    this.getProductsInShowProductsDetilles().subscribe({
+  // -----------------------------------
+  loadProductsHome(): void {
+    this.getProductsHome().subscribe({
       next: (products) => {
         this.productsSubject.next(products); // Update the BehaviorSubject
       },
       error: (err) => console.error('Error loading products:', err),
     });
   }
-  getProductsInShowProductsDetilles(): Observable<Iproduct[]> {
-    const url = `https://shop-tt-default-rtdb.firebaseio.com/ProductsShowDitels.json`;
+  getProductsHome(): Observable<Iproduct[]> {
+    const url = `https://shop-tt-default-rtdb.firebaseio.com/ProductsHome.json`;
 
     return this.http.get<{ [key: string]: any }>(url).pipe(
       map(response => {
@@ -101,8 +100,23 @@ export class ProductService {
   }
 
 
+
+
+  // -----------------------------------
+
   getOneProduct(id: string): Observable<Iproduct | undefined> {
     return this.getProducts().pipe(
+      map((products: Iproduct[]) => {
+        const oneProduct = products.find((product) => product.id === id);
+        if (!oneProduct) throw new Error('Product not found');
+        return oneProduct;
+      }),
+      catchError((err) => throwError(() => err.message || 'Product not found'))
+    );
+  }
+
+  getOneProductHome(id: string): Observable<Iproduct | undefined> {
+    return this.getProductsHome().pipe(
       map((products: Iproduct[]) => {
         const oneProduct = products.find((product) => product.id === id);
         if (!oneProduct) throw new Error('Product not found');

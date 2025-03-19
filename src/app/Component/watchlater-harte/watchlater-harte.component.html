@@ -1,0 +1,45 @@
+<div class="container py-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div class="col-lg-12">
+            <section id="new-arrival" class="new-arrival product-carousel position-relative overflow-hidden">
+                <div class="container">
+                    <div class="d-flex flex-wrap justify-content-between align-items-center mb-3">
+                        <h4 class="text-uppercase">Saved Images</h4>
+                    </div>
+                    <div class="swiper product-swiper open-up" data-aos="zoom-out">
+                        <div class="swiper-wrapper ">
+                            <div class="row">
+                                <div class="swiper-slide col-6 col-sm-4 col-md-4 col-lg-3"
+                                    *ngFor="let savedImage of savedImages; let i = index;">
+                                    <div class="product-item image-zoom-effect link-effect pb-3">
+                                        <div class="image-holder position-relative">
+                                            <a [routerLink]="['/product-details', savedImage.id]">
+                                                <img [src]="savedImage.images[0]" alt="{{ savedImage.name }}"
+                                                    class="product-image img-fluid">
+                                            </a>
+                                            <div class="product-content">
+                                                <h5 class="element-title text-uppercase fs-5 mt-3">
+                                                    <a>{{ savedImage.name }}</a>
+                                                </h5>
+                                            </div>
+                                            <a class="text-decoration-none" data-after="Add to cart" (click)="addToCart(savedImage)">
+                                                <span>{{ savedImage.price | currency }}</span>
+                                            </a>
+                                            <a [routerLink]="['/product-details', savedImage.id]" class="text-decoration-none mt-2 prod-details"
+                                                data-after="Show Details">
+                                                <span></span>
+                                            </a>
+                                            <div>
+                                            </div>
+                                        </div>
+                                        <a class="btn btn-link w-100" (click)="removeImage(i)">Remove</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>

@@ -39,12 +39,13 @@ div .item-thumb:hover {
 .carousel-indicators [data-bs-target] {
     border-radius: 50% !important;
     width: 3px !important;
-    height: 1px !important;
+    height: 3px !important;
     margin: 0 5px !important;
     border: 3px solid #000 !important;
     padding: 5px !important;
 }
-a{
+
+a {
     text-decoration: none !important;
 
 }
@@ -92,7 +93,7 @@ a.btn-link.text-light:after {
     background-color: var(--bs-light);
 }
 
-.text-small{
+.text-small {
     color: var(--color-small-font-family) !important;
     font-size: var(--small-font-size) !important;
     font-weight: var(--small-font-weight) !important;
@@ -107,11 +108,13 @@ h4 {
     text-transform: uppercase !important;
 
 }
-h6{
+
+h6 {
     text-transform: uppercase !important;
     font-weight: 600;
 }
-.price-text{
+
+.price-text {
     font-weight: 600;
     font-size: 1.2rem;
     text-transform: uppercase !important;
@@ -120,6 +123,7 @@ h6{
 .product-preview .swiper-slide {
     padding-bottom: 15px;
 }
+
 .product-item .btn-wishlist {
     display: block;
     z-index: 111;
@@ -136,6 +140,7 @@ h6{
 .product-item:hover .btn-wishlist {
     opacity: 1;
 }
+
 .image-zoom-effect {
     display: flex;
     flex-wrap: wrap;
@@ -209,6 +214,7 @@ h6{
 .image-zoom-effect:hover .image-holder {
     transform: scale(0.95);
 }
+
 .element-title {
     font-family: "Playfair Display", serif !important;
     font-size: 2.5em;

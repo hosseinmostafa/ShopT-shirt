@@ -5,13 +5,16 @@
   padding: 1px;
   position: relative;
 }
+
 .flex-grow-1 {
   flex-grow: 1;
   text-align: center;
 }
+
 .close {
   margin-right: 10px;
 }
+
 .icn-close {
   background: none;
   border: none;
@@ -20,37 +23,70 @@
   cursor: pointer;
   transition: .3s ease;
 }
+
 .icn-close:hover {
   color: rgb(192, 192, 192) !important;
 }
+
 .text-logo {
   font-family: var(--font-pro);
   margin-left: 2.5rem;
 }
+
 .link-nav {
   font-size: 17px;
   font-family: var(--font-pro);
 }
+
 .sersh {
   margin-right: 2.5rem;
 }
+
 .input-container {
   position: relative;
 }
+
 .search-icon {
   font-size: 18px;
 }
+
 .form-control {
   padding-left: 30px;
 }
 
-.shop-icon{
+.shop-icon {
   border: none !important;
   position: relative;
   bottom: 4px;
 }
-.shop-icon:hover{
+
+.shop-icon:hover {
   color: rgb(129, 129, 129) !important;
   transition: .3s ease;
 }
 
+.icon-shoping {
+  position: relative;
+  // right: 3px;
+  top: -14px;
+}
+
+.bg-danger {
+  position: relative;
+  left: 12px;
+  /* top: -10px; */
+  border-radius: 50%;
+  z-index: 10000000;
+}
+
+.icon-sec{
+  top: 35%;
+}
+
+.hart-icon{
+  color: black !important;
+  transition: .3s ease;
+}
+.hart-icon:hover{
+  color: red !important;
+}

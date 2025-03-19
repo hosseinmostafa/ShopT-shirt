@@ -1,22 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { throwError } from 'rxjs';
 import { ProductService } from '../../Service/product.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { throwError } from 'rxjs';
 import { Iproduct } from '../interface/Iproduct';
 import { CartService } from '../../Service/cart.service';
 import { WhatchlaterHarteService } from '../../Service/whatchlater-harte.service';
 
 @Component({
-  selector: 'app-product-details',
-  templateUrl: './product-details.component.html',
-  styleUrls: ['./product-details.component.scss']
+  selector: 'app-home-product-details',
+  templateUrl: './home-product-details.component.html',
+  styleUrl: './home-product-details.component.scss'
 })
-export class ProductDetailsComponent implements OnInit {
+export class HomeProductDetailsComponent {
   bigImgSrc: string = '';
-  oneProduct: Iproduct | undefined; // استخدام oneProduct بدلاً من product
+  oneProduct: any;
   productId: any;
   errMsg: any;
-  
 
   products: Iproduct[] = [];
   filteredProducts: Iproduct[] = [];
@@ -32,7 +31,6 @@ export class ProductDetailsComponent implements OnInit {
   selectedRating: number | null = null;
 
   mainImage: string = '';
-  quantity: number = 1;
 
   constructor(
     private productService: ProductService,
@@ -42,34 +40,18 @@ export class ProductDetailsComponent implements OnInit {
     private watchlater: WhatchlaterHarteService
   ) { }
 
+
   changeMainImage(image: string): void {
     this.mainImage = image;
-  }
-
-  increaseQuantity(product: Iproduct): void {
-    if (product) {
-      product.quantity++;
-      this.cartService.updateQuantity(product.id, product.quantity);
-    }
-  }
-
-  decreaseQuantity(product: Iproduct): void {
-    if (product && product.quantity > 1) {
-      product.quantity--;
-      this.cartService.updateQuantity(product.id, product.quantity);
-    }
   }
 
   ngOnInit(): void {
     this.productId = this.activatedRoute.snapshot.paramMap.get('id');
     if (this.productId) {
-      this.productService.getOneProduct(this.productId).subscribe({
+      this.productService.getOneProductHome(this.productId).subscribe({
         next: (data) => {
           this.oneProduct = data;
-          if (this.oneProduct && !this.oneProduct.quantity) {
-            this.oneProduct.quantity = 1;
-          }
-          if (this.oneProduct?.images && this.oneProduct.images.length > 0) {
+          if (this.oneProduct.images && this.oneProduct.images.length > 0) {
             this.mainImage = this.oneProduct.images[0];
           }
         },
@@ -80,16 +62,23 @@ export class ProductDetailsComponent implements OnInit {
       });
     }
   }
+  quantity: number = 1;
+
+  increaseQuantity(): void {
+    this.quantity++;
+  }
+
+  decreaseQuantity(): void {
+    if (this.quantity > 1) {
+      this.quantity--;
+    }
+  }
+
+
 
   updatePrice(event: Event): void {
     const target = event.target as HTMLInputElement;
     this.selectedPriceRange = parseFloat(target.value);
-  }
-  updateQuantity(newQuantity: number): void {
-    if (this.oneProduct) {
-      this.oneProduct.quantity = newQuantity;
-      this.cartService.updateQuantity(this.oneProduct.id, newQuantity);
-    }
   }
 
   selectColor(color: string): void {
@@ -107,17 +96,14 @@ export class ProductDetailsComponent implements OnInit {
   selectRating(rating: number): void {
     this.selectedRating = rating;
   }
-
-  getOneProduct(id: string): void {
-    this.router.navigate(['/product', id]);
+  getOneProductHome(id: string): void {
+    this.router.navigate(['/home', id]);
   }
 
   addToCart(): void {
     if (this.oneProduct) {
-      if (!this.oneProduct.quantity) {
-        this.oneProduct.quantity = 1; // تعيين الكمية إلى 1 إذا لم تكن موجودة
-      }
       this.cartService.addToCart(this.oneProduct);
+
     }
   }
 

@@ -310,6 +310,7 @@ a {
   overflow: hidden;
   transition: transform 0.5s;
   display: block;
+  cursor: pointer;
 }
 
 .link-effect a::after {
@@ -350,6 +351,8 @@ a {
   right: 5px;
   opacity: 0;
   transition: opacity 0.3s ease-in;
+  border-radius: 26%;
+  
 }
 
 .product-item:hover .btn-wishlist {
@@ -560,7 +563,9 @@ a.btn-link.text-light:after {
 }
 
 
-
+.prod-details{
+  cursor: pointer !important;
+}
 .element-title {
   font-family: "Playfair Display", serif !important;
   font-size: 2.5em;
@@ -679,4 +684,14 @@ a.btn-link.text-light:after {
 
 .icon-ho{
   font-size: 3em;
+}
+
+.icon-heart{
+  transition: .2s ease-in;
+}
+
+.icon-heart:hover{
+  // background: red;
+  color: red;
+  border-radius: 50%;
 }

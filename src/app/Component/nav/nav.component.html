@@ -37,15 +37,20 @@
       <form class="d-flex  form-ser" role="search">
         <div class="input-container position-relative w-100">
           <i
-            class="fa-solid fa-magnifying-glass search-icon position-absolute top-50 start-0 translate-middle-y mx-3"></i>
+            class="fa-solid fa-magnifying-glass search-icon position-absolute start-0 translate-middle-y mx-3 icon-sec"></i>
           <input class="form-control me-5 rounded-5 pt-2 pb-2 ps-5" type="search" placeholder="Search"
             aria-label="Search">
         </div>
 
+        <!-- Icons-cart-chopping -->
         <div class="btn shop-icon" routerLink="/cart">
-          <i class="fa-solid fa-cart-shopping mx-1 mt-3 "></i>
+          <span class="badge bg-danger">{{ cartItemCount }}</span>
+          <i class="fa-solid fa-cart-shopping mx-1 icon-shoping"></i>
         </div>
-        <div class="btn shop-icon">
+        <!-- Icons-cart-chopping -->
+
+
+        <div routerLink="/watchlater-harte" class="btn hart-icon shop-icon">
           <i class="fas fa-heart  mt-3"></i>
         </div>
         <div class="btn shop-icon" routerLink="/product-details">

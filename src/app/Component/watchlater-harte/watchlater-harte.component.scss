@@ -60,15 +60,13 @@
 }
 
 .btn {
-    background-color: #000 !important;
-    color: white !important;
+    // background-color: #000 !important;
+    color: black !important;
     border: none !important;
     padding: 10px;
 }
-.btn:hover {
-    background-color: #000000bd !important;
-    border: none !important;
-}
+
+
 
 a {
     text-decoration: none;
@@ -175,9 +173,9 @@ a {
     opacity: 0;
     transition: opacity 0.3s ease-in;
     transition: .3s ease-in-out;
-    border-radius: 26%;
 
 }
+
 .product-item .btn-wishlist:hover {
     color: red;
     // background-color: red;
@@ -266,8 +264,11 @@ a.btn-link.text-light:after {
     transform: none !important;
 }
 
-.reversed-slider{
+.reversed-slider {
     direction: rtl;
+}
+.btn-link{
+    transform: none !important;
 }
 
 .color-option {

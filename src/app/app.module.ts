@@ -17,6 +17,9 @@ import { ProductDetailsComponent } from './Component/product-details/product-det
 import { PayServesesInDashpordComponent } from './Component/pay-serveses-in-dashpord/pay-serveses-in-dashpord.component';
 import { ErrorPageComponent } from './Component/error-page/error-page.component';
 import { WritProblemComponent } from './Component/writ-problem/writ-problem.component';
+import { DetilesInproductComponent } from './Component/product-details/detiles-inproduct/detiles-inproduct.component';
+import { HomeProductDetailsComponent } from './Component/home-product-details/home-product-details.component';
+import { WatchlaterHarteComponent } from './Component/watchlater-harte/watchlater-harte.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +34,9 @@ import { WritProblemComponent } from './Component/writ-problem/writ-problem.comp
     PayServesesInDashpordComponent,
     ErrorPageComponent,
     WritProblemComponent,
+    DetilesInproductComponent,
+    HomeProductDetailsComponent,
+    WatchlaterHarteComponent,
   ],
   imports: [
     BrowserModule,

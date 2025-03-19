@@ -105,13 +105,13 @@
         <div class="col-6 col-sm-4 col-md-4">
           <div class="cat-item image-zoom-effect">
             <div class="image-holder">
-              <a href="index.html">
+              <a >
                 <img src="./img-home/cat-large-item1.jpg" alt="categories" class="product-image img-fluid">
               </a>
             </div>
             <div class="category-content">
               <div class="product-button">
-                <a href="index.html" class="btn btn-common text-uppercase btn-link">Shop for men</a>
+                <a  class="btn btn-common text-uppercase btn-link">Shop for men</a>
               </div>
             </div>
           </div>
@@ -119,13 +119,13 @@
         <div class="col-6 col-sm-4 col-md-4">
           <div class="cat-item image-zoom-effect">
             <div class="image-holder">
-              <a href="index.html">
+              <a >
                 <img src="./img-home/cat-large-item2.jpg" alt="categories" class="product-image img-fluid">
               </a>
             </div>
             <div class="category-content">
               <div class="product-button">
-                <a href="index.html" class="btn btn-common text-uppercase btn-link">Shop for women</a>
+                <a  class="btn btn-common text-uppercase btn-link">Shop for women</a>
               </div>
             </div>
           </div>
@@ -133,13 +133,13 @@
         <div class="col-6 col-sm-4 col-md-4">
           <div class="cat-item image-zoom-effect">
             <div class="image-holder">
-              <a href="index.html">
+              <a >
                 <img src="./img-home/cat-large-item3.jpg" alt="categories" class="product-image img-fluid">
               </a>
             </div>
             <div class="category-content">
               <div class="product-button">
-                <a href="index.html" class="btn btn-common text-uppercase btn-link">Shop accessories</a>
+                <a  class="btn btn-common text-uppercase btn-link">Shop accessories</a>
               </div>
             </div>
           </div>
@@ -150,84 +150,37 @@
 </section>
 
 <!-- New Arrivals -->
+
 <section id="new-arrival" class="new-arrival product-carousel py-5 position-relative overflow-hidden">
   <div class="container">
     <div class="d-flex flex-wrap justify-content-between align-items-center mt-5 mb-3">
       <h4 class="text-uppercase">Our New Arrivals</h4>
       <a routerLink="/shop" class="btn-link">View All Products</a>
     </div>
+
     <div class="swiper product-swiper open-up" data-aos="zoom-out">
       <div class="swiper-wrapper d-flex">
         <div class="row">
-
-          <div class="swiper-slide col-6 col-sm-4 col-md-3">
+          <div class="swiper-slide col-6 col-sm-4 col-md-3" *ngFor="let product of displayedProducts">
             <div class="product-item image-zoom-effect link-effect">
               <div class="image-holder position-relative">
-                <a href="index.html">
-                  <img src="./img-home/product-item-1.jpg" alt="categories" class="product-image img-fluid">
+                <a [routerLink]="['/home-product-details', product.id]">
+                  <img [src]="product.images" alt="categories" class="product-image img-fluid">
                 </a>
-                <a href="index.html" class="btn-icon btn-wishlist">
-                  <i class="fa-regular fa-heart"></i>
+                <a class="btn-icon btn-wishlist" (click)="saveImage(product)">
+                  <i class="fa-regular fa-heart icon-heart"></i>
                 </a>
                 <div class="product-content">
                   <h5 class="element-title text-uppercase fs-5 mt-3">
-                    <a href="index.html">Dark florish onepiece</a>
+                    <a>{{ product.name }}</a>
                   </h5>
-                  <a href="#" class="text-decoration-none" data-after="Add to cart"><span>$95.00</span></a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide col-6 col-sm-4 col-md-3">
-            <div class="product-item image-zoom-effect link-effect">
-              <div class="image-holder position-relative">
-                <a href="index.html">
-                  <img src="./img-home/product-item-2.jpg" alt="categories" class="product-image img-fluid">
-                </a>
-                <a href="index.html" class="btn-icon btn-wishlist">
-                  <i class="fa-regular fa-heart"></i>
-                </a>
-                <div class="product-content">
-                  <h5 class="text-uppercase fs-5 mt-3">
-                    <a href="index.html">Baggy Shirt</a>
-                  </h5>
-                  <a href="#" class="text-decoration-none" data-after="Add to cart"><span>$55.00</span></a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide col-6 col-sm-4 col-md-3">
-            <div class="product-item image-zoom-effect link-effect">
-              <div class="image-holder position-relative">
-                <a href="index.html">
-                  <img src="./img-home/product-item-3.jpg" alt="categories" class="product-image img-fluid">
-                </a>
-                <a href="index.html" class="btn-icon btn-wishlist">
-                  <i class="fa-regular fa-heart"></i>
-                </a>
-                <div class="product-content">
-                  <h5 class="text-uppercase fs-5 mt-3">
-                    <a href="index.html">Cotton off-white shirt</a>
-                  </h5>
-                  <a href="#" class="text-decoration-none" data-after="Add to cart"><span>$65.00</span></a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide col-6 col-sm-4 col-md-3">
-            <div class="product-item image-zoom-effect link-effect">
-              <div class="image-holder position-relative">
-                <a href="index.html">
-                  <img src="./img-home/product-item-4.jpg" alt="categories" class="product-image img-fluid">
-                </a>
-                <a href="index.html" class="btn-icon btn-wishlist">
-                  <i class="fa-regular fa-heart"></i>
-                </a>
-                <div class="product-content">
-                  <h5 class="text-uppercase fs-5 mt-3">
-                    <a href="index.html">Crop sweater</a>
-                  </h5>
-                  <a href="#" class="text-decoration-none" data-after="Add to cart "><span>$50.00</span></a>
+                  <a class="text-decoration-none" data-after="Add to cart" (click)="addToCart(product)">
+                    <span>{{ product.price | currency }}</span>
+                  </a>
+                  <a [routerLink]='["/home-product-details", product.id]' class="text-decoration-none mt-2 prod-details"
+                    data-after="Show Details">
+                    <span class="prod-details"></span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -237,6 +190,7 @@
     </div>
   </div>
 </section>
+
 
 
 <section class="collection bg-light position-relative py-5">
@@ -256,7 +210,7 @@
               fringilla odio mi. Consequat pharetra at magna imperdiet cursus ac faucibus sit libero. Ultricies quam
               nunc, lorem sit lorem urna, pretium aliquam ut. In vel, quis donec dolor id in. Pulvinar commodo mollis
               diam sed facilisis at cursus imperdiet cursus ac faucibus sit faucibus sit libero.</p>
-            <a href="#" class="btn  text-uppercase mt-3 btn-link">Shop Collection</a>
+            <a  class="btn  text-uppercase mt-3 btn-link">Shop Collection</a>
           </div>
         </div>
       </div>

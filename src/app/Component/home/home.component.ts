@@ -1,4 +1,9 @@
 import { Component, HostListener, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ProductService } from '../../Service/product.service';
+import { Iproduct } from '../interface/Iproduct';
+import { CartService } from '../../Service/cart.service';
+import { WhatchlaterHarteService } from '../../Service/whatchlater-harte.service';
 
 
 @Component({
@@ -10,10 +15,26 @@ export class HomeComponent implements OnInit{
   brandCount1: number = 0;
   brandCount2: number = 0;
   brandCount3: number = 0;
+  products: Iproduct[] = [];
+  filteredProducts: Iproduct[] = [];
+  errMsg: string | null = null;
+  price: number = 0;
+  displayedProducts: Iproduct[] = []; // سيتم عرض 4 منتجات عشوائية هنا
+
+
+  selectedColor: string | null = null;
+
+  selectedCategories: string[] = [];
+  selectedPriceRange: number = 0;
+  selectedRating: number | null = null;
+  isFilterOpen: boolean = false; 
+  constructor(private router: Router, private watchlater: WhatchlaterHarteService, private productService: ProductService, private cartService: CartService ) { }
 
   ngOnInit(): void {
     this.startCounters();
+    this.loadProductsHome();
   }
+
 
   startCounters(): void {
     this.animateValue(0, 100, 2000, (value) => (this.brandCount1 = value));
@@ -47,4 +68,55 @@ export class HomeComponent implements OnInit{
     document.querySelector('.home-page')?.classList.add('no-alert');
   }
 
+
+  getOneProductHome(id: string): void {
+    this.router.navigate(['/product', id]);
+  }
+
+  loadProductsHome(): void {
+    this.productService.getProductsHome().subscribe({
+      next: (data) => {
+        this.products = data;
+        this.selectRandomProducts(4);
+      },
+      error: (err) => {
+        this.errMsg = err;
+        console.error('Error loading products:', err);
+      },
+    });
+  }
+
+  updatePrice(event: Event): void {
+    const target = event.target as HTMLInputElement;
+    this.selectedPriceRange = parseFloat(target.value);
+  }
+
+  selectColor(color: string): void {
+    this.selectedColor = this.selectedColor === color ? null : color;
+  }
+
+  toggleCategory(category: string): void {
+    if (this.selectedCategories.includes(category)) {
+      this.selectedCategories = this.selectedCategories.filter(cat => cat !== category);
+    } else {
+      this.selectedCategories.push(category);
+    }
+  }
+
+  selectRating(rating: number): void {
+    this.selectedRating = rating;
+  }
+
+
+  selectRandomProducts(count: number): void {
+    const shuffled = this.products.sort(() => 0.5 - Math.random());
+    this.displayedProducts = shuffled.slice(0, count);
+  }
+
+  addToCart(product: Iproduct): void {
+    this.cartService.addToCart(product);
+  }
+  saveImage(product: any): void {
+    this.watchlater.saveImage(product);
+  }
 }

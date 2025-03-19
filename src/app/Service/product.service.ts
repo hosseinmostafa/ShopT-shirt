@@ -16,7 +16,7 @@ export class ProductService {
   loadProducts(): void {
     this.getProducts().subscribe({
       next: (products) => {
-        this.productsSubject.next(products); // Update the BehaviorSubject
+        this.productsSubject.next(products);
       },
       error: (err) => console.error('Error loading products:', err),
     });
@@ -60,7 +60,7 @@ export class ProductService {
   loadProductsHome(): void {
     this.getProductsHome().subscribe({
       next: (products) => {
-        this.productsSubject.next(products); // Update the BehaviorSubject
+        this.productsSubject.next(products); 
       },
       error: (err) => console.error('Error loading products:', err),
     });
@@ -125,8 +125,6 @@ export class ProductService {
       catchError((err) => throwError(() => err.message || 'Product not found'))
     );
   }
-
-  
 }
 
 

@@ -7,17 +7,9 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class WhatchlaterHarteService {
-  // private savedImages: any[] = [];
-
-  // constructor(private http: HttpClient) { }
-
-  // getImages(): Observable<any> {
-  //   return this.http.get('https://shop-tt-default-rtdb.firebaseio.com/Products.json');
-  // }
   private savedImages: any[] = [];
 
   constructor(private http: HttpClient) {
-    // تحميل الصور المحفوظة من localStorage عند إنشاء الخدمة
     this.loadSavedImages();
   }
 
@@ -26,7 +18,6 @@ export class WhatchlaterHarteService {
   }
 
   saveImage(image: any): void {
-    // تجنب تكرار الصور
     if (!this.savedImages.some(img => img.id === image.id)) {
       this.savedImages.push(image);
       this.updateLocalStorage();

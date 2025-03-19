@@ -35,10 +35,7 @@ export class NavComponent implements OnInit{
   ngOnInit(): void {
     this.startMessageRotation();
     this.cartService.cartItems$.subscribe(items => {
-      // this.cartItemCount = items.length; 
       this.cartItemCount = this.cartService.getCartItemCount();
-      
-
     });
   }
 

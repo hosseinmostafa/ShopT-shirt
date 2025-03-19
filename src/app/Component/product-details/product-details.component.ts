@@ -13,7 +13,7 @@ import { WhatchlaterHarteService } from '../../Service/whatchlater-harte.service
 })
 export class ProductDetailsComponent implements OnInit {
   bigImgSrc: string = '';
-  oneProduct: Iproduct | undefined; // استخدام oneProduct بدلاً من product
+  oneProduct: Iproduct | undefined; 
   productId: any;
   errMsg: any;
   
@@ -39,7 +39,8 @@ export class ProductDetailsComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private cartService: CartService,
-    private watchlater: WhatchlaterHarteService
+    private watchlater: WhatchlaterHarteService,
+    
   ) { }
 
   changeMainImage(image: string): void {
@@ -79,6 +80,7 @@ export class ProductDetailsComponent implements OnInit {
         }
       });
     }
+    this.loadSavedImages();
   }
 
   updatePrice(event: Event): void {
@@ -115,13 +117,28 @@ export class ProductDetailsComponent implements OnInit {
   addToCart(): void {
     if (this.oneProduct) {
       if (!this.oneProduct.quantity) {
-        this.oneProduct.quantity = 1; // تعيين الكمية إلى 1 إذا لم تكن موجودة
+        this.oneProduct.quantity = 1;
       }
       this.cartService.addToCart(this.oneProduct);
     }
   }
 
+  
+
   saveImage(product: any): void {
     this.watchlater.saveImage(product);
   }
+
+
+  savedImages: any[] = [];
+
+  loadSavedImages(): void {
+    this.savedImages = this.watchlater.getSavedImages();
+  }
+
+  removeImage(index: number): void {
+    this.watchlater.removeImage(index);
+    this.loadSavedImages()
+  }
+
 }

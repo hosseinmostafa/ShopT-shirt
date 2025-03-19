@@ -7,7 +7,6 @@ import { LoginComponent } from './Component/login/login.component';
 import { ProductDetailsComponent } from './Component/product-details/product-details.component';
 import { ErrorPageComponent } from './Component/error-page/error-page.component';
 import { WritProblemComponent } from './Component/writ-problem/writ-problem.component';
-import { DetilesInproductComponent } from './Component/product-details/detiles-inproduct/detiles-inproduct.component';
 import { HomeProductDetailsComponent } from './Component/home-product-details/home-product-details.component';
 import { WatchlaterHarteComponent } from './Component/watchlater-harte/watchlater-harte.component';
 

@@ -23,7 +23,7 @@ export class WatchlaterHarteComponent implements OnInit {
 
   removeImage(index: number): void {
     this.watchlater.removeImage(index);
-    this.loadSavedImages(); // تحديث القائمة بعد الحذف
+    this.loadSavedImages();
   }
 
     addToCart(product: Iproduct): void {

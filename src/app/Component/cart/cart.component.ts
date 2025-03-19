@@ -9,17 +9,7 @@ import { CartService } from '../../Service/cart.service';
 })
 export class CartComponent {
   cartItems: Iproduct[] = [];
-
-
-
   constructor(private cartService: CartService) { }
-
-  // ngOnInit(): void {
-  //   this.cartService.cartItems$.subscribe(items => {
-  //     this.cartItems = items;
-  //   });
-  // }
-
   ngOnInit(): void {
     this.cartService.cartItems$.subscribe(items => {
       this.cartItems = items;
@@ -31,7 +21,7 @@ export class CartComponent {
   }
 
   getTotalPrice(): number {
-    // return this.cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+  
     return this.cartService.getTotalPrice()
 
   }
@@ -47,15 +37,9 @@ export class CartComponent {
       this.cartService.updateQuantity(item.id, item.quantity);
     }
   }
-
-
-  // updateQuantity(productId: string, quantity: number): void {
-  //   this.cartService.updateQuantity(productId, quantity);
-  // }
-
   updateQuantity(productId: string, event: Event): void {
-    const target = event.target as HTMLInputElement; // تحويل EventTarget إلى HTMLInputElement
-    const quantity = +target.value; // تحويل القيمة إلى رقم
+    const target = event.target as HTMLInputElement;
+    const quantity = +target.value;
     this.cartService.updateQuantity(productId, quantity);
   }
 

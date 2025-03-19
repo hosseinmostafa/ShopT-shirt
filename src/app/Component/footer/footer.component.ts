@@ -12,7 +12,7 @@ export class FooterComponent implements OnDestroy {
   showFooter: boolean = true;
   subscription: Subscription;
 
-  constructor(private footerServes: FooterService, private spinner: NgxSpinnerService) {
+  constructor(private footerServes: FooterService) {
     this.subscription = this.footerServes.showFooter.subscribe((value) => {
       this.showFooter = value;
     })

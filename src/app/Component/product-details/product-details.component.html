@@ -116,21 +116,6 @@
                                     <option>X Large</option>
                                 </select>
                             </div>
-                            <!-- <div class="col-md-6 col-6 mb-3">
-                                <label class="mb-2 d-block">Quantity</label>
-                                <div class="input-group mb-3">
-                                    <button class="btn btn-white border border-secondary px-3" type="button" (click)="decreaseQuantity(oneProduct!)"
-                                        data-mdb-ripple-color="dark">
-                                        <i class="fas fa-minus"></i>
-                                    </button>
-                                    <input type="text" class="form-control text-center border border-secondary" [ngModel]="oneProduct?.quantity"
-                                        (ngModelChange)="updateQuantity($event)" aria-label="Quantity" readonly />
-                                    <button class="btn btn-white border border-secondary px-3" type="button" (click)="increaseQuantity(oneProduct!)"
-                                        data-mdb-ripple-color="dark">
-                                        <i class="fas fa-plus"></i>
-                                    </button>
-                                </div>
-                            </div> -->
                         </div>
                     </div>
                     <div class="d-flex justify-content-between align-items-center" >
@@ -145,48 +130,3 @@
         </div>
     </div>
 </section>
-
-
-
-
-
-
-
-
-<!-- content -->
-<!-- <section id="new-arrival" class="new-arrival product-carousel py-5 position-relative overflow-hidden">
-    <div class="container">
-        <div class="d-flex flex-wrap justify-content-between align-items-center mt-5 mb-3">
-            <h4 class="text-uppercase">You may also like</h4>
-            <a routerLink="/shop" class="btn-link">View All Products</a>
-        </div>
-        <div class="swiper product-swiper open-up" data-aos="zoom-out">
-            <div class="swiper-wrapper d-flex">
-                <div class="row">
-                    <div class="swiper-slide col-6 col-sm-4 col-md-3" *ngFor="let product of products">
-                        <div class="product-item image-zoom-effect link-effect">
-                            <div class="image-holder position-relative">
-                                <a [routerLink]="['/product-details', product.id]">
-                                    <img [src]="product.images" alt="categories" class="product-image img-fluid">
-                                </a>
-                                <a href="index.html" class="btn-icon btn-wishlist">
-                                    <i class="fa-regular fa-heart"></i>
-                                </a>
-                                <div class="product-content">
-                                    <h5 class="element-title text-uppercase fs-5 mt-3">
-                                        <a href="index.html">{{ product.name }}</a>
-                                    </h5>
-                                    <a href="#" class="text-decoration-none" data-after="Add to cart"><span>{{
-                                            product.price | currency }}</span></a>
-                                    <a [routerLink]='["/product-details/detiles-inproduct", product.id]' class="text-decoration-none mt-2 prod-details" data-after="Show Details">
-                                        <span></span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section> -->

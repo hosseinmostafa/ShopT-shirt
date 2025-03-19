@@ -35,12 +35,9 @@ export class CartService {
       const newProduct = { ...product, quantity: 1 };
       currentItems.push(newProduct);
     }
-
     this.cartItemsSubject.next([...currentItems]);
     this.saveCartItems(currentItems);
   }
-
-
 
   getCartItemCount(): number {
     return this.cartItemsSubject.getValue().reduce((total, item) => total + item.quantity, 0);
@@ -56,17 +53,6 @@ export class CartService {
     this.cartItemsSubject.next([...updatedItems]);
     this.saveCartItems(updatedItems);
   }
-
-  // updateQuantity(productId: string, quantity: number): void {
-  //   const currentItems = this.cartItemsSubject.getValue();
-  //   const itemToUpdate = currentItems.find(item => item.id === productId);
-
-  //   if (itemToUpdate && quantity > 0) {
-  //     itemToUpdate.quantity = quantity;
-  //     this.cartItemsSubject.next([...currentItems]);
-  //     this.saveCartItems(currentItems);
-  //   }
-  // }
 
   updateQuantity(productId: string, quantity: number): void {
     const currentItems = this.cartItemsSubject.getValue();

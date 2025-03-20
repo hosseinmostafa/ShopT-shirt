@@ -48,10 +48,19 @@ import { ToastrModule } from 'ngx-toastr';
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot({ // تكوين ToastrModule
-      timeOut: 5000, // وقت ظهور الرسالة (5 ثواني)
-      positionClass: 'toast-bottom-right', // موقع الرسالة (أسفل اليمين)
-      preventDuplicates: true, // منع تكرار الرسائل
+    ToastrModule.forRoot({
+      timeOut: 20000,
+      positionClass: 'toast-top-right',
+      preventDuplicates: true,
+      progressBar: true,
+      progressAnimation: 'increasing',
+      closeButton: true,
+      easing: 'ease-in',
+      easeTime: 300,
+      extendedTimeOut: 1000,
+      tapToDismiss: true,
+      maxOpened: 5,
+      autoDismiss: true
     })
   ],
 

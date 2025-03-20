@@ -77,10 +77,12 @@
 
 .text-danger {
     color: #dc3545;
+    // background: white !important;
 }
 
 .text-warning {
     color: #ffc107;
+    // background: white !important;
 }
 
 #btn2 {
@@ -113,6 +115,7 @@
 
 .text-center {
     text-align: center;
+    background: white !important;
 }
 
 .mt-4 {
@@ -129,4 +132,113 @@
 
 .pb-5 {
     padding-bottom: 3rem;
+}
+
+
+#toastBox {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    overflow: hidden;
+    padding: 20px;
+}
+
+.toast {
+    width: 400px;
+    height: 80px;
+    background: #fff;
+    font-weight: 500;
+    margin: 15px 0;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    position: relative;
+    transform: translateX(100%);
+    animation: slideIn 0.5s linear forwards;
+}
+
+@keyframes slideIn {
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.toast i {
+    margin-right: 20px;
+    font-size: 35px;
+    color: #4bb543;
+}
+
+.toast.error i {
+    color: #e74c3c;
+}
+
+.toast.Invalid i {
+    color: #f1c40f;
+}
+
+.toast::after {
+    content: "\f057";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 5px;
+    background: green;
+    animation: anim 5s linear forwards;
+}
+
+@keyframes anim {
+    100% {
+        width: 0%;
+    }
+}
+
+.toast.error::after {
+    background: red;
+}
+
+.toast.Invalid::after {
+    background: yellow;
+}
+
+
+
+.toast-custom {
+    background-color: white !important;
+    /* الخلفية البيضاء لجميع الرسائل */
+    color: #343a40;
+    /* لون النص */
+}
+
+.toast-error-custom {
+    background-color: white !important;
+    /* الخلفية البيضاء لرسائل الخطأ */
+    color: #dc3545;
+    /* لون النص لرسائل الخطأ */
+}
+
+.toast-success-custom {
+    background-color: white !important;
+    /* الخلفية البيضاء لرسائل النجاح */
+    color: #28a745;
+    /* لون النص لرسائل النجاح */
+}
+
+.toast-warning-custom {
+    background-color: white !important;
+    /* الخلفية البيضاء لرسائل التحذير */
+    color: #ffc107;
+    /* لون النص لرسائل التحذير */
+}
+
+.toast-info-custom {
+    background-color: white !important;
+    /* الخلفية البيضاء لرسائل المعلومات */
+    color: #17a2b8;
+    /* لون النص لرسائل المعلومات */
 }

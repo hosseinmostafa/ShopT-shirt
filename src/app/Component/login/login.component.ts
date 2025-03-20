@@ -56,43 +56,49 @@ export class LoginComponent implements OnInit, OnDestroy {
   onLogin(): void {
     if (this.loginForm.invalid) {
       this.toastr.error('Please fill all fields correctly.', 'Error', {
-        positionClass: 'toast-bottom-right', // عرض الرسالة من أسفل اليمين
-        timeOut: 5000 // اختفاء الرسالة بعد 5 ثواني
+        positionClass: 'toast-top-right',
+        timeOut: 5000
       });
       return;
     }
 
     const { email, password } = this.loginForm.value;
 
-    // التحقق من وجود المستخدم في Firebase
     this.http.get('https://shop-tt-default-rtdb.firebaseio.com/users.json')
       .subscribe({
         next: (users: any) => {
           const user = Object.values(users).find((u: any) => u.email === email && u.password === password);
           if (user) {
             this.toastr.success('Login successful!', 'Success', {
-              positionClass: 'toast-bottom-right', // عرض الرسالة من أسفل اليمين
-              timeOut: 5000 // اختفاء الرسالة بعد 5 ثواني
+              positionClass: 'toast-top-right',
+              timeOut: 6000
             });
             localStorage.setItem('token', 'your-token-here');
             this.router.navigateByUrl(this.returnUrl);
           } else {
             this.toastr.error('Invalid email or password.', 'Error', {
-              positionClass: 'toast-bottom-right', // عرض الرسالة من أسفل اليمين
-              timeOut: 5000 // اختفاء الرسالة بعد 5 ثواني
+              positionClass: 'toast-top-right',
+              timeOut: 6000 
             });
           }
         },
         error: (err) => {
           this.toastr.error('Login failed. Please try again.', 'Error', {
-            positionClass: 'toast-bottom-right', // عرض الرسالة من أسفل اليمين
-            timeOut: 5000 // اختفاء الرسالة بعد 5 ثواني
+            positionClass: 'toast-top-right',
+            timeOut: 6000 
           });
           console.error(err);
         }
       });
   }
+
+  
 }
+
+
+
+
+
 // gard--------------------
 // onLoginn() {
 //   this.http.post('https://egyption-treasure-89099-default-rtdb.firebaseio.com/Users/Login.json', this.loginObj).subscribe((res: any) => {

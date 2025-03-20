@@ -15,6 +15,8 @@
                             <small *ngIf="signupForm.get('email')?.errors?.['required']">Email is required.</small>
                             <small *ngIf="signupForm.get('email')?.errors?.['email']">Please enter a valid
                                 email.</small>
+                            <small *ngIf="signupForm.get('email')?.errors?.['pattern']">Please enter a valid
+                                email.</small>
                         </div>
                     </div>
                     <div class="mb-4">
@@ -42,6 +44,10 @@
                                 required.</small>
                             <small *ngIf="signupForm.get('password')?.errors?.['minlength']">Password must be at least 6
                                 characters.</small>
+                            <small *ngIf="signupForm.get('password')?.errors?.['pattern']">Password must contain at
+                                least one uppercase letter, one lowercase letter, one number, and one special
+                                character.</small>
+                                
                         </div>
                     </div>
                     <div class="mb-4 mt-3">
@@ -65,3 +71,6 @@
         </div>
     </div>
 </div>
+
+
+

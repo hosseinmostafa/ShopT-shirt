@@ -1,1 +1,43 @@
-<p>login works!</p>
+<div class="bg-light d-flex align-items-center justify-content-center pt-5 pb-5">
+    <div class="card shadow-lg w-100" style="max-width: 480px;">
+        <div class="card-body">
+            <div class="text-center">
+                <h1 class="card-title h3">SIGN IN</h1>
+            </div>
+            <div class="mt-4">
+                <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+                    <div class="mb-4">
+                        <label for="email" class="form-label text-muted">Email</label>
+                        <input type="email" class="form-control" id="email" placeholder="Email Address"
+                            formControlName="email">
+                        <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched"
+                            class="text-danger">
+                            <small *ngIf="loginForm.get('email')?.errors?.['required']">Email is required.</small>
+                            <small *ngIf="loginForm.get('email')?.errors?.['email']">Please enter a valid email.</small>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <label for="password" class="form-label text-muted">Password</label>
+                        <input #password type="password" class="form-control" id="password" placeholder="Password"
+                            formControlName="password">
+                        <button type="button" (click)="togglePasswordVisibility(password, icon)" id="btn2">
+                            <i #icon class="fa-solid fa-eye-slash"></i>
+                        </button>
+                        <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
+                            class="text-danger">
+                            <small *ngIf="loginForm.get('password')?.errors?.['required']">Password is required.</small>
+                            <small *ngIf="loginForm.get('password')?.errors?.['minlength']">Password must be at least 6
+                                characters.</small>
+                        </div>
+                    </div>
+                    <div class="d-grid">
+                        <button type="button" (click)="onLogin()" class="btn btn-dark btn-lg">Sign In</button>
+                    </div>
+                    <p class="text-center text-muted mt-4">Don't have an account yet?
+                        <a routerLink="/signup" class="text-decoration-none">Sign up</a>.
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

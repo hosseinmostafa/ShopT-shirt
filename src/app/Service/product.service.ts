@@ -67,7 +67,9 @@ export class ProductService {
   }
   getProductsHome(): Observable<Iproduct[]> {
     const url = `https://shop-tt-default-rtdb.firebaseio.com/ProductsHome.json`;
+    https://shop-tt-default-rtdb.firebaseio.com/user.json
 
+    
     return this.http.get<{ [key: string]: any }>(url).pipe(
       map(response => {
         if (!response) {

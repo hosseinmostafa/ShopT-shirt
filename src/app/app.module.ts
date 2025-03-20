@@ -19,6 +19,9 @@ import { ErrorPageComponent } from './Component/error-page/error-page.component'
 import { WritProblemComponent } from './Component/writ-problem/writ-problem.component';
 import { HomeProductDetailsComponent } from './Component/home-product-details/home-product-details.component';
 import { WatchlaterHarteComponent } from './Component/watchlater-harte/watchlater-harte.component';
+import { SignupComponent } from './Component/signup/signup.component';
+import { ToastrModule } from 'ngx-toastr';
+
 
 @NgModule({
   declarations: [
@@ -35,6 +38,7 @@ import { WatchlaterHarteComponent } from './Component/watchlater-harte/watchlate
     WritProblemComponent,
     HomeProductDetailsComponent,
     WatchlaterHarteComponent,
+    SignupComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,7 +47,12 @@ import { WatchlaterHarteComponent } from './Component/watchlater-harte/watchlate
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({ // تكوين ToastrModule
+      timeOut: 5000, // وقت ظهور الرسالة (5 ثواني)
+      positionClass: 'toast-bottom-right', // موقع الرسالة (أسفل اليمين)
+      preventDuplicates: true, // منع تكرار الرسائل
+    })
   ],
 
   providers: [],

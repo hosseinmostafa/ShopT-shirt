@@ -11,7 +11,7 @@ import { WhatchlaterHarteService } from '../../Service/whatchlater-harte.service
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit{
+export class HomeComponent implements OnInit {
   brandCount1: number = 0;
   brandCount2: number = 0;
   brandCount3: number = 0;
@@ -27,12 +27,16 @@ export class HomeComponent implements OnInit{
   selectedCategories: string[] = [];
   selectedPriceRange: number = 0;
   selectedRating: number | null = null;
-  isFilterOpen: boolean = false; 
-  constructor(private router: Router, private watchlater: WhatchlaterHarteService, private productService: ProductService, private cartService: CartService ) { }
+  isFilterOpen: boolean = false;
+  // items = ['VERSACE', 'ZARA', 'GUCCI', 'PRADA'];
+
+  constructor(private router: Router, private watchlater: WhatchlaterHarteService, private productService: ProductService, private cartService: CartService) { }
 
   ngOnInit(): void {
     this.startCounters();
     this.loadProductsHome();
+    // this.setupMarquee();
+
   }
 
 
@@ -56,13 +60,13 @@ export class HomeComponent implements OnInit{
     window.requestAnimationFrame(step);
   }
 
-  
+
   showAlert: boolean = true;
 
   hideMessage() {
     this.showAlert = false;
 
-  
+
     document.querySelector('.navbar')?.classList.add('no-alert');
     document.querySelector('body')?.classList.add('no-alert');
     document.querySelector('.home-page')?.classList.add('no-alert');
@@ -119,4 +123,15 @@ export class HomeComponent implements OnInit{
   saveImage(product: any): void {
     this.watchlater.saveImage(product);
   }
+
+  // setupMarquee(): void {
+  //   const marquee = document.querySelector('.marquee');
+  //   this.items.forEach((item, index) => {
+  //     const div = document.createElement('div');
+  //     div.className = 'marquee-item';
+  //     div.textContent = item;
+  //     div.style.animationDelay = `${index * 1}s`; // تأخير الحركة لكل عنصر
+  //     marquee?.appendChild(div);
+  //   });
+  // }
 }

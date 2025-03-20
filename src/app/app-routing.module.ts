@@ -9,6 +9,7 @@ import { ErrorPageComponent } from './Component/error-page/error-page.component'
 import { WritProblemComponent } from './Component/writ-problem/writ-problem.component';
 import { HomeProductDetailsComponent } from './Component/home-product-details/home-product-details.component';
 import { WatchlaterHarteComponent } from './Component/watchlater-harte/watchlater-harte.component';
+import { SignupComponent } from './Component/signup/signup.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -19,6 +20,9 @@ const routes: Routes = [
   { path: "home-product-details/:id", component: HomeProductDetailsComponent},
   { path: 'writ-problem', component: WritProblemComponent},
   { path: 'watchlater-harte', component: WatchlaterHarteComponent},
+  { path: 'login', component: LoginComponent},
+  { path: 'signup', component: SignupComponent},
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: ErrorPageComponent},
 
 ];

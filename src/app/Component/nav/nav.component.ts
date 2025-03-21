@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import { NavbarService } from '../../Service/navbar.service';
 import { CartService } from '../../Service/cart.service';
 import { AuthService } from '../../Service/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav',
@@ -26,7 +27,8 @@ export class NavComponent implements OnInit {
   constructor(
     private navbarService: NavbarService,
     private cartService: CartService,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {
     this.subscription = this.navbarService.showNavbar.subscribe((value) => {
       this.showNavbar = value;
@@ -72,25 +74,26 @@ export class NavComponent implements OnInit {
     this.showCustomAlert = true;
   }
 
-  
   onAlertYes() {
     this.authService.logout();
     this.showCustomAlert = false;
-    window.location.href = '/';
+    this.router.navigate(['/']); // استخدام Router بدلًا من window.location.href
   }
+
   onAlertNo() {
     this.showCustomAlert = false;
   }
- 
+
   onUserIconClick() {
     if (this.isLoggedIn) {
-      this.showCustomAlertMessage(); 
+      this.showCustomAlertMessage();
     } else {
-      window.location.href = '/signup';
+      this.router.navigate(['/signup']); // استخدام Router بدلًا من window.location.href
     }
   }
 
+  logout() {
+    this.authService.logout(); // استدعاء logout من AuthService
+    this.router.navigate(['/login']); // إعادة التوجيه إلى صفحة تسجيل الدخول
+  }
 }
-
-
-

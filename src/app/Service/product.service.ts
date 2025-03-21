@@ -57,7 +57,6 @@ export class ProductService {
     );
   }
 
-  // جلب المنتجات للصفحة الرئيسية
   loadProductsHome(): void {
     this.getProductsHome().subscribe({
       next: (products) => {
@@ -76,7 +75,6 @@ export class ProductService {
     );
   }
 
-  // جلب منتج واحد
   getOneProduct(id: string): Observable<Iproduct | undefined> {
     return this.getProducts().pipe(
       map((products: Iproduct[]) => {
@@ -99,7 +97,6 @@ export class ProductService {
     );
   }
 
-  // معالجة الأخطاء
   private handleError(error: HttpErrorResponse, customMessage: string): Observable<never> {
     if (error.status === 0) {
       console.error('Network error:', error.error);
@@ -110,7 +107,6 @@ export class ProductService {
     }
   }
 
-  // إعادة المحاولة تلقائيًا
   private retryAfterDelay<T>(observable: Observable<T>, delay: number): Observable<T> {
     return observable.pipe(
       catchError((err) => {

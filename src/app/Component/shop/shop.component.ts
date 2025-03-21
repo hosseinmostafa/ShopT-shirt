@@ -138,6 +138,8 @@ export class ShopComponent implements OnInit {
     }
     console.log('Filtered Products:', this.filteredProducts);
   }
+
+  
 }
 
 

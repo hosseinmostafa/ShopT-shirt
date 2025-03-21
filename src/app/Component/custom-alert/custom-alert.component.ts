@@ -9,7 +9,7 @@ export class CustomAlertComponent {
   @Input() title: string = '';
   @Input() message: string = '';
 
-  @Input() visible: boolean = false;
+  @Input() visible: boolean = false; 
 
   @Output() onYes = new EventEmitter<void>();
   @Output() onNo = new EventEmitter<void>();

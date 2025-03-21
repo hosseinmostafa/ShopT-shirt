@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   isSignUpMode: boolean = false;
   loginForm: FormGroup;
   returnUrl: string = '/';
+  // loginObj: Login;
 
   @ViewChild('password') password!: ElementRef;
   @ViewChild('icon') icon!: ElementRef;
@@ -32,12 +33,13 @@ export class LoginComponent implements OnInit, OnDestroy {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]]
     });
+    // this.loginObj = new Login()
   }
 
   ngOnInit(): void {
     this.footerService.hideFooter();
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-    
+
   }
 
   ngOnDestroy(): void {
@@ -81,39 +83,34 @@ export class LoginComponent implements OnInit, OnDestroy {
           } else {
             this.toastr.error('Invalid email or password.', 'Error', {
               positionClass: 'toast-top-right',
-              timeOut: 6000 
+              timeOut: 6000
             });
           }
         },
         error: (err) => {
           this.toastr.error('Login failed. Please try again.', 'Error', {
             positionClass: 'toast-top-right',
-            timeOut: 6000 
+            timeOut: 6000
           });
           console.error(err);
         }
       });
   }
 
-  
+  onLoginn() {
+    const token = 'your-generated-token';
+    localStorage.setItem('authToken', token);
+    this.router.navigate(['/shop']);
+  }
+
 }
 
 
 
 
 
-// gard--------------------
-// onLoginn() {
-//   this.http.post('https://egyption-treasure-89099-default-rtdb.firebaseio.com/Users/Login.json', this.loginObj).subscribe((res: any) => {
-//     if (res.result) {
-//       alert('login success');
-//       localStorage.setItem('token', res.data.token);
-//       this.router.navigateByUrl('/add-product');
-//     } else {
-//       alert(res.message);
-//     }
-//   })
-// }
+// // gard--------------------
+
 // export class Login {
 //   EmailId: string;
 //   Password: string;
@@ -121,36 +118,4 @@ export class LoginComponent implements OnInit, OnDestroy {
 //     this.EmailId = '';
 //     this.Password = '';
 //   }
-// }
-
-
-
-
-
-// onLogin(): void {
-//   if (this.loginForm.invalid) {
-//     alert('Please fill all fields correctly.');
-//     return;
-//   }
-
-//   const { email, password } = this.loginForm.value;
-
-//   // التحقق من وجود المستخدم في Firebase
-//   this.http.get('https://shop-tt-default-rtdb.firebaseio.com/users.json')
-//     .subscribe({
-//       next: (users: any) => {
-//         const user = Object.values(users).find((u: any) => u.email === email && u.password === password);
-//         if (user) {
-//           alert('Login successful!');
-//           localStorage.setItem('token', 'your-token-here');
-//           this.router.navigateByUrl(this.returnUrl);
-//         } else {
-//           alert('Invalid email or password.');
-//         }
-//       },
-//       error: (err) => {
-//         alert('Login failed. Please try again.');
-//         console.error(err);
-//       }
-//     });
 // }

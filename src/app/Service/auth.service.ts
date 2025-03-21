@@ -5,6 +5,7 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
+  private userRoles: string[] = [];
   private isLoggedInSubject = new BehaviorSubject<boolean>(false);
   isLoggedIn$ = this.isLoggedInSubject.asObservable();
 
@@ -25,5 +26,17 @@ export class AuthService {
   logout() {
     localStorage.removeItem('token');
     this.isLoggedInSubject.next(false);
+  }
+
+  isLoggedIn(): boolean {
+    return this.isLoggedInSubject.value; // الحصول على القيمة الحالية
+  }
+
+  getUserRoles(): string[] {
+    return this.userRoles;
+  }
+
+  setUserRoles(roles: string[]): void {
+    this.userRoles = roles; // تعيين الأدوار
   }
 }

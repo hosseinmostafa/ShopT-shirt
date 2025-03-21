@@ -12,15 +12,14 @@ import { WatchlaterHarteComponent } from './Component/watchlater-harte/watchlate
 import { SignupComponent } from './Component/signup/signup.component';
 import { CustomAlertComponent } from './Component/custom-alert/custom-alert.component';
 import { authGuard } from './Gard/auth.guard';
-import { roleGuard } from './Gard/role.guard';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'shop', component: ShopComponent},
-  { path: 'cart', component: CartComponent, canActivate: [authGuard]},
+  { path: 'cart', component: CartComponent, },
   { path: 'login', component: LoginComponent },
-  { path: 'product-details/:id', component: ProductDetailsComponent, canActivate: [authGuard] },
-  { path: "home-product-details/:id", component: HomeProductDetailsComponent },
+  { path: 'product-details/:id', component: ProductDetailsComponent},
+  { path: "home-product-details/:id", component: HomeProductDetailsComponent},
   { path: 'writ-problem', component: WritProblemComponent },
   { path: 'watchlater-harte', component: WatchlaterHarteComponent },
   { path: 'login', component: LoginComponent },

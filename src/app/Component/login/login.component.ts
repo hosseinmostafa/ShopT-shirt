@@ -15,7 +15,6 @@ export class LoginComponent implements OnInit, OnDestroy {
   isSignUpMode: boolean = false;
   loginForm: FormGroup;
   returnUrl: string = '/';
-  // loginObj: Login;
 
   @ViewChild('password') password!: ElementRef;
   @ViewChild('icon') icon!: ElementRef;
@@ -27,19 +26,17 @@ export class LoginComponent implements OnInit, OnDestroy {
     private router: Router,
     private route: ActivatedRoute,
     private toastr: ToastrService,
-    private authService: AuthService
+    private authService: AuthService // استخدام AuthService
   ) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]]
     });
-    // this.loginObj = new Login()
   }
 
   ngOnInit(): void {
     this.footerService.hideFooter();
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-
   }
 
   ngOnDestroy(): void {
@@ -57,7 +54,6 @@ export class LoginComponent implements OnInit, OnDestroy {
       icon.classList.remove('fa-eye-slash');
     }
   }
-
   onLogin(): void {
     if (this.loginForm.invalid) {
       this.toastr.error('Please fill all fields correctly.', 'Error', {
@@ -78,7 +74,8 @@ export class LoginComponent implements OnInit, OnDestroy {
               positionClass: 'toast-top-right',
               timeOut: 6000
             });
-            this.authService.login('your-token-here');
+            this.authService.login('your-token-here'); // تسجيل الدخول
+            this.authService.setUserRoles(['Admin']); // تعيين الأدوار (مثال)
             this.router.navigateByUrl(this.returnUrl);
           } else {
             this.toastr.error('Invalid email or password.', 'Error', {
@@ -96,26 +93,4 @@ export class LoginComponent implements OnInit, OnDestroy {
         }
       });
   }
-
-  onLoginn() {
-    const token = 'your-generated-token';
-    localStorage.setItem('authToken', token);
-    this.router.navigate(['/shop']);
-  }
-
 }
-
-
-
-
-
-// // gard--------------------
-
-// export class Login {
-//   EmailId: string;
-//   Password: string;
-//   constructor() {
-//     this.EmailId = '';
-//     this.Password = '';
-//   }
-// }

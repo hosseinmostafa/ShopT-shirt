@@ -40,7 +40,7 @@ import { CustomAlertComponent } from './Component/custom-alert/custom-alert.comp
     HomeProductDetailsComponent,
     WatchlaterHarteComponent,
     SignupComponent,
-    CustomAlertComponent,
+    CustomAlertComponent
   ],
   imports: [
     BrowserModule,

@@ -2,13 +2,10 @@
     font-family: var(--font-pro);
 }
 
-
 .icon-hover:hover {
-    // border-color: #3b71ca !important;
     background-color: white !important;
-    color: rgb(214, 0, 0) !important;
+    color: rgb(214, 0, 0) !important
 }
-
 
 .img-small {
     width: 150px;
@@ -18,8 +15,6 @@
     border-radius: 5px;
     margin-right: 10px;
     margin-bottom: 10px;
-    // transition: all 0.3s ease-in-out;
-    // transform: scale(1);
 }
 
 div .item-thumb {

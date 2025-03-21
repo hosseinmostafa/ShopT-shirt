@@ -21,7 +21,8 @@ import { HomeProductDetailsComponent } from './Component/home-product-details/ho
 import { WatchlaterHarteComponent } from './Component/watchlater-harte/watchlater-harte.component';
 import { SignupComponent } from './Component/signup/signup.component';
 import { ToastrModule } from 'ngx-toastr';
-
+import { LucideAngularModule, UserX, ShoppingBasket } from 'lucide-angular';
+import { CustomAlertComponent } from './Component/custom-alert/custom-alert.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { ToastrModule } from 'ngx-toastr';
     HomeProductDetailsComponent,
     WatchlaterHarteComponent,
     SignupComponent,
+    CustomAlertComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,7 +63,9 @@ import { ToastrModule } from 'ngx-toastr';
       tapToDismiss: true,
       maxOpened: 5,
       autoDismiss: true
-    })
+    }),
+    LucideAngularModule.pick({ UserX }),
+    LucideAngularModule.pick({ ShoppingBasket })
   ],
 
   providers: [],

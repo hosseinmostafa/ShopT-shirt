@@ -22,12 +22,12 @@ export class SignupComponent {
     private fb: FormBuilder,
     private http: HttpClient,
     private router: Router,
-    private toastr: ToastrService // Add ToastrService
+    private toastr: ToastrService
   ) {
     this.signupForm = this.fb.group({
       email: ['', [Validators.required, Validators.email, Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$')]],
       phone: ['', [Validators.required, Validators.pattern(/^[0-9]{10,12}$/)]],
-      password: ['', [Validators.required, Validators.minLength(6), Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/)]],
+      password: ['', [Validators.required, Validators.minLength(6), Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{6,}$/)]],
       confirmPassword: ['', [Validators.required]]
     }, { validator: this.passwordMatchValidator });
   }

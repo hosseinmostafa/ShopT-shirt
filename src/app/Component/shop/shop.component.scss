@@ -336,3 +336,24 @@ a.btn-link.text-light:after {
 .filter-modal-footer {
     text-align: center;
 }
+
+.size-option {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    border-radius: 25px;
+    background-color: #ccccccbe !important;
+    color: black !important;
+    transition: .3s ease-in-out;
+}
+.size-option:hover {
+    background-color: black !important;
+    color: white !important;
+}
+
+.size-option.selected {
+    background-color: black !important;
+    color: white !important;
+}

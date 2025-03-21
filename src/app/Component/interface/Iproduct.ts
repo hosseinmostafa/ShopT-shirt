@@ -2,9 +2,9 @@ export interface Iproduct {
     id: string;
     name: string;
     price: number;
-    images: string[]; 
-    category: string[]; 
-    color: string[]; 
+    images: string[];
+    category: string[];
+    color: string[];
     rating: number;
     description: string;
     material: string[];
@@ -13,7 +13,5 @@ export interface Iproduct {
     quantity: number;
     type: string;
     sizes: string[];
-    
-
+    style: string;
 }
-

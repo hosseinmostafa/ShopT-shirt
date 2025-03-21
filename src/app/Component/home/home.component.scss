@@ -47,8 +47,6 @@
 .btn {
   display: inline-block;
   padding: 1rem 2rem;
-  // background: var(--second-color);
-  // color: #fff;
   font-size: var(--normal-font-size);
   font-weight: 500;
   border-radius: 0.5rem;
@@ -57,7 +55,6 @@
 }
 
 .btn:hover {
-  // color: #000;
   background: var(--hover-color);
 }
 
@@ -118,17 +115,11 @@
   background: #313131;
 }
 
-
-
 .line-home {
   background: #000;
   height: 9em;
   width: 100%;
-
-
 }
-
-
 
 .img-icon {
   width: 10%;
@@ -317,8 +308,6 @@ main {
     margin: 5px 0;
   }
 }
-
-
 
 // --------------------------------------------------------------------------------
 // product home

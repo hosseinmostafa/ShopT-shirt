@@ -1,15 +1,6 @@
-<!-- Alert -->
-<div *ngIf="showAlert" class="alert-container bg-black text-white fade show d-flex align-items-center " role="alert">
-  
-  <div class="text-center flex-grow-1">
-    <p>{{message}} <a class="text-white" routerLink="/">{{button}}</a></p>
-  </div>
-  <div class="close">
-    <button type="button" class="btn icn-close" aria-label="Close" (click)="hideMessage()">
-      <i class="fa-solid fa-xmark"></i>
-    </button>
-  </div>
-</div>
+<app-custom-alert [visible]="showCustomAlert" [title]="alertTitle" [message]="alertMessage" (onYes)="onAlertYes()"
+  (onNo)="onAlertNo()"></app-custom-alert>
+
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg bg-body-white p-2 sticky-top bg-white">
   <div class="container-fluid">
@@ -49,12 +40,11 @@
         <div routerLink="/watchlater-harte" class="btn hart-icon shop-icon">
           <i class="fas fa-heart  mt-3"></i>
         </div>
-        <div class="btn shop-icon" routerLink="/signup">
-          <i class="fa-solid fa-user mx-2 mt-3 "></i>
+        <div class="btn shop-icon" (click)="onUserIconClick()">
+          <i *ngIf="!isLoggedIn" class="fa-solid fa-user mx-2 mt-3"></i>
+          <lucide-icon class=" mt-2" *ngIf="isLoggedIn" name="user-x"></lucide-icon>
         </div>
       </form>
-      
     </div>
-    
   </div>
 </nav>

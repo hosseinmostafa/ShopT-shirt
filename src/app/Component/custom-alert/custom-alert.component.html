@@ -1,0 +1,17 @@
+<div class="custom-alert-overlay" *ngIf="visible">
+    <div class="custom-alert-box">
+        <div class="custom-alert-header">
+            <h5 class="custom-alert-title">{{ title }}</h5>
+            <button type="button" class="btn-close" (click)="close()"></button>
+        </div>
+        <div class="custom-alert-body">
+            <p>{{ message }}</p>
+        </div>
+        <div class="custom-alert-footer">
+            <button class="btn btn-no" (click)="onNoClick()">No</button>
+            <button class="btn btn-yes" (click)="onYesClick()">Yes</button>
+        </div>
+    </div>
+</div>
+
+

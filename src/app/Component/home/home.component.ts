@@ -4,12 +4,26 @@ import { ProductService } from '../../Service/product.service';
 import { Iproduct } from '../interface/Iproduct';
 import { CartService } from '../../Service/cart.service';
 import { WhatchlaterHarteService } from '../../Service/whatchlater-harte.service';
-
+import { trigger, state, style, animate, transition } from '@angular/animations';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
+  animations: [
+    trigger('countAnimation', [
+      state('start', style({
+        opacity: 0,
+        transform: 'translateY(-50px)'
+      })),
+      state('end', style({
+        opacity: 1,
+        transform: 'translateY(0)'
+      })),
+      transition('start => end', animate('500ms ease-out')),
+      transition('end => start', animate('500ms ease-in'))
+    ])
+  ]
 })
 export class HomeComponent implements OnInit {
   brandCount1: number = 0;
@@ -19,26 +33,25 @@ export class HomeComponent implements OnInit {
   filteredProducts: Iproduct[] = [];
   errMsg: string | null = null;
   price: number = 0;
-  displayedProducts: Iproduct[] = []; // سيتم عرض 4 منتجات عشوائية هنا
-
+  displayedProducts: Iproduct[] = [];
 
   selectedColor: string | null = null;
-
   selectedCategories: string[] = [];
   selectedPriceRange: number = 0;
   selectedRating: number | null = null;
   isFilterOpen: boolean = false;
-  // items = ['VERSACE', 'ZARA', 'GUCCI', 'PRADA'];
 
-  constructor(private router: Router, private watchlater: WhatchlaterHarteService, private productService: ProductService, private cartService: CartService) { }
+  constructor(
+    private router: Router,
+    private watchlater: WhatchlaterHarteService,
+    private productService: ProductService,
+    private cartService: CartService
+  ) { }
 
   ngOnInit(): void {
     this.startCounters();
     this.loadProductsHome();
-    // this.setupMarquee();
-
   }
-
 
   startCounters(): void {
     this.animateValue(0, 100, 2000, (value) => (this.brandCount1 = value));
@@ -60,18 +73,14 @@ export class HomeComponent implements OnInit {
     window.requestAnimationFrame(step);
   }
 
-
   showAlert: boolean = true;
 
-  hideMessage() {
+  hideMessage(): void {
     this.showAlert = false;
-
-
     document.querySelector('.navbar')?.classList.add('no-alert');
     document.querySelector('body')?.classList.add('no-alert');
     document.querySelector('.home-page')?.classList.add('no-alert');
   }
-
 
   getOneProductHome(id: string): void {
     this.router.navigate(['/product', id]);
@@ -111,7 +120,6 @@ export class HomeComponent implements OnInit {
     this.selectedRating = rating;
   }
 
-
   selectRandomProducts(count: number): void {
     const shuffled = this.products.sort(() => 0.5 - Math.random());
     this.displayedProducts = shuffled.slice(0, count);
@@ -120,18 +128,8 @@ export class HomeComponent implements OnInit {
   addToCart(product: Iproduct): void {
     this.cartService.addToCart(product);
   }
-  saveImage(product: any): void {
+
+  saveImage(product: Iproduct): void {
     this.watchlater.saveImage(product);
   }
-
-  // setupMarquee(): void {
-  //   const marquee = document.querySelector('.marquee');
-  //   this.items.forEach((item, index) => {
-  //     const div = document.createElement('div');
-  //     div.className = 'marquee-item';
-  //     div.textContent = item;
-  //     div.style.animationDelay = `${index * 1}s`; // تأخير الحركة لكل عنصر
-  //     marquee?.appendChild(div);
-  //   });
-  // }
 }

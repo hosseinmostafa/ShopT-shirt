@@ -10,15 +10,16 @@
       </ol>
     </nav>
     <div class="d-flex gap-2 align-items-center">
-      <span class="text-muted">Showing 1-10 of 100 Products Sort by</span>
       <div class="dropdown">
         <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
           Most Popular
         </button>
         <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">All</a></li>
-          <li><a class="dropdown-item" href="#">Man</a></li>
-          <li><a class="dropdown-item" href="#">Woman</a></li>
+          <li><a class="dropdown-item" (click)="filterByCategory('All')">All</a></li>
+          <li><a class="dropdown-item" (click)="filterByCategory('men')">Man</a></li>
+          <li><a class="dropdown-item" (click)="filterByCategory('women')">Woman</a></li>
+          <li><a class="dropdown-item" (click)="filterByCategory('kids')">Kids</a></li>
+          <li><a class="dropdown-item" (click)="filterByCategory('accessories')">Accessories</a></li>
         </ul>
       </div>
     </div>
@@ -26,28 +27,27 @@
 
   <div class="row g-4">
     <!-- Filters Sidebar -->
-    <!-- زر الفلتر للشاشات الصغيرة -->
     <div class="col-12 d-lg-none">
       <button class="btn btn-outline-primary w-100" (click)="toggleFilter()">
         <i class="fa-solid fa-filter"></i> Filters
       </button>
     </div>
 
-    <!-- الفلتر للشاشات الكبيرة -->
     <div class="col-lg-3 d-none d-lg-block">
       <div class="filter-sidebar p-4 shadow-sm">
-        <!-- محتوى الفلتر -->
         <div class="filter-group">
           <div class="filter-icon d-flex justify-content-between">
-            <h5 class="mb-3 fw-bold fs-4">Filters</h5>
+            <h5 class="fw-bold fs-4">Filters</h5>
             <i class="fa-solid fa-filter mt-2"></i>
           </div>
+          <hr>
+          <h6 class="mb-3">Type</h6>
           <div class="form-check mb-2">
             <input class="form-check-input" type="checkbox" id="t-shirts" (change)="toggleCategory('T-shirts')">
             <label class="form-check-label" for="t-shirts">T-shirts</label>
           </div>
           <div class="form-check mb-2">
-            <input class="form-check-input" type="checkbox" id="shorts" (change)="toggleCategory('Shorts')">
+            <input class="form-check-input" type="checkbox" id="shorts" (change)="toggleCategory('Shirt')">
             <label class="form-check-label" for="shorts">Shorts</label>
           </div>
           <div class="form-check mb-2">
@@ -69,22 +69,36 @@
             <span id="priceValue" class="text-muted">${{ selectedPriceRange }}</span>
           </div>
         </div>
+
         <div class="filter-group">
-          <h6 class="mb-3">Rating</h6>
-          <div class="form-check mb-2">
-            <input class="form-check-input" type="radio" name="rating" id="rating4" (change)="selectRating(4)">
-            <label class="form-check-label" for="rating4">
-              <i class="bi bi-star-fill text-warning"></i> 4 & above
-            </label>
-          </div>
-          <div class="form-check mb-2">
-            <input class="form-check-input" type="radio" name="rating" id="rating3" (change)="selectRating(3)">
-            <label class="form-check-label" for="rating3">
-              <i class="bi bi-star-fill text-warning"></i> 3 & above
-            </label>
+          <h6 class="mb-3">Sizing</h6>
+          <div class="row mb-2">
+            <div class="col-6">
+              <label class="btn rounded-5 size-option w-100" [ngClass]="{'selected': selectedSize === 'sizeXS'}"
+                (click)="selectSize('sizeXS')">XX-Small</label>
+            </div>
+            <div class="col-6">
+              <label class="btn rounded-5 size-option w-100" [ngClass]="{'selected': selectedSize === 'sizeS'}"
+                (click)="selectSize('sizeS')">X-Small</label>
+            </div>
+            <div class="col-6">
+              <label class="btn rounded-5 size-option w-100" [ngClass]="{'selected': selectedSize === 'sizeM'}"
+                (click)="selectSize('sizeM')">Small</label>
+            </div>
+            <div class="col-6">
+              <label class="btn rounded-5 size-option w-100" [ngClass]="{'selected': selectedSize === 'sizeL'}"
+                (click)="selectSize('sizeL')">Medium</label>
+            </div>
+            <div class="col-6">
+              <label class="btn rounded-5 size-option w-100" [ngClass]="{'selected': selectedSize === 'sizeXL'}"
+                (click)="selectSize('sizeXL')">Large</label>
+            </div>
+            <div class="col-6">
+              <label class="btn rounded-5 size-option w-100" [ngClass]="{'selected': selectedSize === 'sizeXXL'}"
+                (click)="selectSize('sizeXXL')">X-Large</label>
+            </div>
           </div>
         </div>
-
         <button class="btn btn-outline-primary w-100" (click)="applyFilters()">Apply Filters</button>
       </div>
     </div>
@@ -119,7 +133,6 @@
               <label class="form-check-label" for="jeans-modal">Jeans</label>
             </div>
           </div>
-
           <div class="filter-group">
             <h6 class="mb-3">Price Range</h6>
             <label for="customRange3" class="form-label">Example range</label>
@@ -136,7 +149,6 @@
       </div>
     </div>
 
-
     <div class="col-lg-9">
       <!-- New Arrivals -->
       <section id="new-arrival" class="new-arrival product-carousel position-relative overflow-hidden">
@@ -147,7 +159,7 @@
           <div class="swiper product-swiper open-up" data-aos="zoom-out">
             <div class="swiper-wrapper d-flex">
               <div class="row">
-                <div class="swiper-slide col-6 col-sm-4 col-md-4" *ngFor="let product of products">
+                <div class="col-6 col-sm-4 col-md-4" *ngFor="let product of filteredProducts">
                   <div class="product-item image-zoom-effect link-effect pb-3">
                     <div class="image-holder position-relative">
                       <a [routerLink]="['/product-details', product.id]">
@@ -163,8 +175,8 @@
                         <a class="text-decoration-none" data-after="Add to cart" (click)="addToCart(product)">
                           <span>{{ product.price | currency }}</span>
                         </a>
-                        <a [routerLink]="['/product-details', product.id]"
-                          class="text-decoration-none mt-2 prod-details" data-after="Show Details">
+                        <a [routerLink]="['/product-details', product.id]" class="text-decoration-none mt-2 prod-details"
+                          data-after="Show Details">
                           <span></span>
                         </a>
                       </div>

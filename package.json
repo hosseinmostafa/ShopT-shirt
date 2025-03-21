@@ -22,6 +22,7 @@
     "aos": "^2.3.4",
     "bootstrap": "^5.3.3",
     "firebase": "^11.2.0",
+    "lucide-angular": "^0.483.0",
     "ngx-spinner": "^17.0.0",
     "ngx-toastr": "^19.0.0",
     "rxjs": "~7.8.0",

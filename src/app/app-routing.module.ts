@@ -10,20 +10,22 @@ import { WritProblemComponent } from './Component/writ-problem/writ-problem.comp
 import { HomeProductDetailsComponent } from './Component/home-product-details/home-product-details.component';
 import { WatchlaterHarteComponent } from './Component/watchlater-harte/watchlater-harte.component';
 import { SignupComponent } from './Component/signup/signup.component';
+import { CustomAlertComponent } from './Component/custom-alert/custom-alert.component';
 
 const routes: Routes = [
-  {path: '', component: HomeComponent},
-  { path: 'shop', component: ShopComponent},
-  { path: 'cart', component: CartComponent},
-  { path: 'login', component: LoginComponent},
-  { path: 'product-details/:id', component: ProductDetailsComponent},
-  { path: "home-product-details/:id", component: HomeProductDetailsComponent},
-  { path: 'writ-problem', component: WritProblemComponent},
-  { path: 'watchlater-harte', component: WatchlaterHarteComponent},
-  { path: 'login', component: LoginComponent},
-  { path: 'signup', component: SignupComponent},
+  { path: '', component: HomeComponent },
+  { path: 'shop', component: ShopComponent },
+  { path: 'cart', component: CartComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'product-details/:id', component: ProductDetailsComponent },
+  { path: "home-product-details/:id", component: HomeProductDetailsComponent },
+  { path: 'writ-problem', component: WritProblemComponent },
+  { path: 'watchlater-harte', component: WatchlaterHarteComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'signup', component: SignupComponent },
+  { path: 'custom-alert', component: CustomAlertComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: '**', component: ErrorPageComponent},
+  { path: '**', component: ErrorPageComponent },
 
 ];
 

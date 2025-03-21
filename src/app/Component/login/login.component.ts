@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { AuthService } from '../../Service/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -24,7 +25,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     private fb: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private authService: AuthService
   ) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -35,6 +37,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.footerService.hideFooter();
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    
   }
 
   ngOnDestroy(): void {
@@ -73,7 +76,7 @@ export class LoginComponent implements OnInit, OnDestroy {
               positionClass: 'toast-top-right',
               timeOut: 6000
             });
-            localStorage.setItem('token', 'your-token-here');
+            this.authService.login('your-token-here');
             this.router.navigateByUrl(this.returnUrl);
           } else {
             this.toastr.error('Invalid email or password.', 'Error', {

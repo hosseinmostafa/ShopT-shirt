@@ -33,11 +33,14 @@
                     </div>
                     <div class="">
                         <label for="password" class="form-label text-muted">Password</label>
-                        <input #password type="password" class="form-control" id="password" placeholder="Password"
-                            formControlName="password">
-                        <button type="button" (click)="togglePasswordVisibility(password, icon)" id="btn2">
-                            <i #icon class="fa-solid fa-eye-slash"></i>
-                        </button>
+                        <div class="password-container">
+                            <input #password type="password" class="form-control" id="password" placeholder="Password"
+                                formControlName="password">
+                            <button type="button" (click)="togglePasswordVisibility(password, icon)" id="btn2">
+                                <i #icon class="fa-solid fa-eye-slash"></i>
+                            </button>
+                        </div>
+
                         <div *ngIf="signupForm.get('password')?.invalid && signupForm.get('password')?.touched"
                             class="text-danger">
                             <small *ngIf="signupForm.get('password')?.errors?.['required']">Password is
@@ -45,8 +48,8 @@
                             <small *ngIf="signupForm.get('password')?.errors?.['minlength']">Password must be at least 6
                                 characters.</small>
                             <small *ngIf="signupForm.get('password')?.errors?.['pattern']">Password must contain at
-                            least one uppercase letter, one lowercase letter, one number.</small>
-                                
+                                least one uppercase letter, one lowercase letter, one number.</small>
+
                         </div>
                     </div>
                     <div class="mb-4 mt-3">
@@ -70,6 +73,3 @@
         </div>
     </div>
 </div>
-
-
-

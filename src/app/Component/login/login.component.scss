@@ -82,23 +82,6 @@
 .text-warning {
     color: #ffc107;
 }
-
-#btn2 {
-    background: none;
-    border: none;
-    position: relative;
-    left: 407px;
-    bottom: 26px;
-    transform: translateY(-50%);
-    cursor: pointer;
-    color: #6c757d;
-    transition: .4s ease;
-
-    &:hover {
-        color: #343a40;
-    }
-}
-
 .text-decoration-none {
     color: #007bff;
     text-decoration: none;
@@ -231,4 +214,31 @@
 .toast-info-custom {
     background-color: white !important;
     color: #17a2b8;
+}
+
+
+.password-container {
+    position: relative;
+}
+
+#btn2 {
+    background: none;
+    border: none;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #6c757d;
+    transition: color 0.4s ease;
+
+    &:hover {
+        color: #343a40;
+    }
+}
+
+.form-control {
+    width: 100%;
+    padding-right: 40px;
+    /* إضافة مساحة للزر */
 }

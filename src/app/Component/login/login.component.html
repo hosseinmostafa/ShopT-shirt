@@ -18,11 +18,13 @@
                     </div>
                     <div class="mb-4">
                         <label for="password" class="form-label text-muted">Password</label>
-                        <input #password type="password" class="form-control" id="password" placeholder="Password"
-                            formControlName="password">
-                        <button type="button" (click)="togglePasswordVisibility(password, icon)" id="btn2">
-                            <i #icon class="fa-solid fa-eye-slash"></i>
-                        </button>
+                        <div class="password-container">
+                            <input #password type="password" class="form-control" id="password" placeholder="Password"
+                                formControlName="password">
+                            <button type="button" (click)="togglePasswordVisibility(password, icon)" id="btn2">
+                                <i #icon class="fa-solid fa-eye-slash"></i>
+                            </button>
+                        </div>
                         <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
                             class="text-danger">
                             <small *ngIf="loginForm.get('password')?.errors?.['required']">Password is required.</small>

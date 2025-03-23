@@ -10,7 +10,10 @@ export class WhatchlaterHarteService {
   private savedImages: any[] = [];
 
   constructor(private http: HttpClient) {
-    this.loadSavedImages();
+    const userEmail = localStorage.getItem('userEmail');
+    if (userEmail) {
+      this.loadSavedImages(userEmail);
+    }
   }
 
   getImages(): Observable<any> {
@@ -18,9 +21,12 @@ export class WhatchlaterHarteService {
   }
 
   saveImage(image: any): void {
+    const userEmail = localStorage.getItem('userEmail');
+    if (!userEmail) return;
+
     if (!this.savedImages.some(img => img.id === image.id)) {
       this.savedImages.push(image);
-      this.updateLocalStorage();
+      this.updateLocalStorage(userEmail);
     }
   }
 
@@ -29,21 +35,21 @@ export class WhatchlaterHarteService {
   }
 
   removeImage(index: number): void {
+    const userEmail = localStorage.getItem('userEmail');
+    if (!userEmail) return;
+
     this.savedImages.splice(index, 1);
-    this.updateLocalStorage();
+    this.updateLocalStorage(userEmail);
   }
 
-  private loadSavedImages(): void {
-    const savedImages = localStorage.getItem('savedImages');
+  loadSavedImages(userEmail: string): void {
+    const savedImages = localStorage.getItem(`savedImages_${userEmail}`);
     if (savedImages) {
       this.savedImages = JSON.parse(savedImages);
     }
   }
 
-  private updateLocalStorage(): void {
-    localStorage.setItem('savedImages', JSON.stringify(this.savedImages));
+  private updateLocalStorage(userEmail: string): void {
+    localStorage.setItem(`savedImages_${userEmail}`, JSON.stringify(this.savedImages));
   }
-
 }
-
-

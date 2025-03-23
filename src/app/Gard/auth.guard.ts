@@ -3,12 +3,13 @@ import { CanActivateFn, Router } from '@angular/router';
 
 export const authGuard: CanActivateFn = (route, state) => {
   const router = inject(Router);
-  const token = localStorage.getItem('authToken'); // التحقق من وجود token
+  const token = localStorage.getItem('authToken');
 
   if (token) {
-    return true; // السماح بالوصول إذا كان هناك token
+    return true;
   } else {
-    router.navigate(['/login']); // إعادة التوجيه إلى صفحة تسجيل الدخول إذا لم يكن هناك token
+    router.navigate(['/login']);
     return false;
   }
+  
 };

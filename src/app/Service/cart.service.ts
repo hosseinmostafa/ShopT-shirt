@@ -10,22 +10,27 @@ export class CartService {
   cartItems$ = this.cartItemsSubject.asObservable();
 
   constructor() {
-    this.loadCartItems();
+    const userEmail = localStorage.getItem('userEmail');
+    if (userEmail) {
+      this.loadCartItems(userEmail);
+    }
   }
 
-  private loadCartItems(): void {
-    const savedCartItems = localStorage.getItem('cartItems');
+  loadCartItems(userEmail: string): void {
+    const savedCartItems = localStorage.getItem(`cartItems_${userEmail}`);
     if (savedCartItems) {
       this.cartItemsSubject.next(JSON.parse(savedCartItems));
     }
   }
-  
 
-  private saveCartItems(items: Iproduct[]): void {
-    localStorage.setItem('cartItems', JSON.stringify(items));
+  private saveCartItems(userEmail: string, items: Iproduct[]): void {
+    localStorage.setItem(`cartItems_${userEmail}`, JSON.stringify(items));
   }
 
   addToCart(product: Iproduct): void {
+    const userEmail = localStorage.getItem('userEmail');
+    if (!userEmail) return;
+
     const currentItems = this.cartItemsSubject.getValue();
     const existingItem = currentItems.find(item => item.id === product.id);
 
@@ -36,7 +41,7 @@ export class CartService {
       currentItems.push(newProduct);
     }
     this.cartItemsSubject.next([...currentItems]);
-    this.saveCartItems(currentItems);
+    this.saveCartItems(userEmail, currentItems);
   }
 
   getCartItemCount(): number {
@@ -48,30 +53,38 @@ export class CartService {
   }
 
   removeFromCart(productId: string): void {
+    const userEmail = localStorage.getItem('userEmail');
+    if (!userEmail) return;
+
     const currentItems = this.cartItemsSubject.getValue();
     const updatedItems = currentItems.filter(item => item.id !== productId);
     this.cartItemsSubject.next([...updatedItems]);
-    this.saveCartItems(updatedItems);
+    this.saveCartItems(userEmail, updatedItems);
   }
 
   updateQuantity(productId: string, quantity: number): void {
+    const userEmail = localStorage.getItem('userEmail');
+    if (!userEmail) return;
+
     const currentItems = this.cartItemsSubject.getValue();
     const itemToUpdate = currentItems.find(item => item.id === productId);
 
     if (itemToUpdate && quantity > 0) {
       itemToUpdate.quantity = quantity;
       this.cartItemsSubject.next([...currentItems]);
-      this.saveCartItems(currentItems);
+      this.saveCartItems(userEmail, currentItems);
     }
   }
+
   getTotalPrice(): number {
     return this.cartItemsSubject.getValue().reduce((total, item) => total + item.price * item.quantity, 0);
   }
 
   clearCart(): void {
+    const userEmail = localStorage.getItem('userEmail');
+    if (!userEmail) return;
+
     this.cartItemsSubject.next([]);
-    localStorage.removeItem('cartItems');
+    localStorage.removeItem(`cartItems_${userEmail}`);
   }
-
-
 }

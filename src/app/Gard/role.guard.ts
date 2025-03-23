@@ -2,16 +2,14 @@ import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
 
 export const roleGuard: CanActivateFn = (route, state) => {
-  const router = inject(Router); // حقن Router
-  const expectedRole = route.data['expectedRole']; // الدور المتوقع من البيانات المرتبطة بالمسار
-  const userRole = localStorage.getItem('role'); // الدور الحالي للمستخدم
+  const router = inject(Router);
+  const expectedRole = route.data['expectedRole'];
+  const userRole = localStorage.getItem('role');
 
   if (userRole === expectedRole) {
-    return true; // السماح بالوصول إذا كان الدور مطابقًا
+    return true;
   } else {
-    router.navigate(['/home']); // إعادة التوجيه إلى الصفحة الرئيسية إذا لم يكن الدور مطابقًا
+    router.navigate(['/home']);
     return false;
   }
 };
-
-

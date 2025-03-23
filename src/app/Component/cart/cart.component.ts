@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Iproduct } from '../interface/Iproduct';
 import { CartService } from '../../Service/cart.service';
+import { AuthService } from '../../Service/auth.service';
 
 @Component({
   selector: 'app-cart',
@@ -9,8 +10,17 @@ import { CartService } from '../../Service/cart.service';
 })
 export class CartComponent {
   cartItems: Iproduct[] = [];
-  constructor(private cartService: CartService) { }
+
+  constructor(
+    private cartService: CartService,
+    private authService: AuthService 
+  ) { }
+
   ngOnInit(): void {
+    const userEmail = this.authService.getUserEmail(); 
+    if (userEmail) {
+      this.cartService.loadCartItems(userEmail);
+    }
     this.cartService.cartItems$.subscribe(items => {
       this.cartItems = items;
     });
@@ -51,3 +61,5 @@ export class CartComponent {
   }
   
 }
+
+

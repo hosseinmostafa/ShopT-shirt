@@ -5,6 +5,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../../Service/auth.service';
+import { CartService } from '../../Service/cart.service';
+import { WhatchlaterHarteService } from '../../Service/whatchlater-harte.service';
 
 @Component({
   selector: 'app-login',
@@ -26,7 +28,9 @@ export class LoginComponent implements OnInit, OnDestroy {
     private router: Router,
     private route: ActivatedRoute,
     private toastr: ToastrService,
-    private authService: AuthService // استخدام AuthService
+    private authService: AuthService, 
+    private cartService: CartService, 
+    private watchlater: WhatchlaterHarteService 
   ) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -54,6 +58,46 @@ export class LoginComponent implements OnInit, OnDestroy {
       icon.classList.remove('fa-eye-slash');
     }
   }
+  // onLogin(): void {
+  //   if (this.loginForm.invalid) {
+  //     this.toastr.error('Please fill all fields correctly.', 'Error', {
+  //       positionClass: 'toast-top-right',
+  //       timeOut: 5000
+  //     });
+  //     return;
+  //   }
+
+  //   const { email, password } = this.loginForm.value;
+
+  //   this.http.get('https://shop-tt-default-rtdb.firebaseio.com/users.json')
+  //     .subscribe({
+  //       next: (users: any) => {
+  //         const user = Object.values(users).find((u: any) => u.email === email && u.password === password);
+  //         if (user) {
+  //           this.toastr.success('Login successful!', 'Success', {
+  //             positionClass: 'toast-top-right',
+  //             timeOut: 6000
+  //           });
+  //           this.authService.login('your-token-here'); // تسجيل الدخول
+  //           this.authService.setUserRoles(['Admin']); // تعيين الأدوار (مثال)
+  //           this.router.navigateByUrl(this.returnUrl);
+  //         } else {
+  //           this.toastr.error('Invalid email or password.', 'Error', {
+  //             positionClass: 'toast-top-right',
+  //             timeOut: 6000
+  //           });
+  //         }
+  //       },
+  //       error: (err) => {
+  //         this.toastr.error('Login failed. Please try again.', 'Error', {
+  //           positionClass: 'toast-top-right',
+  //           timeOut: 6000
+  //         });
+  //         console.error(err);
+  //       }
+  //     });
+  // }
+
   onLogin(): void {
     if (this.loginForm.invalid) {
       this.toastr.error('Please fill all fields correctly.', 'Error', {
@@ -74,8 +118,12 @@ export class LoginComponent implements OnInit, OnDestroy {
               positionClass: 'toast-top-right',
               timeOut: 6000
             });
-            this.authService.login('your-token-here'); // تسجيل الدخول
-            this.authService.setUserRoles(['Admin']); // تعيين الأدوار (مثال)
+            this.authService.login('your-token-here', email, ['User']); 
+            this.authService.setUserRoles(['User']); 
+
+            this.cartService.loadCartItems(email);
+            this.watchlater.loadSavedImages(email);
+
             this.router.navigateByUrl(this.returnUrl);
           } else {
             this.toastr.error('Invalid email or password.', 'Error', {

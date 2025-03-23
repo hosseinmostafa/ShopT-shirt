@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { WhatchlaterHarteService } from '../../Service/whatchlater-harte.service';
 import { Iproduct } from '../interface/Iproduct';
 import { CartService } from '../../Service/cart.service';
+import { AuthService } from '../../Service/auth.service';
 
 @Component({
   selector: 'app-watchlater-harte',
@@ -11,9 +12,13 @@ import { CartService } from '../../Service/cart.service';
 export class WatchlaterHarteComponent implements OnInit {
   savedImages: any[] = [];
 
-  constructor(private watchlater: WhatchlaterHarteService, private cartService: CartService) { }
+  constructor(private watchlater: WhatchlaterHarteService, private cartService: CartService, private authService: AuthService) { }
 
   ngOnInit(): void {
+    const userEmail = this.authService.getUserEmail();
+    if (userEmail) {
+      this.watchlater.loadSavedImages(userEmail);
+    }
     this.loadSavedImages();
   }
 

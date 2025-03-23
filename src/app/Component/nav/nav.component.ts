@@ -19,7 +19,6 @@ export class NavComponent implements OnInit {
   cartItemCount: number = 0;
   isLoggedIn: boolean = false;
 
-  // خصائص للرسالة المخصصة
   showCustomAlert: boolean = false;
   alertTitle: string = '';
   alertMessage: string = '';
@@ -77,7 +76,7 @@ export class NavComponent implements OnInit {
   onAlertYes() {
     this.authService.logout();
     this.showCustomAlert = false;
-    this.router.navigate(['/']); // استخدام Router بدلًا من window.location.href
+    this.router.navigate(['/']);
   }
 
   onAlertNo() {
@@ -88,12 +87,12 @@ export class NavComponent implements OnInit {
     if (this.isLoggedIn) {
       this.showCustomAlertMessage();
     } else {
-      this.router.navigate(['/signup']); // استخدام Router بدلًا من window.location.href
+      this.router.navigate(['/signup']);
     }
   }
 
   logout() {
-    this.authService.logout(); // استدعاء logout من AuthService
-    this.router.navigate(['/login']); // إعادة التوجيه إلى صفحة تسجيل الدخول
+    this.authService.logout();
+    this.router.navigate(['/login']);
   }
 }

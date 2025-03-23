@@ -57,4 +57,10 @@ export class AuthService {
   getUserEmail(): string | null {
     return localStorage.getItem('userEmail');
   }
+
+  loggedIn: boolean = false;
+  redirectUrl: string = '';
+  isAuthenticatedd(): boolean {
+    return this.isLoggedIn(); 
+  }
 }

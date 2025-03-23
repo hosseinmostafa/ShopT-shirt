@@ -13,13 +13,14 @@ import { SignupComponent } from './Component/signup/signup.component';
 import { CustomAlertComponent } from './Component/custom-alert/custom-alert.component';
 import { authGuard } from './Gard/auth.guard';
 import { roleGuard } from './Gard/role.guard';
+import { authGuardGuard } from './Gard/auth.service';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'shop', component: ShopComponent},
   { path: 'cart', component: CartComponent},
   { path: 'login', component: LoginComponent },
-  { path: 'product-details/:id', component: ProductDetailsComponent},
+  { path: 'product-details/:id', component: ProductDetailsComponent, canActivate: [authGuardGuard]},
   { path: "home-product-details/:id", component: HomeProductDetailsComponent},
   { path: 'writ-problem', component: WritProblemComponent },
   { path: 'watchlater-harte', component: WatchlaterHarteComponent },

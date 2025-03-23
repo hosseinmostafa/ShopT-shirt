@@ -40,7 +40,6 @@ export class HomeProductDetailsComponent {
     private watchlater: WhatchlaterHarteService
   ) { }
 
-
   changeMainImage(image: string): void {
     this.mainImage = image;
   }
@@ -62,6 +61,7 @@ export class HomeProductDetailsComponent {
       });
     }
   }
+
   quantity: number = 1;
 
   increaseQuantity(): void {
@@ -73,8 +73,6 @@ export class HomeProductDetailsComponent {
       this.quantity--;
     }
   }
-
-
 
   updatePrice(event: Event): void {
     const target = event.target as HTMLInputElement;
@@ -96,6 +94,7 @@ export class HomeProductDetailsComponent {
   selectRating(rating: number): void {
     this.selectedRating = rating;
   }
+
   getOneProductHome(id: string): void {
     this.router.navigate(['/home', id]);
   }
@@ -103,11 +102,12 @@ export class HomeProductDetailsComponent {
   addToCart(): void {
     if (this.oneProduct) {
       this.cartService.addToCart(this.oneProduct);
-
     }
   }
 
   saveImage(product: any): void {
-    this.watchlater.saveImage(product);
+    this.watchlater.saveImage(product, 'shop');
   }
 }
+
+

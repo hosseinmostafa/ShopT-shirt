@@ -23,6 +23,7 @@ import { SignupComponent } from './Component/signup/signup.component';
 import { ToastrModule } from 'ngx-toastr';
 import { LucideAngularModule, UserX, ShoppingBasket } from 'lucide-angular';
 import { CustomAlertComponent } from './Component/custom-alert/custom-alert.component';
+import { PymantComponent } from './Component/pymant/pymant.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { CustomAlertComponent } from './Component/custom-alert/custom-alert.comp
     HomeProductDetailsComponent,
     WatchlaterHarteComponent,
     SignupComponent,
-    CustomAlertComponent
+    CustomAlertComponent,
+    PymantComponent
   ],
   imports: [
     BrowserModule,

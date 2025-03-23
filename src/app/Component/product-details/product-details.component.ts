@@ -13,10 +13,9 @@ import { WhatchlaterHarteService } from '../../Service/whatchlater-harte.service
 })
 export class ProductDetailsComponent implements OnInit {
   bigImgSrc: string = '';
-  oneProduct: Iproduct | undefined; 
+  oneProduct: Iproduct | undefined;
   productId: any;
   errMsg: any;
-  
 
   products: Iproduct[] = [];
   filteredProducts: Iproduct[] = [];
@@ -34,13 +33,14 @@ export class ProductDetailsComponent implements OnInit {
   mainImage: string = '';
   quantity: number = 1;
 
+  savedImages: any[] = [];
+
   constructor(
     private productService: ProductService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private cartService: CartService,
     private watchlater: WhatchlaterHarteService,
-    
   ) { }
 
   changeMainImage(image: string): void {
@@ -49,44 +49,116 @@ export class ProductDetailsComponent implements OnInit {
 
   increaseQuantity(product: Iproduct): void {
     if (product) {
-      product.quantity++;
+      product.quantity = (product.quantity || 1) + 1;
       this.cartService.updateQuantity(product.id, product.quantity);
     }
   }
 
   decreaseQuantity(product: Iproduct): void {
-    if (product && product.quantity > 1) {
+    if (product && product.quantity && product.quantity > 1) {
       product.quantity--;
       this.cartService.updateQuantity(product.id, product.quantity);
     }
   }
 
+  // ngOnInit(): void {
+  //   this.productId = this.activatedRoute.snapshot.paramMap.get('id');
+  //   if (this.productId) {
+  //     const source = this.activatedRoute.snapshot.paramMap.get('source');
+  //     if (source === 'home') {
+  //       this.productService.getOneProductHome(this.productId).subscribe({
+  //         next: (data) => {
+  //           this.oneProduct = data;
+  //           if (this.oneProduct) {
+  //             if (!this.oneProduct.quantity) {
+  //               this.oneProduct.quantity = 1;
+  //             }
+  //             if (this.oneProduct.images && this.oneProduct.images.length > 0) {
+  //               this.mainImage = this.oneProduct.images[0];
+  //             }
+  //             this.oneProduct.source = 'home';
+  //           }
+  //         },
+  //         error: (err) => {
+  //           this.errMsg = err.message || 'Product not found';
+  //           return throwError(() => err);
+  //         }
+  //       });
+  //     } else {
+  //       this.productService.getOneProduct(this.productId).subscribe({
+  //         next: (data) => {
+  //           this.oneProduct = data;
+  //           if (this.oneProduct) {
+  //             if (!this.oneProduct.quantity) {
+  //               this.oneProduct.quantity = 1;
+  //             }
+  //             if (this.oneProduct.images && this.oneProduct.images.length > 0) {
+  //               this.mainImage = this.oneProduct.images[0];
+  //             }
+  //             this.oneProduct.source = 'shop';
+  //           }
+  //         },
+  //         error: (err) => {
+  //           this.errMsg = err.message || 'Product not found';
+  //           return throwError(() => err);
+  //         }
+  //       });
+  //     }
+  //   }
+  //   this.loadSavedImages();
+  // }
+
   ngOnInit(): void {
     this.productId = this.activatedRoute.snapshot.paramMap.get('id');
     if (this.productId) {
-      this.productService.getOneProduct(this.productId).subscribe({
-        next: (data) => {
-          this.oneProduct = data;
-          if (this.oneProduct && !this.oneProduct.quantity) {
-            this.oneProduct.quantity = 1;
+      const source = this.activatedRoute.snapshot.paramMap.get('source');
+      if (source === 'home') {
+        this.productService.getOneProductHome(this.productId).subscribe({
+          next: (data) => {
+            this.oneProduct = data;
+            if (this.oneProduct) {
+              if (!this.oneProduct.quantity) {
+                this.oneProduct.quantity = 1;
+              }
+              if (this.oneProduct.images && this.oneProduct.images.length > 0) {
+                this.mainImage = this.oneProduct.images[0];
+              }
+              this.oneProduct.source = 'home';
+            }
+          },
+          error: (err) => {
+            this.errMsg = err.message || 'Product not found';
+            return throwError(() => err);
           }
-          if (this.oneProduct?.images && this.oneProduct.images.length > 0) {
-            this.mainImage = this.oneProduct.images[0];
+        });
+      } else {
+        this.productService.getOneProduct(this.productId).subscribe({
+          next: (data) => {
+            this.oneProduct = data;
+            if (this.oneProduct) {
+              if (!this.oneProduct.quantity) {
+                this.oneProduct.quantity = 1;
+              }
+              if (this.oneProduct.images && this.oneProduct.images.length > 0) {
+                this.mainImage = this.oneProduct.images[0];
+              }
+              this.oneProduct.source = 'shop';
+            }
+          },
+          error: (err) => {
+            this.errMsg = err.message || 'Product not found';
+            return throwError(() => err);
           }
-        },
-        error: (err) => {
-          this.errMsg = err.message || 'Product not found';
-          return throwError(() => err);
-        }
-      });
+        });
+      }
     }
-    this.loadSavedImages();
   }
 
   updatePrice(event: Event): void {
     const target = event.target as HTMLInputElement;
     this.selectedPriceRange = parseFloat(target.value);
   }
+
   updateQuantity(newQuantity: number): void {
     if (this.oneProduct) {
       this.oneProduct.quantity = newQuantity;
@@ -123,14 +195,11 @@ export class ProductDetailsComponent implements OnInit {
     }
   }
 
-  
-
-  saveImage(product: any): void {
-    this.watchlater.saveImage(product);
+  saveImage(product: Iproduct | undefined): void {
+    if (product) {
+      this.watchlater.saveImage(product, product.source || 'shop');
+    }
   }
-
-
-  savedImages: any[] = [];
 
   loadSavedImages(): void {
     this.savedImages = this.watchlater.getSavedImages();
@@ -138,7 +207,12 @@ export class ProductDetailsComponent implements OnInit {
 
   removeImage(index: number): void {
     this.watchlater.removeImage(index);
-    this.loadSavedImages()
+    this.loadSavedImages();
   }
 
+  goToPymant() {
+    return this.router.navigate(['/pymant']);
+  }
 }
+
+

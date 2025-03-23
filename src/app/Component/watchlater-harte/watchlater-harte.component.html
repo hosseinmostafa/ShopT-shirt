@@ -13,22 +13,41 @@
                                     *ngFor="let savedImage of savedImages; let i = index;">
                                     <div class="product-item image-zoom-effect link-effect pb-3">
                                         <div class="image-holder position-relative">
-                                            <a [routerLink]="['/product-details', savedImage.id]">
-                                                <img [src]="savedImage.images[0]" alt="{{ savedImage.name }}"
-                                                    class="product-image img-fluid">
-                                            </a>
+                                            <ng-container *ngIf="savedImage.source === 'home'; else shopLink">
+                                                <a [routerLink]="['/home-product-details', savedImage.id]">
+                                                    <img [src]="savedImage.images[0]" alt="{{ savedImage.name }}"
+                                                        class="product-image img-fluid">
+                                                </a>
+                                            </ng-container>
+                                            <ng-template #shopLink>
+                                                <a [routerLink]="['/product-details', savedImage.id]">
+                                                    <img [src]="savedImage.images[0]" alt="{{ savedImage.name }}"
+                                                        class="product-image img-fluid">
+                                                </a>
+                                            </ng-template>
                                             <div class="product-content">
                                                 <h5 class="element-title text-uppercase fs-5 mt-3">
                                                     <a>{{ savedImage.name }}</a>
                                                 </h5>
                                             </div>
-                                            <a class="text-decoration-none" data-after="Add to cart" (click)="addToCart(savedImage)">
+                                            <a class="text-decoration-none" data-after="Add to cart"
+                                                (click)="addToCart(savedImage)">
                                                 <span>{{ savedImage.price | currency }}</span>
                                             </a>
-                                            <a [routerLink]="['/product-details', savedImage.id]" class="text-decoration-none mt-2 prod-details"
-                                                data-after="Show Details">
-                                                <span></span>
-                                            </a>
+                                            <ng-container *ngIf="savedImage.source === 'home'; else shopDetailsLink">
+                                                <a [routerLink]="['/home-product-details', savedImage.id, { source: 'home' }]"
+                                                    class="text-decoration-none mt-2 prod-details"
+                                                    data-after="Show Details">
+                                                    <span></span>
+                                                </a>
+                                            </ng-container>
+                                            <ng-template #shopDetailsLink>
+                                                <a [routerLink]="['/product-details', savedImage.id, { source: 'shop' }]"
+                                                    class="text-decoration-none mt-2 prod-details"
+                                                    data-after="Show Details">
+                                                    <span></span>
+                                                </a>
+                                            </ng-template>
                                             <div>
                                             </div>
                                         </div>

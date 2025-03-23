@@ -21,13 +21,13 @@ export class AuthService {
 
   login(token: string, email: string, roles: string[] = []): void {
     localStorage.setItem('token', token);
-    localStorage.setItem('userEmail', email); 
-    this.setUserRoles(roles); 
+    localStorage.setItem('userEmail', email);
+    this.setUserRoles(roles);
     this.isLoggedInSubject.next(true);
   }
 
   logout(): void {
-    const userEmail = this.getUserEmail(); 
+    const userEmail = this.getUserEmail();
 
     localStorage.removeItem('token');
     localStorage.removeItem('userEmail');
@@ -51,7 +51,7 @@ export class AuthService {
 
   setUserRoles(roles: string[]): void {
     this.userRoles = roles;
-    localStorage.setItem('role', JSON.stringify(roles)); 
+    localStorage.setItem('role', JSON.stringify(roles));
   }
 
   getUserEmail(): string | null {
@@ -61,6 +61,6 @@ export class AuthService {
   loggedIn: boolean = false;
   redirectUrl: string = '';
   isAuthenticatedd(): boolean {
-    return this.isLoggedIn(); 
+    return this.isLoggedIn();
   }
 }

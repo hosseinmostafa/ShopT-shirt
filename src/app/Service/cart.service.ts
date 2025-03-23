@@ -17,14 +17,22 @@ export class CartService {
   }
 
   loadCartItems(userEmail: string): void {
-    const savedCartItems = localStorage.getItem(`cartItems_${userEmail}`);
-    if (savedCartItems) {
-      this.cartItemsSubject.next(JSON.parse(savedCartItems));
+    try {
+      const savedCartItems = localStorage.getItem(`cartItems_${userEmail}`);
+      if (savedCartItems) {
+        this.cartItemsSubject.next(JSON.parse(savedCartItems));
+      }
+    } catch (error) {
+      console.error('Error loading cart items:', error);
     }
   }
 
   private saveCartItems(userEmail: string, items: Iproduct[]): void {
-    localStorage.setItem(`cartItems_${userEmail}`, JSON.stringify(items));
+    try {
+      localStorage.setItem(`cartItems_${userEmail}`, JSON.stringify(items));
+    } catch (error) {
+      console.error('Error saving cart items:', error);
+    }
   }
 
   addToCart(product: Iproduct): void {
@@ -87,4 +95,8 @@ export class CartService {
     this.cartItemsSubject.next([]);
     localStorage.removeItem(`cartItems_${userEmail}`);
   }
+  
 }
+
+
+

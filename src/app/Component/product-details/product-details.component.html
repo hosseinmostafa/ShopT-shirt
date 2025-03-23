@@ -52,18 +52,23 @@
                     </div>
                 </div>
                 <div class="d-none d-lg-block">
-                    <div class="mb-3 d-flex justify-content-center">
-                        <a data-fslightbox="mygalley" data-type="image">
-                            <img class="fit" [src]="mainImage" />
-                        </a>
-                    </div>
-                    <div class="d-flex flex-wrap justify-content-center mb-3 img-cont" *ngIf="oneProduct?.images">
-                        <ng-container *ngFor="let image of oneProduct?.images; let i = index">
-                            <a data-fslightbox="mygalley" class="mx-1 mb-2 item-thumb" data-type="image"
-                                (click)="changeMainImage(image)">
-                                <img class="img-small" [src]="image" />
+                    <div class="d-flex align-items-start">
+                        <!-- الصور الصغيرة -->
+                        <div class="d-flex flex-column justify-content-center me-3 img-cont" *ngIf="oneProduct?.images">
+                            <ng-container *ngFor="let image of oneProduct?.images; let i = index">
+                                <a data-fslightbox="mygalley" class="mx-1 mb-2 item-thumb" data-type="image"
+                                    (click)="changeMainImage(image)">
+                                    <img class="img-small" [src]="image" />
+                                </a>
+                            </ng-container>
+                        </div>
+                
+                        <!-- الصورة الكبيرة -->
+                        <div class="mb-3 d-flex justify-content-center flex-grow-1">
+                            <a data-fslightbox="mygalley" data-type="image">
+                                <img class="fit" [src]="mainImage" />
                             </a>
-                        </ng-container>
+                        </div>
                     </div>
                 </div>
             </aside>
@@ -118,12 +123,16 @@
                             </div>
                         </div>
                     </div>
-                    <div class="d-flex justify-content-between align-items-center" >
-                        <a class="btn btn-link"> Buy now </a>
-                        <a class="btn btn-link" (click)="addToCart()"> <i class="me-1 fa fa-shopping-basket"></i> Add to cart
+                    <div class="d-flex justify-content-between align-items-center">
+                        <a (click)="goToPymant()" class="btn btn-link"> Buy now </a>
+                        <a class="btn btn-link" (click)="addToCart()">
+                            <i class="me-1 fa fa-shopping-basket"></i> Add to cart
                         </a>
-                        <a class="btn py-2 icon-hover px-3 btn-link" (click)="saveImage(oneProduct)"> <i class="me-1 fa fa-heart fa-lg"></i>
-                            Save </a>
+                        <ng-container *ngIf="oneProduct">
+                            <a class="btn py-2 icon-hover px-3 btn-link" (click)="saveImage(oneProduct)">
+                                <i class="me-1 fa fa-heart fa-lg"></i> Save
+                            </a>
+                        </ng-container>
                     </div>
                 </div>
             </main>

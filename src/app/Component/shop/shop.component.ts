@@ -121,8 +121,9 @@ export class ShopComponent implements OnInit {
     this.cartService.addToCart(product);
   }
 
+  // في CartComponent أو ShopComponent
   saveImage(product: any): void {
-    this.watchlater.saveImage(product);
+    this.watchlater.saveImage(product, 'shop'); // أو 'home' إذا كانت الصورة من الصفحة الرئيسية
   }
 
   filterByCategory(category: string): void {
@@ -138,8 +139,6 @@ export class ShopComponent implements OnInit {
     }
     console.log('Filtered Products:', this.filteredProducts);
   }
-
-  
 }
 
 

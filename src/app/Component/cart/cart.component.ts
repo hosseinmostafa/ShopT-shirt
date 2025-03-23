@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Iproduct } from '../interface/Iproduct';
 import { CartService } from '../../Service/cart.service';
 import { AuthService } from '../../Service/auth.service';
+import { SharedService } from '../../Service/shared.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -13,11 +15,13 @@ export class CartComponent {
 
   constructor(
     private cartService: CartService,
-    private authService: AuthService 
+    private authService: AuthService,
+    private sharedService: SharedService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
-    const userEmail = this.authService.getUserEmail(); 
+    const userEmail = this.authService.getUserEmail();
     if (userEmail) {
       this.cartService.loadCartItems(userEmail);
     }
@@ -25,15 +29,13 @@ export class CartComponent {
       this.cartItems = items;
     });
   }
-  
+
   removeFromCart(productId: string): void {
     this.cartService.removeFromCart(productId);
   }
 
   getTotalPrice(): number {
-  
-    return this.cartService.getTotalPrice()
-
+    return this.cartService.getTotalPrice();
   }
 
   increaseQuantity(item: Iproduct): void {
@@ -47,6 +49,7 @@ export class CartComponent {
       this.cartService.updateQuantity(item.id, item.quantity);
     }
   }
+
   updateQuantity(productId: string, event: Event): void {
     const target = event.target as HTMLInputElement;
     const quantity = +target.value;
@@ -59,7 +62,13 @@ export class CartComponent {
     }
     this.cartService.addToCart(product);
   }
-  
+
+  navigateToPayment(): void {
+    const totalPrice = this.getTotalPrice();
+    this.sharedService.setTotalPrice(totalPrice); // Save total price in shared service
+    this.router.navigate(['/pymant']); // Navigate to payment page
+  }
+
 }
 
 

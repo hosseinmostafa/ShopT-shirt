@@ -1,6 +1,7 @@
 .home-color {
   background-color: rgb(242 240 241) !important;
   scroll-behavior: smooth !important;
+  font-family: var(--font-pro);
 }
 
 
@@ -10,6 +11,7 @@
   align-items: center;
   padding-top: 2rem;
   margin-right: 40px;
+  
 }
 
 .home-container .info .nam-home {

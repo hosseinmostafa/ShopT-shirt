@@ -14,4 +14,5 @@ export interface Iproduct {
     type: string;
     sizes: string[];
     style: string;
+    source?: string;
 }

@@ -129,7 +129,7 @@ export class HomeComponent implements OnInit {
     this.cartService.addToCart(product);
   }
 
-  saveImage(product: Iproduct): void {
-    this.watchlater.saveImage(product);
+  saveImage(product: any): void {
+    this.watchlater.saveImage(product, 'shop');
   }
 }

@@ -12,7 +12,11 @@ import { AuthService } from '../../Service/auth.service';
 export class WatchlaterHarteComponent implements OnInit {
   savedImages: any[] = [];
 
-  constructor(private watchlater: WhatchlaterHarteService, private cartService: CartService, private authService: AuthService) { }
+  constructor(
+    private watchlater: WhatchlaterHarteService,
+    private cartService: CartService,
+    private authService: AuthService
+  ) { }
 
   ngOnInit(): void {
     const userEmail = this.authService.getUserEmail();
@@ -23,18 +27,29 @@ export class WatchlaterHarteComponent implements OnInit {
   }
 
   loadSavedImages(): void {
-    this.savedImages = this.watchlater.getSavedImages();
+    try {
+      this.savedImages = this.watchlater.getSavedImages();
+    } catch (error) {
+      console.error('Error loading saved images:', error);
+    }
   }
 
   removeImage(index: number): void {
-    this.watchlater.removeImage(index);
-    this.loadSavedImages();
+    try {
+      this.watchlater.removeImage(index);
+      this.loadSavedImages();
+    } catch (error) {
+      console.error('Error removing image:', error);
+    }
   }
 
-    addToCart(product: Iproduct): void {
-      this.cartService.addToCart(product);
-    }
+  addToCart(product: Iproduct): void {
+    this.cartService.addToCart(product);
+  }
+
   
 }
+
+
 
 

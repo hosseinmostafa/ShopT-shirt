@@ -14,6 +14,7 @@ export class ProductService {
     this.loadProducts();
     this.loadProductsHome();
   }
+
   private transformProductData(response: { [key: string]: any }): Iproduct[] {
     if (!response) {
       throw new Error('No data found in Firebase.');

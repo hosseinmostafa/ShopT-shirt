@@ -1,0 +1,114 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+<div class="containter">
+    <!-- <app-header></app-header> -->
+    <section class="payment-section">
+        <div class="container">
+            <div class="payment-wrapper">
+                <div class="payment-left">
+                    <div class="payment-header">
+                        <div class="payment-header-icon"><i class="fa-solid fa-cart-shopping" style="color: #000;"></i></div>
+                        <div class="payment-header-title">Order Summary</div>
+                        <p class="payment-header-description">Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+                    </div>
+                    <div class="payment-content">
+                        <div class="payment-body">
+                            <div class="payment-plan">
+                                <div class="payment-plan-type">Pro</div>
+                                <div class="payment-plan-info">
+                                    <div class="payment-plan-info-name">Professional Plan</div>
+                                    <div class="payment-plan-info-price">$49 per month</div>
+                                </div>
+                                <a routerLink="/cart" class="payment-plan-change">Change</a>
+                            </div>
+                            <div class="payment-summary">
+                                <div class="payment-summary-divider"></div>
+                                <div class="payment-summary-item payment-summary-total">
+                                    <div class="payment-summary-name">Total</div>
+                                    <div class="totall">{{ getTotal() | currency }}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="payment-right">
+                    <form action="" class="payment-form" #registerForm="ngForm" novalidate>
+                        <h1 class="payment-title">Payment Details</h1>
+                        <div class="payment-method">
+                            <input type="radio" name="payment-method" id="method-1" checked>
+                            <label for="method-1" class="payment-method-item">
+                                <img src="./pymatn-photo/paypal.png" alt="">
+                            </label>
+                            <input type="radio" name="payment-method" id="method-2">
+                            <label for="method-2" class="payment-method-item">
+                                <img src="./pymatn-photo/stripe.png" alt="">
+                            </label>
+                            <input type="radio" name="payment-method" id="method-3">
+                            <label for="method-3" class="payment-method-item">
+                                <img src="./pymatn-photo/visa.png" alt="">
+                            </label>
+                            <input type="radio" name="payment-method" id="method-4">
+                            <label for="method-4" class="payment-method-item">
+                                <img src="./pymatn-photo/mastercard.png" alt="">
+                            </label>
+                        </div>
+
+                        <div class="payment-form-group">
+                            <label for="email" class="form-label">Email Address</label>
+                            <input [(ngModel)]="userModel.email" placeholder="example@example.ex" name="email"
+                                #email="ngModel" type="email" class="form-control p-2" id="exampleInputEmail1"
+                                aria-describedby="emailHelp" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+                                required [class.is-invalid]="email.invalid && email.touched">
+                            <small *ngIf="email.invalid && email.touched" class="text-danger">Email is required</small>
+                        </div>
+
+                        <div class="payment-form-group">
+                            <label for="city" class="form-label">City</label>
+                            <input [(ngModel)]="userModel.City" name="City" #City="ngModel" type="text"
+                                class="form-control p-2" id="exampleInputCity1" aria-describedby="CityHelp" required
+                                [class.is-invalid]="City.invalid && City.touched">
+                            <small *ngIf="City.invalid && City.touched" class="text-danger">City is required</small>
+                        </div>
+
+                        <div class="payment-form-group">
+                            <label for="address" class="form-label">Address</label>
+                            <input [(ngModel)]="userModel.Address" name="Address" #Address="ngModel" type="text"
+                                class="form-control p-2" id="exampleInputAddress1" aria-describedby="AddressHelp"
+                                required [class.is-invalid]="Address.invalid && Address.touched">
+                            <small *ngIf="Address.invalid && Address.touched" class="text-danger">Address is required</small>
+                        </div>
+
+                        <div class="payment-form-group">
+                            <label for="card-number" class="form-label">Card Number</label>
+                            <input placeholder="1111-2222-3333-4444" [(ngModel)]="userModel.cardNumber"
+                                name="cardNumber" #cardNumber="ngModel" type="text" class="form-control p-2"
+                                id="exampleInputcardNumber" required
+                                [class.is-invalid]="cardNumber.invalid && cardNumber.touched" pattern="^\d{16}$">
+                            <div *ngIf="cardNumber.errors && cardNumber.touched">
+                                <small *ngIf='cardNumber.errors["required"]' class="text-danger">Card Number is required</small>
+                                <small *ngIf='cardNumber.errors["pattern"]' class="text-danger">Card Number must be 16 digits</small>
+                            </div>
+                        </div>
+
+                        <div class="payment-form-group-flex">
+                            <div class="payment-form-group">
+                                <label for="expiry-date" class="form-label">Expiry Date</label>
+                                <input type="date" placeholder=" " class="form-control p-2" id="expiry-date">
+                            </div>
+                            <div class="payment-form-group">
+                                <label for="cvv" class="">CVV</label>
+                                <input placeholder="123" class="form-control p-2" id="cvv" [(ngModel)]="userModel.CVV"
+                                    name="CVV" #CVV="ngModel" type="text" id="exampleInputCVV" required
+                                    [class.is-invalid]="CVV.invalid && CVV.touched" pattern="^\d{3}$">
+                                <div *ngIf="CVV.errors && CVV.touched">
+                                    <small *ngIf='CVV.errors["required"]' class="text-danger">CVV is required</small>
+                                    <small *ngIf='CVV.errors["pattern"]' class="text-danger">CVV must be 3 digits</small>
+                                </div>
+                            </div>
+                        </div>
+                        <a class="btn btn-common text-uppercase btn-link fs-5  text-decoration-none"> Pay</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

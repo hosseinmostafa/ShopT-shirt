@@ -1,7 +1,12 @@
+.container{
+    font-family: var(--font-pro);
+}
+
 .pricing-card {
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     border: none;
     border-radius: 16px;
+    
 }
 
 .pricing-card:hover {

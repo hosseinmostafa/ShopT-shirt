@@ -1,0 +1,208 @@
+<div class="container py-5">
+    <!-- Top Bar -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);"
+            aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Casual</li>
+            </ol>
+        </nav>
+        <div class="d-flex gap-2 align-items-center">
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Most Popular
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" (click)="filterByCategory('All')">All</a></li>
+                    <li><a class="dropdown-item" (click)="filterByCategory('men')">Man</a></li>
+                    <li><a class="dropdown-item" (click)="filterByCategory('women')">Woman</a></li>
+                    <li><a class="dropdown-item" (click)="filterByCategory('kids')">Kids</a></li>
+                    <li><a class="dropdown-item" (click)="filterByCategory('accessories')">Accessories</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        <!-- Filters Sidebar -->
+        <div class="col-12 d-lg-none">
+            <button class="btn btn-outline-primary w-100" (click)="toggleFilter()">
+                <i class="fa-solid fa-filter"></i> Filters
+            </button>
+        </div>
+
+        <div class="col-lg-3 d-none d-lg-block">
+            <div class="filter-sidebar p-4 shadow-sm">
+                <div class="filter-group">
+                    <div class="filter-icon d-flex justify-content-between">
+                        <h5 class="fw-bold fs-4">Filters</h5>
+                        <i class="fa-solid fa-filter mt-2"></i>
+                    </div>
+                    <hr>
+                    <h6 class="mb-3">Type</h6>
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" id="t-shirts"
+                            (change)="toggleCategory('T-shirts')">
+                        <label class="form-check-label" for="t-shirts">T-shirts</label>
+                    </div>
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" id="shorts" (change)="toggleCategory('Shirt')">
+                        <label class="form-check-label" for="shorts">Shorts</label>
+                    </div>
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" id="hoodies"
+                            (change)="toggleCategory('Hoodies')">
+                        <label class="form-check-label" for="hoodies">Hoodies</label>
+                    </div>
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" id="jeans" (change)="toggleCategory('Jeans')">
+                        <label class="form-check-label" for="jeans">Jeans</label>
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <h6 class="mb-3">Price Range</h6>
+                    <label for="customRange3" class="form-label">Example range</label>
+                    <input type="range" class="form-range reversed-slider" min="0" max="1000" step="50"
+                        id="customRange3" (input)="updatePrice($event)">
+                    <div class="d-flex justify-content-between">
+                        <span id="priceValue" class="text-muted">${{ selectedPriceRange }}</span>
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <h6 class="mb-3">Sizing</h6>
+                    <div class="row mb-2">
+                        <div class="col-6">
+                            <label class="btn rounded-5 size-option w-100"
+                                [ngClass]="{'selected': selectedSize === 'sizeXS'}"
+                                (click)="selectSize('sizeXS')">XX-Small</label>
+                        </div>
+                        <div class="col-6">
+                            <label class="btn rounded-5 size-option w-100"
+                                [ngClass]="{'selected': selectedSize === 'sizeS'}"
+                                (click)="selectSize('sizeS')">X-Small</label>
+                        </div>
+                        <div class="col-6">
+                            <label class="btn rounded-5 size-option w-100"
+                                [ngClass]="{'selected': selectedSize === 'sizeM'}"
+                                (click)="selectSize('sizeM')">Small</label>
+                        </div>
+                        <div class="col-6">
+                            <label class="btn rounded-5 size-option w-100"
+                                [ngClass]="{'selected': selectedSize === 'sizeL'}"
+                                (click)="selectSize('sizeL')">Medium</label>
+                        </div>
+                        <div class="col-6">
+                            <label class="btn rounded-5 size-option w-100"
+                                [ngClass]="{'selected': selectedSize === 'sizeXL'}"
+                                (click)="selectSize('sizeXL')">Large</label>
+                        </div>
+                        <div class="col-6">
+                            <label class="btn rounded-5 size-option w-100"
+                                [ngClass]="{'selected': selectedSize === 'sizeXXL'}"
+                                (click)="selectSize('sizeXXL')">X-Large</label>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-outline-primary w-100" (click)="applyFilters()">Apply Filters</button>
+            </div>
+        </div>
+
+        <!-- small screen filters -->
+        <div *ngIf="isFilterOpen" class="filter-modal-overlay">
+            <div class="filter-modal">
+                <div class="filter-modal-header">
+                    <h5 class="modal-title">Filters</h5>
+                    <button type="button" class="btn-close" (click)="toggleFilter()"></button>
+                </div>
+                <div class="filter-modal-body">
+                    <div class="filter-group">
+                        <div class="filter-icon d-flex justify-content-between">
+                            <h5 class="mb-3 fw-bold fs-4">Filters</h5>
+                            <i class="fa-solid fa-filter mt-2"></i>
+                        </div>
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" id="t-shirts-modal"
+                                (change)="toggleCategory('T-shirts')">
+                            <label class="form-check-label" for="t-shirts-modal">T-shirts</label>
+                        </div>
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" id="shorts-modal"
+                                (change)="toggleCategory('Shorts')">
+                            <label class="form-check-label" for="shorts-modal">Shorts</label>
+                        </div>
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" id="hoodies-modal"
+                                (change)="toggleCategory('Hoodies')">
+                            <label class="form-check-label" for="hoodies-modal">Hoodies</label>
+                        </div>
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" id="jeans-modal"
+                                (change)="toggleCategory('Jeans')">
+                            <label class="form-check-label" for="jeans-modal">Jeans</label>
+                        </div>
+                    </div>
+                    <div class="filter-group">
+                        <h6 class="mb-3">Price Range</h6>
+                        <label for="customRange3" class="form-label">Example range</label>
+                        <input type="range" class="form-range reversed-slider" min="0" max="1000" step="50"
+                            id="customRange3" (input)="updatePrice($event)">
+                        <div class="d-flex justify-content-between">
+                            <span id="priceValue" class="text-muted">${{ selectedPriceRange }}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="filter-modal-footer">
+                    <button class="btn btn-outline-primary w-100" (click)="applyFilters()">Apply Filters</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-9">
+            <!-- New Arrivals -->
+            <section id="new-arrival" class="new-arrival product-carousel position-relative overflow-hidden">
+                <div class="container">
+                    <div class="d-flex flex-wrap justify-content-between align-items-center mb-3">
+                        <h4 class="text-uppercase">Casual</h4>
+                    </div>
+                    <div class="swiper product-swiper open-up" >
+                        <div class="swiper-wrapper d-flex">
+                            <div class="row">
+                                <div class="col-6 col-sm-4 col-md-4" *ngFor="let product of filteredProducts" data-aos="fade-up">
+                                    <div class="product-item image-zoom-effect link-effect pb-3">
+                                        <div class="image-holder position-relative">
+                                            <a [routerLink]="['/product-details', product.id]">
+                                                <img [src]="product.images[0]" alt="{{ product.name }}"
+                                                    class="product-image img-fluid">
+                                            </a>
+                                            <a class="btn-icon btn-wishlist" (click)="saveImage(product)">
+                                                <i class="fa-regular fa-heart"></i>
+                                            </a>
+                                            <div class="product-content">
+                                                <h5 class="element-title text-uppercase fs-5 mt-3">
+                                                    <a>{{ product.name }}</a>
+                                                </h5>
+                                                <a class="text-decoration-none" data-after="Add to cart"
+                                                    (click)="addToCart(product)">
+                                                    <span>{{ product.price | currency }}</span>
+                                                </a>
+                                                <a [routerLink]="['/product-details', product.id]"
+                                                    class="text-decoration-none mt-2 prod-details"
+                                                    data-after="Show Details">
+                                                    <span></span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>

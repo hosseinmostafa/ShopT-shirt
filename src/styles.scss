@@ -3,28 +3,47 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 
-:root{
+:root {
   --font-pro: 'Poppins', sans-serif;
   --color-background: #f2f0f1;
   --second-color: #000;
 
-    --bs-primary-rgb: 140, 144, 126;
-    --bs-secondary-rgb: 108, 117, 125;
-    --bs-black-rgb: 17, 17, 17;
-    --bs-light-rgb: 241, 241, 240;
-    --bs-dark-rgb: 33, 37, 41;
+  --bs-primary-rgb: 140, 144, 126;
+  --bs-secondary-rgb: 108, 117, 125;
+  --bs-black-rgb: 17, 17, 17;
+  --bs-light-rgb: 241, 241, 240;
+  --bs-dark-rgb: 33, 37, 41;
 
-    --bs-link-color: #111;
-    --bs-link-color-rgb: 17, 17, 17;
-    --bs-link-decoration: underline;
-    --bs-link-hover-color: #111;
-    --bs-link-hover-color-rgb: 17, 17, 17;
+  --bs-link-color: #111;
+  --bs-link-color-rgb: 17, 17, 17;
+  --bs-link-decoration: underline;
+  --bs-link-hover-color: #111;
+  --bs-link-hover-color-rgb: 17, 17, 17;
 
-    --color-small-font-family: rgba(0, 0, 0, 0.445) !important;
-    --small-font-size: 1.1em;
-    --small-font-weight: 600 !important;
-    --gray-200: #e5e7eb;
-    scrollbar-color: #ffffff #000000;
+  --color-small-font-family: rgba(0, 0, 0, 0.445) !important;
+  --small-font-size: 1.1em;
+  --small-font-weight: 600 !important;
+  --gray-200: #e5e7eb;
+  scrollbar-color: #ffffff #000000;
 
 
+
+
+
+
+  --primary-fonts: "Poppins", sans-serif;
+  --lato-fonts: "Lato", sans-serif;
+
+  --light: #f9f9f9;
+  --blue: #6104F7;
+  --light-blue: #CFE8FF;
+  --grey: #eee;
+  --dark-grey: #aaa;
+  --dark: #342E37;
+  --red: #db504a;
+  --yellow: #fcf8ec;
+  --light-yellow: #dfce95;
+  --orange: #cb4004;
+  --light-orange: #ffe0d3;
+  
 }

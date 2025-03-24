@@ -13,6 +13,7 @@ export class ProductService {
   constructor(private http: HttpClient) {
     this.loadProducts();
     this.loadProductsHome();
+    this.loadNewProducts()
   }
 
   private transformProductData(response: { [key: string]: any }): Iproduct[] {
@@ -40,6 +41,7 @@ export class ProductService {
       }));
   }
 
+  // shop ---------------------------------------------
   loadProducts(): void {
     this.getProducts().subscribe({
       next: (products) => {
@@ -58,6 +60,11 @@ export class ProductService {
     );
   }
 
+
+  // ---------------------------------------------
+
+
+  // Procuct Home---------------------------------------------
   loadProductsHome(): void {
     this.getProductsHome().subscribe({
       next: (products) => {
@@ -66,7 +73,6 @@ export class ProductService {
       error: (err) => console.error('Error loading products:', err),
     });
   }
-
   getProductsHome(): Observable<Iproduct[]> {
     const url = `https://shop-tt-default-rtdb.firebaseio.com/ProductsHome.json`;
 
@@ -97,6 +103,27 @@ export class ProductService {
       catchError((err) => this.handleError(err, 'Product not found'))
     );
   }
+  // ---------------------------------------------
+
+  // NewProducts---------------------------------------------
+  loadNewProducts(): void {
+    this.getNewProducts().subscribe({
+      next: (products) => {
+        this.productsSubject.next(products);
+      },
+      error: (err) => console.error('Error loading products:', err),
+    });
+  }
+  getNewProducts(): Observable<Iproduct[]> {
+    const url = `https://shop-tt-default-rtdb.firebaseio.com/New-products.json`;
+
+    return this.http.get<{ [key: string]: any }>(url).pipe(
+      map(this.transformProductData),
+      catchError((err) => this.handleError(err, 'Failed to fetch new products.'))
+    );
+  }
+  
+  // ---------------------------------------------
 
   private handleError(error: HttpErrorResponse, customMessage: string): Observable<never> {
     if (error.status === 0) {

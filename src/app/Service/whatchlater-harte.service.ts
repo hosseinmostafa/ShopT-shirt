@@ -19,6 +19,9 @@ export class WhatchlaterHarteService {
   getImages(): Observable<any> {
     return this.http.get('https://shop-tt-default-rtdb.firebaseio.com/Products.json');
   }
+  getImagesHome(): Observable<any> {
+    return this.http.get('https://shop-tt-default-rtdb.firebaseio.com/ProductsHome.json');
+  }
 
   saveImage(image: any, source: string): void {
     const userEmail = localStorage.getItem('userEmail');

@@ -24,6 +24,11 @@ import { ToastrModule } from 'ngx-toastr';
 import { LucideAngularModule, UserX, ShoppingBasket } from 'lucide-angular';
 import { CustomAlertComponent } from './Component/custom-alert/custom-alert.component';
 import { PymantComponent } from './Component/pymant/pymant.component';
+import { DashboardComponent } from './Component/dashboard/dashboard.component';
+import { NewArrivalsComponent } from './Component/new-arrivals/new-arrivals.component';
+import { PostsComponent } from './Component/dashboard/posts/posts.component';
+import { AnalyticsComponent } from './Component/dashboard/analytics/analytics.component';
+import { NewPostComponent } from './Component/dashboard/new-post/new-post.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +47,12 @@ import { PymantComponent } from './Component/pymant/pymant.component';
     WatchlaterHarteComponent,
     SignupComponent,
     CustomAlertComponent,
-    PymantComponent
+    PymantComponent,
+    DashboardComponent,
+    NewArrivalsComponent,
+    PostsComponent,
+    AnalyticsComponent,
+    NewPostComponent,
   ],
   imports: [
     BrowserModule,

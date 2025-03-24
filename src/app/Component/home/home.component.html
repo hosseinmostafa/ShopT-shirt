@@ -7,13 +7,15 @@
         <!-- Info Section -->
         <div class="col-12 col-lg-6 text-center text-lg-start">
           <div class="info">
-            <h1 class="responsive-name nam-home">FIND CLOTHES THAT MATCHES YOUR STYLE</h1>
-            <p class="text-cn">Browse Through our diverse range of meticulously crafted garments. designed <br>
+            <h1 class="responsive-name nam-home" data-aos="fade-right">FIND CLOTHES THAT MATCHES YOUR STYLE</h1>
+            <p class="text-cn" data-aos="fade-left">Browse Through our diverse range of meticulously crafted garments.
+              designed <br>
               to bring out your individuality and cater to your sense of style.
             </p>
-            <div class="btn rounded-5 col-lg-6 col-12 col-md-12 col-sm-12 shop-now " target="_blank" routerLink="/shop">Shop
+            <div class="btn rounded-5 col-lg-6 col-12 col-md-12 col-sm-12 shop-now " data-aos="fade-up" target="_blank"
+              routerLink="/shop">Shop
               Now <i class="fas fa-arrow-circle-right"></i></div>
-            <div class="container">
+            <div class="container" data-aos="fade-up">
               <div class="row justify-content-center gy-4 mt-3">
                 <div class="col-6 col-sm-6 col-md-4 col-lg-3 text-center text-lg-start">
                   <div [@countAnimation]="brandCount1">
@@ -23,13 +25,13 @@
                 </div>
                 <div class="col-6 col-sm-6 col-md-4 col-lg-3 text-center text-lg-start">
                   <div [@countAnimation]="brandCount2">
-                    <h1 >{{ brandCount2 }}+</h1>
+                    <h1>{{ brandCount2 }}+</h1>
                     <p>High-Quality Products</p>
                   </div>
                 </div>
                 <div class="col-12 col-sm-6 col-md-4 col-lg-3 text-center text-lg-start">
                   <div [@countAnimation]="brandCount3">
-                    <h1 >{{ brandCount3 }}+</h1>
+                    <h1>{{ brandCount3 }}+</h1>
                     <p>Happy Customers</p>
                   </div>
                 </div>
@@ -38,10 +40,10 @@
           </div>
         </div>
         <!-- Image Section -->
-        <div class="col-12 col-lg-6 text-center d-lg-block">
+        <div class="col-12 col-lg-6 text-center d-lg-block" data-aos="fade-up">
           <div class="home-img">
             <div class="img-box">
-              <img src="./img-home/home1.jpg" alt="Alhussain" class="img-fluid w-100">
+              <img src="./img-home/home1.jpg" alt="Alhussain" class="img-fluid w-100" >
             </div>
           </div>
         </div>
@@ -101,47 +103,47 @@
 </section>
 <section class="categories overflow-hidden mt-5">
   <div class="container">
-    <div class="open-up" data-aos="zoom-out">
+    <div class="open-up" >
       <h1 class="text-center responsive-name nam-home2">NEW ARRIVALS</h1>
       <div class="row">
-        <div class="col-6 col-sm-4 col-md-4">
+        <div class="col-6 col-sm-4 col-md-4" data-aos="zoom-out">
           <div class="cat-item image-zoom-effect">
             <div class="image-holder">
-              <a >
+              <a>
                 <img src="./img-home/cat-large-item1.jpg" alt="categories" class="product-image img-fluid">
               </a>
             </div>
             <div class="category-content">
               <div class="product-button">
-                <a  class="btn btn-common text-uppercase btn-link">Shop for men</a>
+                <a class="btn btn-common text-uppercase btn-link">Shop for men</a>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-6 col-sm-4 col-md-4">
+        <div class="col-6 col-sm-4 col-md-4" data-aos="zoom-out">
           <div class="cat-item image-zoom-effect">
             <div class="image-holder">
-              <a >
+              <a>
                 <img src="./img-home/cat-large-item2.jpg" alt="categories" class="product-image img-fluid">
               </a>
             </div>
             <div class="category-content">
               <div class="product-button">
-                <a  class="btn btn-common text-uppercase btn-link">Shop for women</a>
+                <a class="btn btn-common text-uppercase btn-link">Shop for women</a>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-6 col-sm-4 col-md-4">
+        <div class="col-6 col-sm-4 col-md-4" data-aos="zoom-out">
           <div class="cat-item image-zoom-effect">
             <div class="image-holder">
-              <a >
+              <a>
                 <img src="./img-home/cat-large-item3.jpg" alt="categories" class="product-image img-fluid">
               </a>
             </div>
             <div class="category-content">
               <div class="product-button">
-                <a  class="btn btn-common text-uppercase btn-link">Shop accessories</a>
+                <a class="btn btn-common text-uppercase btn-link">Shop accessories</a>
               </div>
             </div>
           </div>
@@ -153,17 +155,17 @@
 
 <!-- New Arrivals -->
 
-<section id="new-arrival" class="new-arrival product-carousel py-5 position-relative overflow-hidden">
+<section id="new-arrival" class="new-arrival product-carousel py-5 position-relative overflow-hidden" >
   <div class="container">
     <div class="d-flex flex-wrap justify-content-between align-items-center mt-5 mb-3">
       <h4 class="text-uppercase">Our New Arrivals</h4>
       <a routerLink="/shop" class="btn-link">View All Products</a>
     </div>
 
-    <div class="swiper product-swiper open-up" data-aos="zoom-out">
+    <div class="swiper product-swiper open-up">
       <div class="swiper-wrapper d-flex">
         <div class="row">
-          <div class="swiper-slide col-6 col-sm-4 col-md-3" *ngFor="let product of displayedProducts">
+          <div class="swiper-slide col-6 col-sm-4 col-md-3" *ngFor="let product of displayedProducts" data-aos="fade-up">
             <div class="product-item image-zoom-effect link-effect">
               <div class="image-holder position-relative">
                 <a [routerLink]="['/home-product-details', product.id]">
@@ -198,10 +200,19 @@
 <section class="collection bg-light position-relative py-5">
   <div class="container">
     <div class="row">
-      <div class="collection-item d-flex flex-wrap my-2">
-        <div class="col-md-6 column-container">
+      <div class="collection-item d-flex flex-wrap my-2" >
+        <div class="col-md-6 column-container" >
           <div class="image-holder">
-            <img src="./img-home/single-image-2.jpg" alt="collection" class="product-image img-fluid">
+            <!-- <img src="./img-home/single-image-2.jpg" alt="collection" class="product-image img-fluid"> -->
+              <div class="video-background">
+                <video id="video1" autoplay loop muted class="product-image img-fluid">
+                  <source  src="./vidue/vda.mp4" 
+                    type="video/mp4">
+                </video>
+                <!-- <video id="video2" autoplay muted class="video-bg">
+                  <source src="./vidue/9861741-uhd_4096_2160_25fps.mp4" type="video/mp4">
+                </video> -->
+              </div>
           </div>
         </div>
         <div class="col-md-6 column-container bg-white">
@@ -212,7 +223,7 @@
               fringilla odio mi. Consequat pharetra at magna imperdiet cursus ac faucibus sit libero. Ultricies quam
               nunc, lorem sit lorem urna, pretium aliquam ut. In vel, quis donec dolor id in. Pulvinar commodo mollis
               diam sed facilisis at cursus imperdiet cursus ac faucibus sit faucibus sit libero.</p>
-            <a  class="btn  text-uppercase mt-3 btn-link">Shop Collection</a>
+            <a class="btn  text-uppercase mt-3 btn-link">Shop Collection</a>
           </div>
         </div>
       </div>

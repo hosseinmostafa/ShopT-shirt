@@ -1,0 +1,52 @@
+<nav id="sidebar" class="sidebar " [class.hide]="isSidebarHidden">
+    <div class="sidebar-header p-3 ">
+        <button class="btn btn-link text-decoration-none fs-4" (click)="toggleSidebar()">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+    </div>
+
+    <ul class="nav flex-column p-3">
+        <li class="nav-item" *ngFor="let item of menuItems" [class.active]="item.active">
+            <a class="nav-link" routerLinkActive="active" [routerLink]="item.link">
+                <i [class]="item.icon"></i>
+                <span  class="ms-2">{{ item.text }}</span>
+            </a>
+        </li>
+    </ul>
+
+    <ul class="nav flex-column p-3 mt-auto">
+        <li class="nav-item">
+            <a class="nav-link">
+                <i class="fa-solid fa-gear"></i>
+                <span class="ms-2">Settings</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-danger">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                <span class="ms-2">Logout</span>
+            </a>
+        </li>
+    </ul>
+</nav>
+
+<div class="overlay" [class.active]="isSidebarHidden && isMobile" (click)="toggleSidebar()"></div>
+<!-- Splash Screen -->
+<div *ngIf="isLoading" class="splash-screen">
+    <h1 class="text-center text-white">Welcome to the Dashboard</h1>
+    <p class="text-center text-white">This is the main content area.</p>
+</div>
+
+<section id="content" class="content" [class.sidebar-hidden]="isSidebarHidden">
+    <main class="p-4">
+        <div class="video-background">
+            <video id="video1" autoplay muted class="video-bg">
+                <source src="./vidue/UQ_ST3_us_imagesother_HP_VIDEOS_HP_large_25ss_UPJ_M_video - Trim.mp4"
+                    type="video/mp4">
+            </video>
+            <video id="video2" autoplay muted class="video-bg">
+                <source src="./vidue/9861741-uhd_4096_2160_25fps.mp4" type="video/mp4">
+            </video>
+        </div>
+    </main>
+</section>

@@ -1,0 +1,369 @@
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 16px;
+    font-family: var(--font-pro);
+}
+
+.filter-sidebar {
+    background: white;
+    border-radius: 12px;
+    position: sticky;
+    top: 20px;
+    height: fit-content;
+}
+
+
+
+.filter-group {
+    border-bottom: 1px solid #e5e7eb;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+}
+
+.color-option {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+}
+
+.color-option.selected::after {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: 50%;
+}
+
+.sort-btn {
+    background: white;
+    border: 1px solid #e5e7eb;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: all 0.2s;
+}
+
+.sort-btn:hover {
+    background: #f3f4f6;
+}
+
+.cart-btn {
+    background: #2563eb;
+    color: white;
+    border: none;
+    transition: all 0.2s;
+}
+
+.cart-btn:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+}
+
+.accordion-button:not(.collapsed) {
+    color: white !important;
+    background-color: white !important;
+    box-shadow: inset 0 calc(-1* var(--bs-accordion-border-width)) 0 var(--bs-accordion-border-color);
+}
+
+.btn {
+    background-color: #000 !important;
+    color: white !important;
+    border: none !important;
+    padding: 10px;
+}
+
+.btn:hover {
+    background-color: #000000bd !important;
+    border: none !important;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+
+.icon-arrow {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+}
+
+.image-zoom-effect {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.image-zoom-effect .image-holder {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    transform: scale(1);
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.image-zoom-effect:hover .image-holder {
+    transform: scale(0.95);
+}
+
+.image-zoom-effect img {
+    transform: scale(1);
+    will-change: transform;
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    z-index: 0;
+}
+
+.image-zoom-effect:hover img {
+    transform: scale(1.1);
+}
+
+.instagram .insta-item {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.instagram .insta-item a:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    transition: 0.6s ease-out;
+}
+
+.link-effect a {
+    position: relative;
+    padding: 0;
+    overflow: hidden;
+    transition: transform 0.5s;
+    display: block;
+    cursor: pointer;
+}
+
+.link-effect a::after {
+    content: attr(data-after);
+    display: inline-block;
+    transform: translateY(100%);
+    position: absolute;
+    left: 0;
+    font-size: 1rem;
+    text-align: inherit;
+    text-transform: uppercase;
+    transition: inherit;
+}
+
+.link-effect a>span {
+    display: inline-block;
+    transform: translateY(0%);
+    transition: inherit;
+}
+
+.link-effect:hover a>span {
+    transform: translateY(-100%);
+}
+
+.link-effect:hover a::after {
+    transform: translateY(0%);
+}
+
+/* product item */
+.product-item .btn-wishlist {
+    display: block;
+    z-index: 111;
+    position: absolute;
+    top: 5px;
+    padding: 10px;
+    color: var(--bs-black);
+    background: var(--bs-white);
+    right: 5px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in;
+    transition: .3s ease-in-out;
+    border-radius: 26%;
+
+}
+
+.product-item .btn-wishlist:hover {
+    color: red;
+    // background-color: red;
+}
+
+.product-item:hover .btn-wishlist {
+    opacity: 1;
+
+}
+
+/* rotating text */
+.text-rotate {
+    animation: rotation 50s infinite linear;
+}
+
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(359deg);
+    }
+}
+
+
+
+a.btn-link,
+a.btn-link:after {
+    transition: all .5s;
+}
+
+a.btn-link {
+    position: relative;
+}
+
+a.btn-link:before,
+a.btn-link:after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    background-color: var(--bs-dark);
+    height: 1px;
+}
+
+[data-bs-theme=dark] a.btn-link:after {
+    background-color: var(--bs-white);
+}
+
+a.btn-link:before {
+    background-color: var(--bs-gray);
+    width: 100%;
+}
+
+a.btn-link.is-checked:after,
+a.btn-link:hover:after {
+    width: 100%;
+}
+
+a.btn-link.text-white:after {
+    background-color: var(--bs-white);
+}
+
+a.btn-link.text-light:after {
+    background-color: var(--bs-light);
+}
+
+.accordion-button::after {
+    flex-shrink: -1 !important;
+    width: var(--bs-accordion-btn-icon-width);
+    height: 100px !important;
+    margin-left: auto;
+    content: "";
+    background-image: var(--bs-accordion-btn-icon);
+    background-repeat: no-repeat;
+    background-size: var(--bs-accordion-btn-icon-width);
+    transition: var(--bs-accordion-btn-icon-transition);
+
+}
+
+.accordion-button:not(.collapsed)::after {
+    background-image: var(--bs-accordion-btn-active-icon);
+    transform: none !important;
+}
+
+.reversed-slider {
+    direction: rtl;
+}
+
+.color-option {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.color-option.selected {
+    border: 2px solid #000;
+}
+
+.color-option.selected::after {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: 50%;
+}
+
+.color-option:hover {
+    border: 2px solid #000;
+}
+
+
+
+
+
+
+/* نافذة الفلتر للشاشات الصغيرة */
+.filter-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.filter-modal {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.filter-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.filter-modal-body {
+    margin-bottom: 20px;
+}
+
+.filter-modal-footer {
+    text-align: center;
+}
+
+.size-option {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    border-radius: 25px;
+    background-color: #ccccccbe !important;
+    color: black !important;
+    transition: .3s ease-in-out;
+}
+
+.size-option:hover {
+    background-color: black !important;
+    color: white !important;
+}
+
+.size-option.selected {
+    background-color: black !important;
+    color: white !important;
+}

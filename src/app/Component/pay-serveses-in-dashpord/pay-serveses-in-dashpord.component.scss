@@ -1,4 +1,4 @@
-.container{
+.container {
     font-family: var(--font-pro);
 }
 
@@ -6,7 +6,6 @@
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     border: none;
     border-radius: 16px;
-    
 }
 
 .pricing-card:hover {
@@ -32,7 +31,7 @@
 
 .feature-list li:before {
     content: "✓";
-    color: #4CAF50;
+    color: #000;
     margin-right: 8px;
     font-weight: bold;
 }
@@ -70,4 +69,52 @@
 .btn-outline-primary:hover {
     background: linear-gradient(45deg, #4CAF50, #45B649);
     border-color: transparent;
+}
+
+a {
+    text-decoration: none;
+}
+
+a.btn-link,
+a.btn-link:after {
+    transition: all .5s;
+}
+
+a.btn-link {
+    position: relative;
+    width: 100%;
+}
+
+a.btn-link:before,
+a.btn-link:after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    background-color: var(--bs-dark);
+    height: 1px;
+}
+
+[data-bs-theme=dark] a.btn-link:after {
+    background-color: var(--bs-white);
+}
+
+a.btn-link:before {
+    background-color: var(--bs-gray);
+    width: 100%;
+}
+
+a.btn-link.is-checked:after,
+a.btn-link:hover:after {
+    width: 100%;
+}
+
+a.btn-link.text-white:after {
+    background-color: var(--bs-white);
+}
+
+a.btn-link.text-light:after {
+    background-color: var(--bs-light);
 }

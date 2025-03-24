@@ -15,6 +15,12 @@ import { authGuard } from './Gard/auth.guard';
 import { roleGuard } from './Gard/role.guard';
 import { authGuardGuard } from './Gard/auth.service';
 import { PymantComponent } from './Component/pymant/pymant.component';
+import { PayServesesInDashpordComponent } from './Component/pay-serveses-in-dashpord/pay-serveses-in-dashpord.component';
+import { NewArrivalsComponent } from './Component/new-arrivals/new-arrivals.component';
+import { DashboardComponent } from './Component/dashboard/dashboard.component';
+import { PostsComponent } from './Component/dashboard/posts/posts.component';
+import { AnalyticsComponent } from './Component/dashboard/analytics/analytics.component';
+import { NewPostComponent } from './Component/dashboard/new-post/new-post.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -29,6 +35,12 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'custom-alert', component: CustomAlertComponent},
   { path: 'pymant', component: PymantComponent, canActivate: [authGuardGuard] },
+  { path: 'pay-serveses-in-dashpord', component: PayServesesInDashpordComponent},
+  { path: 'new-arrivals', component: NewArrivalsComponent},
+  { path: 'dashboard', component: DashboardComponent, canActivate: [authGuardGuard]},
+  { path: 'posts', component: PostsComponent},
+  { path: 'analytics', component: AnalyticsComponent},
+  { path: 'new-post', component: NewPostComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: ErrorPageComponent },
 

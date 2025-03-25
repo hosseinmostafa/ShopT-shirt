@@ -24,6 +24,9 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
+            "allowedCommonJsDependencies": [
+              "aos"
+            ],
             "outputPath": "dist/shop-t-shirt",
             "index": "src/index.html",
             "browser": "src/main.ts",
@@ -54,13 +57,13 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "800kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "2mb",
+                  "maximumError": "3mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "6mb",
-                  "maximumError": "8mb"
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
                 }
               ],
               "outputHashing": "all"

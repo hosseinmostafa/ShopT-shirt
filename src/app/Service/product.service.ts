@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, catchError, map, Observable, switchMap, throwError, timer } from 'rxjs';
+import { BehaviorSubject, catchError, finalize, forkJoin, map, Observable, of, switchMap, throwError, timer } from 'rxjs';
 import { Iproduct } from '../Component/interface/Iproduct';
 
 @Injectable({
@@ -9,6 +9,7 @@ import { Iproduct } from '../Component/interface/Iproduct';
 export class ProductService {
   private productsSubject = new BehaviorSubject<Iproduct[]>([]);
   private retryDelay = 3000;
+  private firebaseUrl = 'https://shop-tt-default-rtdb.firebaseio.com';
 
   constructor(private http: HttpClient) {
     this.loadProducts();
@@ -122,7 +123,7 @@ export class ProductService {
       catchError((err) => this.handleError(err, 'Failed to fetch new products.'))
     );
   }
-  
+
   // ---------------------------------------------
 
   private handleError(error: HttpErrorResponse, customMessage: string): Observable<never> {
@@ -143,6 +144,55 @@ export class ProductService {
           switchMap(() => observable)
         );
       })
+    );
+  }
+
+  // addNewProduct(product: Iproduct): Observable<any> {
+  //   const newProduct = {
+  //     ...product,
+  //     date: new Date().toISOString(),
+  //     rating: 0
+  //   };
+  //   return this.http.post(`${this.firebaseUrl}/New-products.json`, newProduct);
+  // }
+
+
+  addNewProduct(product: Iproduct): Observable<any> {
+    const newProduct = {
+      ...product,
+      date: new Date().toISOString(),
+      rating: 0
+    };
+
+    return this.http.post(`${this.firebaseUrl}/New-products.json`, newProduct);
+  }
+
+  uploadImages(images: File[]): Observable<string[]> {
+    // هنا يمكنك إضافة منطق رفع الصور إلى خدمة تخزين مثل Firebase Storage
+    // هذا مثال مبسط يعيد URLs وهمية
+    return new Observable(subscriber => {
+      setTimeout(() => {
+        const urls = images.map(img => URL.createObjectURL(img));
+        subscriber.next(urls);
+        subscriber.complete();
+      }, 1000);
+    });
+  }
+
+  private convertToBase64(file: File): Observable<string> {
+    return new Observable(observer => {
+      const reader = new FileReader();
+      reader.onload = () => observer.next(reader.result as string);
+      reader.onerror = error => observer.error(error);
+      reader.readAsDataURL(file);
+      return () => reader.abort();
+    });
+  }
+
+  getOneNewProduct(id: string): Observable<Iproduct | undefined> {
+    return this.http.get(`${this.firebaseUrl}/New-products/${id}.json`).pipe(
+      map((product: any) => product ? { id, ...product } : undefined),
+      catchError((err) => this.handleError(err, 'Product not found'))
     );
   }
 }

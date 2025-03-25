@@ -1,1 +1,114 @@
-<p>analytics works!</p>
+<section id="content">
+    <!-- main -->
+    <main>
+        <div class="head-title">
+            <div class="left">
+                <h1>Analytics</h1>
+                <ul class="breadcrumb">
+                    <li routerLink="/dashboard" >
+                        <i class="fa-regular fa-circle-left fa-beat-fade me-2"></i>
+                        <a>Dashboard</a>
+                    </li>
+                    <li><i class="bx bx-chevron-right"></i></li>
+                    <li>
+                        <a class="active">Analytics</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <ul class="box-info">
+            <li>
+                <i class="fa-regular fa-calendar-check bx bxs-dollar-circle"></i>
+                <span [@countAnimation]="brandCount1">
+                    <h3>{{ brandCount1 }}</h3>
+                    <p>Nouvelles Commandes</p>
+                </span>
+            </li>
+            <li>
+                <i class="fa-solid fa-users bx bxs-dollar-circle"></i>
+                <span [@countAnimation]="brandCount2">
+                    <h3>{{ brandCount2 }}</h3>
+                    <p>Clients</p>
+                </span>
+            </li>
+            <li>
+                <i class="fa-solid fa-dollar-sign bx bxs-dollar-circle"></i>
+                <span [@countAnimation]="brandCount3">
+                    <h3>$ {{ brandCount3 }}</h3>
+                    <p>Tatal vente</p>
+                </span>
+            </li>
+        </ul>
+
+        <div class="table-data">
+            <div class="order">
+                <div class="head">
+                    <h3>New users</h3>
+                    <i class="bx bx-search"></i>
+                    <i class="bx bx-filter"></i>
+                </div>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Customer Name</th>
+                            <th>Phone</th>
+                            <th>Order Date</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let order of recentOrders">
+                            <td>
+                                <span>{{order.name}}</span>
+                            </td>
+                            <td>{{order.phone}}</td>
+                            <td>{{order.date}}</td>
+                            <td><span class="status {{order.status}}">Paid</span></td>
+                            <td>
+                                <button class="btn-delete" (click)="deleteUser(order.id)"
+                                    [disabled]="currentUser?.id === order.id">
+                                    <i class="bx bx-trash"></i> Delete
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="todo">
+                <div class="head">
+                    <h3>To-Do List</h3>
+                    <i class="bx bx-plus"></i>
+                    <i class="bx bx-filter"></i>
+                </div>
+                <ul class="tada-list">
+                    <li class="dd">
+                        <p>new collection</p>
+                        <i class="bx bx-dots-vertical-rounded"></i>
+                    </li>
+                    <li class="completed">
+                        <p>new Analytics</p>
+                        <i class="bx bx-dots-vertical-rounded"></i>
+                    </li>
+                    <li class="dd">
+                        <p>new orders</p>
+                        <i class="bx bx-dots-vertical-rounded"></i>
+                    </li>
+                    <li class="completed">
+                        <p>Analyze weekly sales</p>
+                        <i class="bx bx-dots-vertical-rounded"></i>
+                    </li>
+                    <li class="dd">
+                        <p>Contact suppliers</p>
+                        <i class="bx bx-dots-vertical-rounded"></i>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </main>
+    <!-- main end -->
+</section>
+<!-- js -->

@@ -1,1 +1,69 @@
-<p>posts works!</p>
+<div class="container py-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div class="col-lg-12">
+            <section id="new-arrival" class="new-arrival product-carousel position-relative overflow-hidden">
+                <div class="container">
+                    <div class="d-flex flex-wrap justify-content-between align-items-center mb-3">
+                        <section id="content">
+                            <!-- main -->
+                            <main>
+                                <div class="head-title">
+                                    <div class="left">
+                                        <h1>Post</h1>
+                                        <ul class="breadcrumb">
+                                            <li routerLink="/dashboard">
+                                                <i class="fa-regular fa-circle-left fa-beat-fade me-2"></i>
+                                                <a>Dashboard</a>
+                                            </li>
+                                            <li><i class="fa-solid fa-angle-right mx-2"></i></li>
+                                            <li>
+                                                <a class="active">Post</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </main>
+                            <!-- main end -->
+                        </section>
+                    </div>
+                    <div class="swiper product-swiper open-up" data-aos="fade-up">
+                        <div class="swiper-wrapper ">
+                            <div class="row">
+                                <div class="swiper-slide col-6 col-sm-4 col-md-4 col-lg-3"
+                                    *ngFor="let newProducts of newProducts; let i = index;">
+                                    <div class="product-item image-zoom-effect link-effect pb-3">
+                                        <div class="image-holder position-relative">
+                                            <ng-container *ngIf="newProducts.source === 'home'; else shopLink">
+                                                <a [routerLink]="['/home-product-details', newProducts.id]">
+                                                    <img [src]="newProducts.images[0]" alt="{{ newProducts.name }}"
+                                                        class="product-image img-fluid">
+                                                </a>
+                                            </ng-container>
+                                            <ng-template #shopLink>
+                                                <a [routerLink]="['/product-details', newProducts.id]">
+                                                    <img [src]="newProducts.images[0]" alt="{{ newProducts.name }}"
+                                                        class="product-image img-fluid">
+                                                </a>
+                                            </ng-template>
+                                            <div class="product-content">
+                                                <h5 class="element-title text-uppercase fs-5 mt-3">
+                                                    <a>{{ newProducts.name }}</a>
+                                                </h5>
+                                            </div>
+                                            <a class="text-decoration-none">
+                                                <span>{{ newProducts.price | currency }}</span>
+                                            </a>
+                                            <div>
+                                            </div>
+                                        </div>
+                                        <a class="btn btn-link w-100" (click)="removeImage(i)">Remove</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>

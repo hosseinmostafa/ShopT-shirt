@@ -1,6 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { LucideAngularModule, FileCog } from 'lucide-angular';
 
 @Component({
   selector: 'app-dashboard',
@@ -17,8 +18,8 @@ export class DashboardComponent implements OnInit {
   menuItems = [
     { icon: "fa-solid fa-chart-line", text: 'Analytics', active: true, link: '/analytics' },
     { icon: "fa-solid fa-shop", text: 'Posts', active: false, link: '/posts' },
-    { icon: "fa-solid fa-chart-simple", text: 'Analytics', active: false, link: '/analytics' },
     { icon: "fa-solid fa-cart-plus", text: 'New Post', active: false, link: '/new-post' },
+    { icon: "fa-regular fa-pen-to-square", text: 'Edit Post', active: false, link: '/edit-post' },
   ];
 
   constructor() {

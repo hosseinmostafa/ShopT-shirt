@@ -108,49 +108,53 @@ export class ProductDetailsComponent implements OnInit {
   //   this.loadSavedImages();
   // }
 
+  // ngOnInit(): void {
+  //   this.productId = this.activatedRoute.snapshot.paramMap.get('id');
+  //   if (this.productId) {
+  //     const source = this.activatedRoute.snapshot.paramMap.get('source') || 'shop';
+
+  //     if (source === 'home') {
+  //       this.productService.getOneProductHome(this.productId).subscribe({
+  //         next: (data) => this.handleProductData(data, 'home'),
+  //         error: (err) => this.handleError(err)
+  //       });
+  //     } else if (source === 'new') {
+  //       this.productService.getOneNewProduct(this.productId).subscribe({
+  //         next: (data) => this.handleProductData(data, 'shop'),
+  //         error: (err) => this.handleError(err)
+  //       });
+  //     } else {
+  //       this.productService.getOneProduct(this.productId).subscribe({
+  //         next: (data) => this.handleProductData(data, 'shop'),
+  //         error: (err) => this.handleError(err)
+  //       });
+  //     }
+  //   }
+  // }
+
   ngOnInit(): void {
     this.productId = this.activatedRoute.snapshot.paramMap.get('id');
+    const source = this.activatedRoute.snapshot.queryParamMap.get('source');
+
     if (this.productId) {
-      const source = this.activatedRoute.snapshot.paramMap.get('source');
-      if (source === 'home') {
-        this.productService.getOneProductHome(this.productId).subscribe({
-          next: (data) => {
-            this.oneProduct = data;
-            if (this.oneProduct) {
-              if (!this.oneProduct.quantity) {
-                this.oneProduct.quantity = 1;
-              }
-              if (this.oneProduct.images && this.oneProduct.images.length > 0) {
-                this.mainImage = this.oneProduct.images[0];
-              }
-              this.oneProduct.source = 'home';
-            }
-          },
-          error: (err) => {
-            this.errMsg = err.message || 'Product not found';
-            return throwError(() => err);
+      const productObservable = source === 'new'
+        ? this.productService.getOneNewProduct(this.productId)
+        : source === 'home'
+          ? this.productService.getOneProductHome(this.productId)
+          : this.productService.getOneProduct(this.productId);
+
+      productObservable.subscribe({
+        next: (data) => {
+          this.oneProduct = data;
+          if (this.oneProduct?.images?.length) {
+            this.mainImage = this.oneProduct.images[0];
           }
-        });
-      } else {
-        this.productService.getOneProduct(this.productId).subscribe({
-          next: (data) => {
-            this.oneProduct = data;
-            if (this.oneProduct) {
-              if (!this.oneProduct.quantity) {
-                this.oneProduct.quantity = 1;
-              }
-              if (this.oneProduct.images && this.oneProduct.images.length > 0) {
-                this.mainImage = this.oneProduct.images[0];
-              }
-              this.oneProduct.source = 'shop';
-            }
-          },
-          error: (err) => {
-            this.errMsg = err.message || 'Product not found';
-            return throwError(() => err);
-          }
-        });
-      }
+        },
+        error: (err) => {
+          console.error('Error loading product:', err);
+          this.errMsg = 'Failed to load product details';
+        }
+      });
     }
   }
 
@@ -212,6 +216,23 @@ export class ProductDetailsComponent implements OnInit {
 
   goToPymant() {
     return this.router.navigate(['/pymant']);
+  }
+
+  private handleProductData(data: Iproduct | undefined, source: string): void {
+    this.oneProduct = data;
+    if (this.oneProduct) {
+      if (!this.oneProduct.quantity) {
+        this.oneProduct.quantity = 1;
+      }
+      if (this.oneProduct.images && this.oneProduct.images.length > 0) {
+        this.mainImage = this.oneProduct.images[0];
+      }
+      this.oneProduct.source = source;
+    }
+  }
+  private handleError(err: any): void {
+    this.errMsg = err.message || 'Product not found';
+    console.error(err);
   }
 }
 

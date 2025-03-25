@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
-import { Iproduct } from '../Component/interface/Iproduct';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -21,6 +20,10 @@ export class WhatchlaterHarteService {
   }
   getImagesHome(): Observable<any> {
     return this.http.get('https://shop-tt-default-rtdb.firebaseio.com/ProductsHome.json');
+  }
+
+  getNewProducts(): Observable<any> {
+    return this.http.get('https://shop-tt-default-rtdb.firebaseio.com/New-products.json');
   }
 
   saveImage(image: any, source: string): void {

@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr'; // Import ToastrService
+import { NavbarService } from '../../Service/navbar.service';
 
 @Component({
   selector: 'app-signup',
@@ -22,7 +23,8 @@ export class SignupComponent {
     private fb: FormBuilder,
     private http: HttpClient,
     private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private navbarService: NavbarService
   ) {
     this.signupForm = this.fb.group({
       email: ['', [Validators.required, Validators.email, Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$')]],
@@ -76,6 +78,8 @@ export class SignupComponent {
             positionClass: 'toast-top-right',
             timeOut: 6000
           });
+          this.navbarService.hideAlert();
+          this.footerService.showWelcome();
           this.router.navigateByUrl('/login');
         },
         error: (err) => {

@@ -1,8 +1,19 @@
 <app-custom-alert [visible]="showCustomAlert" [title]="alertTitle" [message]="alertMessage" (onYes)="onAlertYes()"
   (onNo)="onAlertNo()"></app-custom-alert>
 
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg bg-body-white p-2 sticky-top bg-white">
+
+<div *ngIf="showAlert" class="alert-container bg-black text-white fade show d-flex align-items-center" role="alert">
+  <div class="text-center flex-grow-1">
+    <p>{{message}} <a class="text-white" [routerLink]="currentLink">{{button}}</a></p>
+  </div>
+  <div class="close">
+    <button type="button" class="btn icn-close" aria-label="Close" (click)="hideMessage()">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+  </div>
+</div>
+
+<!-- <nav class="navbar navbar-expand-lg bg-body-white p-2 sticky-top bg-white">
   <div class="container-fluid">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01"
       aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
@@ -17,9 +28,7 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" routerLink="/new-arrivals">New Arrivals</a>
         </li>
-        <!-- <li class="nav-item">
-          <a class="nav-link active" aria-current="page" routerLink="/pay-serveses-in-dashpord">Dashboard</a>
-        </li> -->
+
       </ul>
       <form class="d-flex  form-ser" role="search">
         <div class="input-container position-relative w-100">
@@ -29,7 +38,6 @@
             aria-label="Search">
         </div>
 
-        <!-- Icons-cart-chopping -->
         <div class="btn shop-icon" routerLink="/cart">
           <span class="badge bg-danger">{{ cartItemCount }}</span>
           <i class="fa-solid fa-cart-shopping mx-1 icon-shoping"></i>
@@ -44,7 +52,66 @@
       </form>
     </div>
   </div>
+</nav> -->
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-white sticky-top">
+  <div class="container-fluid">
+    <!-- logo -->
+    <a class="navbar-brand text-dark fw-bold fs-3 text-uppercase text-logo" routerLink="/">SHOP.CO</a>
+    <!-- tagil btn -->
+    <button class="navbar-toggler shadow-none border-0 btn-nav" type="button" data-bs-toggle="offcanvas"
+      data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+      <!-- <span class="navbar-toggler-icon text-dark"></span> -->
+      <i class="fa-solid fa-bars text-dark fs-3"></i>
+    </button>
+    <!-- sid -->
+    <div class="sidebar offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar"
+      aria-labelledby="offcanvasNavbarLabel">
+      <!-- sidebar Header -->
+      <div class="offcanvas-header text-white border-bottom">
+        <h5 class="offcanvas-title text-white" id="offcanvasNavbarLabel" routerLink="/">SHOP.CO</h5>
+        <button type="button" class="btn-close btn-close-white shadow-none" data-bs-dismiss="offcanvas"
+          aria-label="Close"></button>
+      </div>
+      <!-- sidebar body -->
+      <div class="offcanvas-body d-flex flex-column flex-lg-row p-4 p-lg-0">
+        <ul
+          class="navbar-nav flex-column flex-lg-row justify-content-center align-items-center fs-5 flex-grow-1 pe-3 me-auto mb-2 mb-lg-0 link-nav  mx-auto">
+          <li class="nav-item mx-2">
+            <a class="nav-link text-dark active" routerLink="/">Home</a>
+          </li>
+          <li class="nav-item mx-2">
+            <a class="nav-link text-dark " aria-current="page" routerLink="/shop">Shop</a>
+          </li>
+          <li class="nav-item mx-2">
+            <a class="nav-link text-dark" routerLink="/new-arrivals">New Arrivals</a>
+          </li>
+          <li class="nav-item mx-2">
+            <a class="nav-link text-dark" routerLink="/new-post">Add Product</a>
+          </li>
+        </ul>
+        <form class="d-flex form-ser" role="search">
+          <div class="input-container position-relative w-100">
+            <i
+              class="fa-solid fa-magnifying-glass search-icon position-absolute start-0 translate-middle-y mx-3 icon-sec"></i>
+            <input class="form-control me-5 rounded-5 pt-2 pb-2 ps-5" type="search" placeholder="Search"
+              aria-label="Search">
+          </div>
+
+          <div class="btn shop-icon" routerLink="/cart">
+            <span class="badge bg-danger">{{ cartItemCount }}</span>
+            <i class="fa-solid fa-cart-shopping mx-1 icon-shoping"></i>
+          </div>
+          <div routerLink="/watchlater-harte" class="btn hart-icon shop-icon">
+            <i class="fas fa-heart  mt-3"></i>
+          </div>
+          <div class="btn shop-icon" (click)="onUserIconClick()">
+            <i *ngIf="!isLoggedIn" class="fa-solid fa-user mx-2 mt-3"></i>
+            <lucide-icon class=" mt-2" *ngIf="isLoggedIn" name="user-x"></lucide-icon>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 </nav>
-
-
-

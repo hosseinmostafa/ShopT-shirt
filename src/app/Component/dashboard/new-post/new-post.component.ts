@@ -4,6 +4,7 @@ import { ProductService } from '../../../Service/product.service';
 import { Router } from '@angular/router';
 import { Iproduct } from '../../interface/Iproduct';
 import { Observable, switchMap } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-new-post',
@@ -15,12 +16,16 @@ export class NewPostComponent {
   productForm: FormGroup;
   imagePreviews: string[] = [];
   selectedImages: File[] = [];
+  imageLinks: string[] = [];
+  newImageLink: string = '';
+
   isLoading = false;
 
   constructor(
     private fb: FormBuilder,
     private productService: ProductService,
-    public router: Router // تغيير من private إلى public
+    public router: Router,
+    private toastr: ToastrService,
   ) {
     this.productForm = this.fb.group({
       name: ['', Validators.required, Validators.minLength(2), Validators.maxLength(50)],
@@ -76,55 +81,98 @@ export class NewPostComponent {
     this.productForm.get(listName)?.patchValue([...currentList]);
   }
 
+  private readonly allowedImagePatterns = [
+    /^https?:\/\/(?:drive\.google\.com\/uc\?id=|.*\.googleusercontent\.com\/)/, // Google Drive
+    /^https?:\/\/(?:www\.)?dropbox\.com\/.*\.(jpg|jpeg|png|gif)/, // Dropbox
+    /^https?:\/\/(?:i\.)?imgur\.com\/.*\.(jpg|jpeg|png|gif)/, // Imgur
+    /^https?:\/\/.*\.(jpg|jpeg|png|gif|webp|bmp)$/i // أي رابط ينتهي بامتداد صورة
+  ];
+  addImageLink(): void {
+    if (this.newImageLink && this.newImageLink.trim()) {
+      const url = this.newImageLink.trim();
+
+      if (!this.isValidImageLink(url)) {
+        this.toastr.error('Invalid image URL format', 'Error', {
+          timeOut: 3000,
+          positionClass: 'toast-top-right'
+        });
+        return;
+      }
+
+      if (this.imageLinks.includes(url)) {
+        this.toastr.warning('This image is already added', 'Duplicate');
+        return;
+      }
+
+      this.imageLinks.push(url);
+      this.newImageLink = '';
+
+      this.toastr.success('Image added successfully', 'Success', {
+        timeOut: 2000,
+        progressBar: true
+      });
+    }
+  }
+
+  removeImageLink(index: number): void {
+    this.imageLinks.splice(index, 1);
+    this.toastr.info('Image removed', 'Removed', {
+      timeOut: 1500
+    });
+  }
+
+
   onSubmit(): void {
-    if (this.productForm.invalid || this.imagePreviews.length === 0) {
-      alert('Please fill all required fields and upload at least one image');
+    if (this.productForm.invalid || this.imageLinks.length === 0) {
+      alert('Please fill all required fields and add at least one image link');
       return;
     }
 
     this.isLoading = true;
 
-    this.productService.uploadImages(this.selectedImages).subscribe({
-      next: (imageUrls) => {
-        const formValue = this.productForm.value;
-        const newProduct: Iproduct = {
-          id: '',
-          name: formValue.name,
-          price: formValue.price,
-          images: imageUrls,
-          category: formValue.categories,
-          color: formValue.colors,
-          description: formValue.description,
-          material: formValue.materials,
-          dimensions: formValue.dimensions,
-          quantity: formValue.quantity,
-          type: formValue.type,
-          sizes: formValue.sizes,
-          style: formValue.style,
-          rating: 0,
-          date: new Date().toISOString()
-        };
+    // لم نعد بحاجة لرفع الصور، سنستخدم الروابط مباشرة
+    const formValue = this.productForm.value;
+    const newProduct: Iproduct = {
+      id: '',
+      name: formValue.name,
+      price: formValue.price,
+      images: this.imageLinks, // استخدام مصفوفة الروابط مباشرة
+      category: formValue.categories,
+      color: formValue.colors,
+      description: formValue.description,
+      material: formValue.materials,
+      dimensions: formValue.dimensions,
+      quantity: formValue.quantity,
+      type: formValue.type,
+      sizes: formValue.sizes,
+      style: formValue.style,
+      rating: 0,
+      date: new Date().toISOString()
+    };
 
-        this.productService.addNewProduct(newProduct).subscribe({
-          next: () => {
-            alert('Product added successfully!');
-            this.router.navigate(['/new-arrivals']);
-          },
-          error: (err) => {
-            console.error('Error adding product:', err);
-            alert('Error adding product. Please try again.');
-            this.isLoading = false;
-          }
-        });
+    this.productService.addNewProduct(newProduct).subscribe({
+      next: () => {
+        alert('Product added successfully!');
+        this.router.navigate(['/new-arrivals']);
       },
       error: (err) => {
-        console.error('Error uploading images:', err);
-        alert('Error uploading images. Please try again.');
+        console.error('Error adding product:', err);
+        alert('Error adding product. Please try again.');
         this.isLoading = false;
       }
     });
   }
 
+  private isValidImageLink(url: string): boolean {
+    // التحقق من أن الرابط يبدأ بـ http أو https
+    if (!url.startsWith('http://') && !url.startsWith('https://')) {
+      return false;
+    }
 
-
+    // التحقق من أن الرابط يتطابق مع أحد الأنماط المسموح بها
+    return this.allowedImagePatterns.some(pattern => pattern.test(url));
+  }
 }
+
+
+

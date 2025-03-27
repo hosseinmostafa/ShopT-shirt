@@ -23,25 +23,32 @@ export class ProductService {
     }
     return Object.keys(response)
       .filter(key => response[key] !== null)
-      .map(key => ({
-        id: key,
-        name: response[key].name,
-        price: response[key].price,
-        images: response[key].images || [response[key].image],
-        description: response[key].description || 'No description available.',
-        category: Array.isArray(response[key].category) ? response[key].category : ['Uncategorized'],
-        color: response[key].color || [response[key].color] || ['N/A'],
-        rating: response[key].rating || 0,
-        material: response[key].material || [response[key].material] || ['N/A'],
-        dimensions: response[key].dimensions || 'N/A',
-        date: response[key].date || 'N/A',
-        quantity: response[key].quantity || 0,
-        type: response[key].type || "N/A",
-        sizes: response[key].sizes || [response[key].sizes] || ["N/A"],
-        style: response[key].style || "N/A",
-      }));
-  }
+      .map(key => {
+        const images = response[key].images ?
+          (Array.isArray(response[key].images) ?
+            response[key].images.map((img: any) => typeof img === 'string' ? img : img.url) :
+            [response[key].images.url]) :
+          ['assets/img/placeholder.png'];
 
+        return {
+          id: key,
+          name: response[key].name,
+          price: response[key].price,
+          images: images,
+          description: response[key].description || 'No description available.',
+          category: Array.isArray(response[key].category) ? response[key].category : ['Uncategorized'],
+          color: response[key].color || [response[key].color] || ['N/A'],
+          rating: response[key].rating || 0,
+          material: response[key].material || [response[key].material] || ['N/A'],
+          dimensions: response[key].dimensions || 'N/A',
+          date: response[key].date || 'N/A',
+          quantity: response[key].quantity || 0,
+          type: response[key].type || "N/A",
+          sizes: response[key].sizes || [response[key].sizes] || ["N/A"],
+          style: response[key].style || "N/A",
+        };
+      });
+  }
   // shop ---------------------------------------------
   loadProducts(): void {
     this.getProducts().subscribe({
@@ -147,29 +154,51 @@ export class ProductService {
     );
   }
 
-  // addNewProduct(product: Iproduct): Observable<any> {
-  //   const newProduct = {
-  //     ...product,
-  //     date: new Date().toISOString(),
-  //     rating: 0
-  //   };
-  //   return this.http.post(`${this.firebaseUrl}/New-products.json`, newProduct);
-  // }
+
+  private isValidImageUrl(url: string): boolean {
+    try {
+      new URL(url);
+
+      const allowedDomains = [
+        'drive.google.com',
+        'googleusercontent.com',
+        'dropbox.com',
+        'imgur.com'
+      ];
+
+      const urlObj = new URL(url);
+      const isAllowedDomain = allowedDomains.some(domain => urlObj.hostname.includes(domain));
+      const isImageExtension = /\.(jpg|jpeg|png|gif|webp|bmp)$/i.test(urlObj.pathname);
+
+      return isAllowedDomain || isImageExtension;
+    } catch {
+      return false;
+    }
+  }
 
 
   addNewProduct(product: Iproduct): Observable<any> {
+    const invalidLinks = product.images.filter(img => !this.isValidImageUrl(img));
+    if (invalidLinks.length > 0) {
+      return throwError(() => new Error(`Invalid image links: ${invalidLinks.join(', ')}`));
+    }
+
     const newProduct = {
       ...product,
       date: new Date().toISOString(),
-      rating: 0
+      rating: 0,
+      images: product.images.map((img, index) => ({
+        id: index,
+        url: img,
+        verified: true
+      }))
     };
 
     return this.http.post(`${this.firebaseUrl}/New-products.json`, newProduct);
   }
 
+
   uploadImages(images: File[]): Observable<string[]> {
-    // هنا يمكنك إضافة منطق رفع الصور إلى خدمة تخزين مثل Firebase Storage
-    // هذا مثال مبسط يعيد URLs وهمية
     return new Observable(subscriber => {
       setTimeout(() => {
         const urls = images.map(img => URL.createObjectURL(img));
@@ -195,4 +224,7 @@ export class ProductService {
       catchError((err) => this.handleError(err, 'Product not found'))
     );
   }
+
+
+
 }

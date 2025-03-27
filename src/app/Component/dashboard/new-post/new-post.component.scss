@@ -6,6 +6,9 @@
 
 .card-header {
     border-radius: 10px 10px 0 0 !important;
+    background-color: #000;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 66%);
+
 }
 
 .form-control,
@@ -32,3 +35,18 @@
 .img-thumbnail {
     border-radius: 5px;
 }
+
+.btn-cl{
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  
+    &:hover {
+      background-color: #555;
+    }
+}
+

@@ -18,6 +18,7 @@ export class NavComponent implements OnInit {
   subscription: Subscription;
   cartItemCount: number = 0;
   isLoggedIn: boolean = false;
+  currentLink: string = '';
 
   showCustomAlert: boolean = false;
   alertTitle: string = '';
@@ -32,12 +33,15 @@ export class NavComponent implements OnInit {
     this.subscription = this.navbarService.showNavbar.subscribe((value) => {
       this.showNavbar = value;
     });
+    this.navbarService.showAlert.subscribe((value) => {
+      this.showAlert = value;
+    });
   }
 
   private messages = [
-    { message: 'Sign up and get 20% off to your first order 🎉', button: 'Sign Up Now' },
-    { message: 'Limited time offer: Free shipping!', button: 'Shop Now' },
-    { message: 'Join our rewards program today!', button: 'Learn More' },
+    { message: 'Sign up and get 20% off to your first order 🎉', button: 'Sign Up Now', link: '/signup' },
+    { message: 'Limited time offer: Free shipping!', button: 'Shop Now', link: '/shop' },
+    // { message: 'Join our rewards program today!', button: 'Learn More' },
   ];
 
   private currentIndex: number = 0;
@@ -58,6 +62,7 @@ export class NavComponent implements OnInit {
       this.currentIndex = (this.currentIndex + 1) % this.messages.length;
       this.message = this.messages[this.currentIndex].message;
       this.button = this.messages[this.currentIndex].button;
+      this.currentLink = this.messages[this.currentIndex].link;
     }, 5000);
   }
 
@@ -95,4 +100,7 @@ export class NavComponent implements OnInit {
     this.authService.logout();
     this.router.navigate(['/login']);
   }
+
+
+
 }

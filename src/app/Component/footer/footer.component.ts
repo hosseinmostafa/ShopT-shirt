@@ -10,16 +10,24 @@ import { NgxSpinnerService } from 'ngx-spinner';
 })
 export class FooterComponent implements OnDestroy {
   showFooter: boolean = true;
+  showWelcomeMessage: boolean = false;
   subscription: Subscription;
+  welcomeSubscription: Subscription;
 
-  constructor(private footerServes: FooterService) {
-    this.subscription = this.footerServes.showFooter.subscribe((value) => {
+  constructor(private footerService: FooterService) {
+    this.subscription = this.footerService.showFooter.subscribe((value) => {
       this.showFooter = value;
-    })
+    });
+
+    this.welcomeSubscription = this.footerService.showWelcomeMessage.subscribe((value) => {
+      this.showWelcomeMessage = value;
+    });
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe()
-    this.footerServes.displayFooter()
+    this.subscription.unsubscribe();
+    this.welcomeSubscription.unsubscribe();
+    this.footerService.displayFooter();
+    this.footerService.hideWelcome();
   }
 }

@@ -6,6 +6,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class NavbarService {
   showNavbar: BehaviorSubject<boolean>;
+  showAlert = new BehaviorSubject<boolean>(true);
   constructor() {
     this.showNavbar = new BehaviorSubject<boolean>(true);
   }
@@ -16,6 +17,9 @@ export class NavbarService {
 
   display(): void {
     this.showNavbar.next(true);
+  }
+  hideAlert() {
+    this.showAlert.next(false);
   }
 }
 

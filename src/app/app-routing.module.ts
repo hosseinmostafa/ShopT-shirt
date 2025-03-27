@@ -37,8 +37,8 @@ const routes: Routes = [
   { path: 'new-arrivals', component: NewArrivalsComponent},
   { path: 'dashboard', component: DashboardComponent, canActivate: [authGuardGuard]},
   { path: 'posts', component: PostsComponent},
-  { path: 'analytics', component: AnalyticsComponent},
-  { path: 'new-post', component: NewPostComponent},
+  { path: 'analytics', component: AnalyticsComponent, canActivate: [authGuardGuard]},
+  { path: 'new-post', component: NewPostComponent, canActivate: [authGuardGuard]},
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: ErrorPageComponent },
 

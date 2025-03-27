@@ -54,6 +54,7 @@ import { EditPostComponent } from './Component/dashboard/edit-post/edit-post.com
     AnalyticsComponent,
     NewPostComponent,
     EditPostComponent,
+
   ],
   imports: [
     BrowserModule,

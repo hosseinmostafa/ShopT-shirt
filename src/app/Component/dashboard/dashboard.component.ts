@@ -19,7 +19,7 @@ export class DashboardComponent implements OnInit {
     { icon: "fa-solid fa-chart-line", text: 'Analytics', active: true, link: '/analytics' },
     { icon: "fa-solid fa-shop", text: 'Posts', active: false, link: '/posts' },
     { icon: "fa-solid fa-cart-plus", text: 'New Post', active: false, link: '/new-post' },
-    { icon: "fa-regular fa-pen-to-square", text: 'Edit Post', active: false, link: '/edit-post' },
+    // { icon: "fa-regular fa-pen-to-square", text: 'Edit Post', active: false, link: '/edit-post' },
   ];
 
   constructor() {

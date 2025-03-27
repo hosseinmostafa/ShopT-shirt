@@ -11,8 +11,6 @@ import { HomeProductDetailsComponent } from './Component/home-product-details/ho
 import { WatchlaterHarteComponent } from './Component/watchlater-harte/watchlater-harte.component';
 import { SignupComponent } from './Component/signup/signup.component';
 import { CustomAlertComponent } from './Component/custom-alert/custom-alert.component';
-import { authGuard } from './Gard/auth.guard';
-import { roleGuard } from './Gard/role.guard';
 import { authGuardGuard } from './Gard/auth.service';
 import { PymantComponent } from './Component/pymant/pymant.component';
 import { PayServesesInDashpordComponent } from './Component/pay-serveses-in-dashpord/pay-serveses-in-dashpord.component';

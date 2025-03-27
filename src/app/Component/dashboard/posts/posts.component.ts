@@ -31,7 +31,6 @@ export class PostsComponent {
   loadNewProducts(): void {
     this.watchlater.getNewProducts().subscribe({
       next: (products: any) => {
-        // Convert the Firebase object to array if needed
         if (products && typeof products === 'object') {
           this.newProducts = Object.keys(products).map(key => ({
             id: key,

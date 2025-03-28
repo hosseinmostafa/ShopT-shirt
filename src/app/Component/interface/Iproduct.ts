@@ -15,4 +15,5 @@ export interface Iproduct {
     sizes: string[];
     style: string;
     source?: string;
+    originalPrice?: number;
 }

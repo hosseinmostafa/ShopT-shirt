@@ -21,7 +21,7 @@ import { HomeProductDetailsComponent } from './Component/home-product-details/ho
 import { WatchlaterHarteComponent } from './Component/watchlater-harte/watchlater-harte.component';
 import { SignupComponent } from './Component/signup/signup.component';
 import { ToastrModule } from 'ngx-toastr';
-import { LucideAngularModule, UserX, ShoppingBasket, FileCog } from 'lucide-angular';
+import { LucideAngularModule, UserX, ShoppingBasket, FileCog, ListCollapse, PackageCheck } from 'lucide-angular';
 import { CustomAlertComponent } from './Component/custom-alert/custom-alert.component';
 import { PymantComponent } from './Component/pymant/pymant.component';
 import { DashboardComponent } from './Component/dashboard/dashboard.component';
@@ -30,6 +30,7 @@ import { PostsComponent } from './Component/dashboard/posts/posts.component';
 import { AnalyticsComponent } from './Component/dashboard/analytics/analytics.component';
 import { NewPostComponent } from './Component/dashboard/new-post/new-post.component';
 import { EditPostComponent } from './Component/dashboard/edit-post/edit-post.component';
+import { NewArrivalsProductdetailsComponent } from './Component/new-arrivals-productdetails/new-arrivals-productdetails.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,6 +55,7 @@ import { EditPostComponent } from './Component/dashboard/edit-post/edit-post.com
     AnalyticsComponent,
     NewPostComponent,
     EditPostComponent,
+    NewArrivalsProductdetailsComponent,
 
   ],
   imports: [
@@ -78,7 +80,7 @@ import { EditPostComponent } from './Component/dashboard/edit-post/edit-post.com
       maxOpened: 5,
       autoDismiss: true
     }),
-    LucideAngularModule.pick({ UserX, ShoppingBasket, FileCog }),
+    LucideAngularModule.pick({ UserX, ShoppingBasket, FileCog, ListCollapse, PackageCheck }),
   ],
 
   providers: [],

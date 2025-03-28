@@ -63,8 +63,6 @@ export class NewArrivalsComponent {
     });
   }
 
-
-
   updatePrice(event: Event): void {
     const target = event.target as HTMLInputElement;
     this.selectedPriceRange = parseFloat(target.value);
@@ -116,8 +114,9 @@ export class NewArrivalsComponent {
 
 
   // Product-details
-  getOneProduct(id: string): void {
-    this.router.navigate(['/product', id]);
+  getOneNewArrivalsProductDetails(id: string): void {
+    console.log('Navigating to product with ID:', id)
+    this.router.navigate(['/new-arrivals-productdetails', id]);
 
   }
 
@@ -131,9 +130,8 @@ export class NewArrivalsComponent {
     this.cartService.addToCart(product);
   }
 
-  // في CartComponent أو ShopComponent
   saveImage(product: any): void {
-    this.watchlater.saveImage(product, 'shop'); // أو 'home' إذا كانت الصورة من الصفحة الرئيسية
+    this.watchlater.saveImage(product, 'shop');
   }
 
   filterByCategory(category: string): void {

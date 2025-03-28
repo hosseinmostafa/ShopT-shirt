@@ -43,7 +43,7 @@
         <div class="col-12 col-lg-6 text-center d-lg-block" data-aos="fade-up">
           <div class="home-img">
             <div class="img-box">
-              <img src="./img-home/home1.jpg" alt="Alhussain" class="img-fluid w-100" >
+              <img src="./img-home/home1.jpg" alt="Alhussain" class="img-fluid w-100">
             </div>
           </div>
         </div>
@@ -103,7 +103,7 @@
 </section>
 <section class="categories overflow-hidden mt-5">
   <div class="container">
-    <div class="open-up" >
+    <div class="open-up">
       <h1 class="text-center responsive-name nam-home2">NEW ARRIVALS</h1>
       <div class="row">
         <div class="col-6 col-sm-4 col-md-4" data-aos="zoom-out">
@@ -115,7 +115,10 @@
             </div>
             <div class="category-content">
               <div class="product-button">
-                <a class="btn btn-common text-uppercase btn-link">Shop for men</a>
+                <a class="btn btn-common text-uppercase btn-link" [routerLink]="['/shop']"
+                  [queryParams]="{category: 'men'}">
+                  Shop for men
+                </a>
               </div>
             </div>
           </div>
@@ -129,7 +132,10 @@
             </div>
             <div class="category-content">
               <div class="product-button">
-                <a class="btn btn-common text-uppercase btn-link">Shop for women</a>
+                <a class="btn btn-common text-uppercase btn-link" [routerLink]="['/shop']"
+                  [queryParams]="{category: 'women'}">
+                  Shop for women
+                </a>
               </div>
             </div>
           </div>
@@ -143,7 +149,10 @@
             </div>
             <div class="category-content">
               <div class="product-button">
-                <a class="btn btn-common text-uppercase btn-link">Shop accessories</a>
+                <a class="btn btn-common text-uppercase btn-link" [routerLink]="['/shop']"
+                  [queryParams]="{category: 'accessories'}">
+                  Shop accessories
+                </a>
               </div>
             </div>
           </div>
@@ -153,9 +162,10 @@
   </div>
 </section>
 
+
 <!-- New Arrivals -->
 
-<section id="new-arrival" class="new-arrival product-carousel py-5 position-relative overflow-hidden" >
+<section id="new-arrival" class="new-arrival product-carousel py-5 position-relative overflow-hidden">
   <div class="container">
     <div class="d-flex flex-wrap justify-content-between align-items-center mt-5 mb-3">
       <h4 class="text-uppercase">Our New Arrivals</h4>
@@ -165,7 +175,8 @@
     <div class="swiper product-swiper open-up">
       <div class="swiper-wrapper d-flex">
         <div class="row">
-          <div class="swiper-slide col-6 col-sm-4 col-md-3" *ngFor="let product of displayedProducts" data-aos="fade-up">
+          <div class="swiper-slide col-6 col-sm-4 col-md-3" *ngFor="let product of displayedProducts"
+            data-aos="fade-up">
             <div class="product-item image-zoom-effect link-effect">
               <div class="image-holder position-relative">
                 <a [routerLink]="['/home-product-details', product.id]">
@@ -200,19 +211,14 @@
 <section class="collection bg-light position-relative py-5">
   <div class="container">
     <div class="row">
-      <div class="collection-item d-flex flex-wrap my-2" >
-        <div class="col-md-6 column-container" >
+      <div class="collection-item d-flex flex-wrap my-2">
+        <div class="col-md-6 column-container">
           <div class="image-holder">
-            <!-- <img src="./img-home/single-image-2.jpg" alt="collection" class="product-image img-fluid"> -->
-              <div class="video-background">
-                <video id="video1" autoplay loop muted class="product-image img-fluid">
-                  <source  src="./vidue/vda.mp4" 
-                    type="video/mp4">
-                </video>
-                <!-- <video id="video2" autoplay muted class="video-bg">
-                  <source src="./vidue/9861741-uhd_4096_2160_25fps.mp4" type="video/mp4">
-                </video> -->
-              </div>
+            <div class="video-background">
+              <video id="video1" autoplay loop muted class="product-image img-fluid">
+                <source src="./vidue/vda.mp4" type="video/mp4">
+              </video>
+            </div>
           </div>
         </div>
         <div class="col-md-6 column-container bg-white">
@@ -223,7 +229,7 @@
               fringilla odio mi. Consequat pharetra at magna imperdiet cursus ac faucibus sit libero. Ultricies quam
               nunc, lorem sit lorem urna, pretium aliquam ut. In vel, quis donec dolor id in. Pulvinar commodo mollis
               diam sed facilisis at cursus imperdiet cursus ac faucibus sit faucibus sit libero.</p>
-            <a class="btn  text-uppercase mt-3 btn-link">Shop Collection</a>
+            <a class="btn  text-uppercase mt-3 btn-link" [routerLink]="['/shop']">Shop Collection</a>
           </div>
         </div>
       </div>
@@ -249,7 +255,7 @@
     <div class="carousel-item active">
       <div class="testimonial-item text-center">
         <blockquote>
-          <p>More than expected crazy soft, <br> flexible and best fitted white simple denim shirt.</p>
+          <p class="text-cn">More than expected crazy soft, <br> flexible and best fitted white simple denim shirt.</p>
           <div class="review-title text-uppercase">casual way</div>
         </blockquote>
       </div>
@@ -257,7 +263,7 @@
     <div class="carousel-item">
       <div class="testimonial-item text-center">
         <blockquote>
-          <p>Best fitted white denim shirt more <br> than expected crazy soft, flexible</p>
+          <p class="text-cn">Best fitted white denim shirt more <br> than expected crazy soft, flexible</p>
           <div class="review-title text-uppercase">uptop</div>
         </blockquote>
       </div>
@@ -265,7 +271,7 @@
     <div class="carousel-item">
       <div class="testimonial-item text-center">
         <blockquote>
-          <p>Best fitted white denim shirt more white denim <br> than expected flexible crazy soft.</p>
+          <p class="text-cn">Best fitted white denim shirt more white denim <br> than expected flexible crazy soft.</p>
           <div class="review-title text-uppercase">Denim craze</div>
         </blockquote>
       </div>
@@ -279,4 +285,72 @@
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Next</span>
   </button>
+</section>
+
+<section class="blog py-5">
+  <div class="container">
+    <div class="d-flex flex-wrap justify-content-between align-items-center mt-5 mb-3">
+      <h4 class="text-uppercase element-title">Read Blog Posts</h4>
+      <a routerLink="/new-arrivals" class="btn-link">View All</a>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <article class="post-item">
+          <div class="post-image">
+            <a [routerLink]="['/new-arrivals']">
+              <img src="./img-home/post-image1.jpg" alt="image" class="post-grid-image img-fluid">
+            </a>
+          </div>
+          <div class="post-content d-flex flex-wrap gap-2 my-3">
+            <div class="post-meta text-uppercase fs-6 text-secondary">
+              <span class="post-category">Fashion /</span>
+              <span class="meta-day"> jul 11, 2022</span>
+            </div>
+            <h5 class="post-title text-uppercase">
+              <a routerLink="/new-arrivals">How to look outstanding in pastel</a>
+            </h5>
+            <p class="text-cn">Dignissim lacus,turpis ut suspendisse vel tellus.Turpis purus,gravida orci,fringilla...</p>
+          </div>
+        </article>
+      </div>
+      <div class="col-md-4">
+        <article class="post-item">
+          <div class="post-image">
+            <a routerLink="/new-arrivals">
+              <img src="./img-home/post-image2.jpg" alt="image" class="post-grid-image img-fluid">
+            </a>
+          </div>
+          <div class="post-content d-flex flex-wrap gap-2 my-3">
+            <div class="post-meta text-uppercase fs-6 text-secondary">
+              <span class="post-category">Fashion /</span>
+              <span class="meta-day"> jul 11, 2022</span>
+            </div>
+            <h5 class="post-title text-uppercase">
+              <a routerLink="/new-arrivals">Top 10 fashion trend for summer</a>
+            </h5>
+            <p class="text-cn">Turpis purus, gravida orci, fringilla dignissim lacus, turpis ut suspendisse vel tellus...</p>
+          </div>
+        </article>
+      </div>
+      <div class="col-md-4">
+        <article class="post-item">
+          <div class="post-image">
+            <a routerLink="/new-arrivals">
+              <img src="./img-home/post-image3.jpg" alt="image" class="post-grid-image img-fluid">
+            </a>
+          </div>
+          <div class="post-content d-flex flex-wrap gap-2 my-3">
+            <div class="post-meta text-uppercase fs-6 text-secondary">
+              <span class="post-category">Fashion /</span>
+              <span class="meta-day"> jul 11, 2022</span>
+            </div>
+            <h5 class="post-title text-uppercase">
+              <a routerLink="/new-arrivals">Crazy fashion with unique moment</a>
+            </h5>
+            <p class="text-cn">Turpis purus, gravida orci, fringilla dignissim lacus, turpis ut suspendisse vel tellus...</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
 </section>

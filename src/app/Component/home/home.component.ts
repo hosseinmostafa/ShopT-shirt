@@ -145,3 +145,5 @@ export class HomeComponent implements OnInit {
     this.watchlater.saveImage(product, 'shop');
   }
 }
+
+

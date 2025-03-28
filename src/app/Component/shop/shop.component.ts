@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../Service/product.service';
 import { Iproduct } from '../interface/Iproduct';
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CartService } from '../../Service/cart.service';
 import { WhatchlaterHarteService } from '../../Service/whatchlater-harte.service';
 import AOS from 'aos';
@@ -31,12 +31,26 @@ export class ShopComponent implements OnInit {
   selectedSize: string | null = null;
 
 
-  constructor(private productService: ProductService, private watchlater: WhatchlaterHarteService, private router: Router, private cartService: CartService) { }
+  constructor(
+    private productService: ProductService,
+    private watchlater: WhatchlaterHarteService,
+    private router: Router,
+    private cartService: CartService,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
     this.loadProducts();
     this.watchlater.getImages().subscribe((data: any) => {
       this.products = Object.keys(data).map(key => data[key]);
+    });
+    this.route.queryParams.subscribe(params => {
+      const category = params['category'];
+      if (category) {
+        this.filterByCategory(category);
+      } else {
+        this.filteredProducts = this.products;
+      }
     });
     AOS.init({
       // Settings that can be overridden on per-element basis, by `data-aos-*` attributes:
@@ -56,11 +70,9 @@ export class ShopComponent implements OnInit {
       next: (data) => {
         this.products = data;
         this.filteredProducts = data;
-        console.log('Products Loaded:', this.products);
       },
       error: (err) => {
         this.errMsg = err;
-        console.error('Error loading products:', err);
       },
     });
   }
@@ -133,24 +145,27 @@ export class ShopComponent implements OnInit {
     this.cartService.addToCart(product);
   }
 
-  // في CartComponent أو ShopComponent
   saveImage(product: any): void {
-    this.watchlater.saveImage(product, 'shop'); // أو 'home' إذا كانت الصورة من الصفحة الرئيسية
+    this.watchlater.saveImage(product, 'shop'); 
   }
 
   filterByCategory(category: string): void {
-    if (category === 'All') {
+    if (category === 'All' || !category) {
       this.filteredProducts = this.products;
     } else {
       this.filteredProducts = this.products.filter(product => {
         if (product.category && Array.isArray(product.category)) {
-          return product.category.some(cat => cat.toLowerCase() === category.toLowerCase());
+          return product.category.some(cat =>
+            cat.toLowerCase() === category.toLowerCase()
+          );
         }
         return false;
       });
     }
     console.log('Filtered Products:', this.filteredProducts);
   }
+
+
 }
 
 

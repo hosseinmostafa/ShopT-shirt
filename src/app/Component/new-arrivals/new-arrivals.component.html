@@ -126,12 +126,12 @@
                         </div>
                         <div class="form-check mb-2">
                             <input class="form-check-input" type="checkbox" id="t-shirts-modal"
-                                (change)="toggleCategory('T-shirts')">
+                                (change)="toggleCategory('T-shirt')">
                             <label class="form-check-label" for="t-shirts-modal">T-shirts</label>
                         </div>
                         <div class="form-check mb-2">
                             <input class="form-check-input" type="checkbox" id="shorts-modal"
-                                (change)="toggleCategory('Shorts')">
+                                (change)="toggleCategory('Short')">
                             <label class="form-check-label" for="shorts-modal">Shorts</label>
                         </div>
                         <div class="form-check mb-2">
@@ -143,6 +143,11 @@
                             <input class="form-check-input" type="checkbox" id="jeans-modal"
                                 (change)="toggleCategory('Jeans')">
                             <label class="form-check-label" for="jeans-modal">Jeans</label>
+                        </div>
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" id="jeans-modal"
+                                (change)="toggleCategory('Sweatshirt')">
+                            <label class="form-check-label" for="jeans-modal">Sweat-shirt</label>
                         </div>
                     </div>
                     <div class="filter-group">
@@ -168,13 +173,18 @@
                     <div class="d-flex flex-wrap justify-content-between align-items-center mb-3">
                         <h4 class="text-uppercase">Casual</h4>
                     </div>
-                    <div class="swiper product-swiper open-up" >
+                    <div class="swiper product-swiper open-up">
                         <div class="swiper-wrapper d-flex">
                             <div class="row">
-                                <div class="col-6 col-sm-4 col-md-4" *ngFor="let product of filteredProducts" data-aos="fade-up">
+                                <div class="col-6 col-sm-4 col-md-4" *ngFor="let product of filteredProducts"
+                                    data-aos="fade-up">
                                     <div class="product-item image-zoom-effect link-effect pb-3">
                                         <div class="image-holder position-relative">
-                                            <a [routerLink]="['/product-details', product.id]">
+                                            <!-- <a [routerLink]="['/', product.id]">
+                                                <img [src]="product.images[0]" alt="{{ product.name }}"
+                                                    class="product-image img-fluid">
+                                            </a> -->
+                                            <a [routerLink]="['/new-arrivals-productdetails', product.id]">
                                                 <img [src]="product.images[0]" alt="{{ product.name }}"
                                                     class="product-image img-fluid">
                                             </a>
@@ -189,8 +199,11 @@
                                                     (click)="addToCart(product)">
                                                     <span>{{ product.price | currency }}</span>
                                                 </a>
-                                                <a [routerLink]="['/product-details', product.id]"
-                                                    class="text-decoration-none mt-2 prod-details"
+                                                <!-- <a [routerLink]="['/new-arrivals-productdetails', product.id]">
+                                                    <img [src]="product.images[0]" alt="{{ product.name }}"
+                                                        class="product-image img-fluid">
+                                                </a> -->
+                                                <a [routerLink]="['/new-arrivals-productdetails', product.id]" class="text-decoration-none mt-2 prod-details"
                                                     data-after="Show Details">
                                                     <span></span>
                                                 </a>
@@ -206,6 +219,3 @@
         </div>
     </div>
 </div>
-
-
-

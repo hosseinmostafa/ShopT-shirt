@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { throwError } from 'rxjs';
 import { ProductService } from '../../Service/product.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -11,7 +11,7 @@ import { WhatchlaterHarteService } from '../../Service/whatchlater-harte.service
   templateUrl: './home-product-details.component.html',
   styleUrl: './home-product-details.component.scss'
 })
-export class HomeProductDetailsComponent {
+export class HomeProductDetailsComponent implements OnDestroy, AfterViewInit {
   bigImgSrc: string = '';
   oneProduct: any;
   productId: any;
@@ -32,17 +32,29 @@ export class HomeProductDetailsComponent {
 
   mainImage: string = '';
 
+
+  isZoomed = false;
+  zoomTransform = 'scale(1)';
+  zoomOrigin = 'center center';
+  private zoomMoveListener!: () => void;
+  private zoomOutListener!: () => void;
+  
+  @ViewChild('zoomContainer') zoomContainer!: ElementRef;
+
+
+
   constructor(
     private productService: ProductService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private cartService: CartService,
-    private watchlater: WhatchlaterHarteService
+    private watchlater: WhatchlaterHarteService,
+    private renderer: Renderer2
   ) { }
 
-  changeMainImage(image: string): void {
-    this.mainImage = image;
-  }
+  // changeMainImage(image: string): void {
+  //   this.mainImage = image;
+  // }
 
   ngOnInit(): void {
     this.productId = this.activatedRoute.snapshot.paramMap.get('id');
@@ -107,6 +119,81 @@ export class HomeProductDetailsComponent {
 
   saveImage(product: any): void {
     this.watchlater.saveImage(product, 'shop');
+  }
+  goToPymant(): void {
+    this.router.navigate(['/pymant']);
+  }
+
+
+
+
+  ngAfterViewInit(): void {
+    this.setupZoomListeners();
+    // this.enableMobileZoom();
+  }
+
+  ngOnDestroy(): void {
+    this.cleanupZoomListeners();
+  }
+
+  onMouseEnter(): void {
+    this.isZoomed = true;
+  }
+
+  onMouseLeave(): void {
+    this.isZoomed = false;
+    this.zoomTransform = 'scale(1)';
+  }
+
+  onMouseMove(event: MouseEvent): void {
+    if (this.isZoomed) {
+      const container = this.zoomContainer.nativeElement;
+      const rect = container.getBoundingClientRect();
+
+      // Calculate mouse position relative to container
+      const x = event.clientX - rect.left;
+      const y = event.clientY - rect.top;
+
+      // Calculate percentage position
+      const percentX = (x / rect.width) * 100;
+      const percentY = (y / rect.height) * 100;
+
+      // Update zoom origin and transform
+      this.zoomOrigin = `${percentX}% ${percentY}%`;
+      this.zoomTransform = 'scale(2)'; // Adjust zoom level as needed
+    }
+  }
+
+  private setupZoomListeners(): void {
+    if (this.zoomContainer) {
+      this.zoomMoveListener = this.renderer.listen(
+        this.zoomContainer.nativeElement,
+        'mousemove',
+        (event) => this.onMouseMove(event)
+      );
+
+      this.zoomOutListener = this.renderer.listen(
+        this.zoomContainer.nativeElement,
+        'mouseleave',
+        () => this.onMouseLeave()
+      );
+    }
+  }
+
+  private cleanupZoomListeners(): void {
+    if (this.zoomMoveListener) {
+      this.zoomMoveListener();
+    }
+    if (this.zoomOutListener) {
+      this.zoomOutListener();
+    }
+  }
+
+  changeMainImage(image: string): void {
+    this.mainImage = image;
+    // Reset zoom when image changes
+    this.isZoomed = false;
+    this.zoomTransform = 'scale(1)';
   }
 }
 

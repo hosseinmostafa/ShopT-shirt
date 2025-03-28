@@ -24,12 +24,22 @@ export class ProductService {
     return Object.keys(response)
       .filter(key => response[key] !== null)
       .map(key => {
-        const images = response[key].images ?
-          (Array.isArray(response[key].images) ?
-            response[key].images.map((img: any) => typeof img === 'string' ? img : img.url) :
-            [response[key].images.url]) :
-          ['assets/img/placeholder.png'];
+        let images: string[] = [];
 
+        if (response[key].images) {
+          if (Array.isArray(response[key].images)) {
+            images = response[key].images.map((img: any) =>
+              typeof img === 'string' ? img :
+                (img.url || 'assets/img/placeholder.png')
+            );
+          } else if (typeof response[key].images === 'string') {
+            images = [response[key].images];
+          } else if (response[key].images.url) {
+            images = [response[key].images.url];
+          }
+        } else {
+          images = ['assets/img/placeholder.png'];
+        }
         return {
           id: key,
           name: response[key].name,
@@ -48,6 +58,7 @@ export class ProductService {
           style: response[key].style || "N/A",
         };
       });
+      
   }
   // shop ---------------------------------------------
   loadProducts(): void {
@@ -67,10 +78,6 @@ export class ProductService {
       catchError((err) => this.handleError(err, 'Failed to fetch products.'))
     );
   }
-
-
-  // ---------------------------------------------
-
 
   // Procuct Home---------------------------------------------
   loadProductsHome(): void {
@@ -122,14 +129,6 @@ export class ProductService {
       error: (err) => console.error('Error loading products:', err),
     });
   }
-  getNewProducts(): Observable<Iproduct[]> {
-    const url = `https://shop-tt-default-rtdb.firebaseio.com/New-products.json`;
-
-    return this.http.get<{ [key: string]: any }>(url).pipe(
-      map(this.transformProductData),
-      catchError((err) => this.handleError(err, 'Failed to fetch new products.'))
-    );
-  }
 
   // ---------------------------------------------
 
@@ -153,7 +152,6 @@ export class ProductService {
       })
     );
   }
-
 
   private isValidImageUrl(url: string): boolean {
     try {
@@ -226,5 +224,33 @@ export class ProductService {
   }
 
 
+  // ---------------------------------
+  // new-arrivals-productdetails
+  loadNewArrivalsProductDetails(): void {
+    this.getNewProducts().subscribe({
+      next: (products) => {
+        this.productsSubject.next(products);
+      },
+      error: (err) => console.error('Error loading products:', err),
+    });
+  }
+  getOneNewArrivalsProductDetails(id: string): Observable<Iproduct | undefined> {
+    return this.getNewProducts().pipe(
+      map((products: Iproduct[]) => {
+        const oneProduct = products.find((product) => product.id === id);
+        if (!oneProduct) throw new Error('Product not found');
+        return oneProduct;
+      }),
+      catchError((err) => this.handleError(err, 'Product not found'))
+    );
+  }
+
+  getNewProducts(): Observable<Iproduct[]> {
+    const url = `https://shop-tt-default-rtdb.firebaseio.com/New-products.json`;
+    return this.http.get<{ [key: string]: any }>(url).pipe(
+      map(this.transformProductData),
+      catchError((err) => this.handleError(err, 'Failed to fetch new products.'))
+    );
+  }
 
 }

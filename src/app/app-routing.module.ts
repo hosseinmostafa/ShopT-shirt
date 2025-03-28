@@ -19,26 +19,28 @@ import { DashboardComponent } from './Component/dashboard/dashboard.component';
 import { PostsComponent } from './Component/dashboard/posts/posts.component';
 import { AnalyticsComponent } from './Component/dashboard/analytics/analytics.component';
 import { NewPostComponent } from './Component/dashboard/new-post/new-post.component';
+import { NewArrivalsProductdetailsComponent } from './Component/new-arrivals-productdetails/new-arrivals-productdetails.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'shop', component: ShopComponent},
+  { path: 'shop', component: ShopComponent },
   { path: 'cart', component: CartComponent, canActivate: [authGuardGuard] },
   { path: 'login', component: LoginComponent },
-  { path: 'product-details/:id', component: ProductDetailsComponent, canActivate: [authGuardGuard]},
+  { path: 'product-details/:id', component: ProductDetailsComponent, canActivate: [authGuardGuard] },
   { path: "home-product-details/:id", component: HomeProductDetailsComponent, canActivate: [authGuardGuard] },
   { path: 'writ-problem', component: WritProblemComponent },
-  { path: 'watchlater-harte', component: WatchlaterHarteComponent, canActivate: [authGuardGuard]},
+  { path: 'watchlater-harte', component: WatchlaterHarteComponent, canActivate: [authGuardGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
-  { path: 'custom-alert', component: CustomAlertComponent},
+  { path: 'custom-alert', component: CustomAlertComponent },
   { path: 'pymant', component: PymantComponent, canActivate: [authGuardGuard] },
-  { path: 'pay-serveses-in-dashpord', component: PayServesesInDashpordComponent},
-  { path: 'new-arrivals', component: NewArrivalsComponent},
-  { path: 'dashboard', component: DashboardComponent, canActivate: [authGuardGuard]},
-  { path: 'posts', component: PostsComponent},
-  { path: 'analytics', component: AnalyticsComponent, canActivate: [authGuardGuard]},
-  { path: 'new-post', component: NewPostComponent, canActivate: [authGuardGuard]},
+  { path: 'pay-serveses-in-dashpord', component: PayServesesInDashpordComponent },
+  { path: 'new-arrivals', component: NewArrivalsComponent },
+  { path: 'dashboard', component: DashboardComponent, canActivate: [authGuardGuard] },
+  { path: 'posts', component: PostsComponent },
+  { path: 'analytics', component: AnalyticsComponent, canActivate: [authGuardGuard] },
+  { path: 'new-post', component: NewPostComponent, canActivate: [authGuardGuard] },
+  { path: 'new-arrivals-productdetails/:id', component: NewArrivalsProductdetailsComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: ErrorPageComponent },
 

@@ -233,3 +233,53 @@ h6{
         margin-right: 5px;
     }
 }
+
+
+/* Add these styles to your existing CSS */
+
+.zoom-container {
+    position: relative;
+    overflow: hidden;
+    // width: 100%;
+    // height: 500px;
+    /* Adjust based on your needs */
+    cursor: grab;
+
+    &.zoomed {
+        cursor: grab;
+    }
+}
+
+.main-product-image {
+    // width: 100%;
+    // height: 100%;
+    object-fit: contain;
+    transition: transform 0.1s ease-out;
+    will-change: transform;
+        height: 74vh;
+            max-height: 80vh;
+}
+
+@media (max-width: 991.98px) {
+    .zoom-container {
+        height: 400px;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .zoom-container {
+        height: 300px;
+    }
+}
+
+.accordion-button:focus {
+    z-index: 3;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(0, 0, 0, 0.25) !important;
+}
+
+.accordion-button:not(.collapsed) {
+    color: var(--bs-accordion-active-color);
+    background-color: transparent !important;
+    box-shadow: inset 0 calc(-1* var(--bs-accordion-border-width)) 0 var(--bs-accordion-border-color);
+}

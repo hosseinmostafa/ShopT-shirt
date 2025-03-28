@@ -15,7 +15,7 @@
                                     <div *ngFor="let item of cartItems"
                                         class="row mb-4 d-flex justify-content-between align-items-center">
                                         <div class="col-md-2 col-lg-2 col-xl-2">
-                                            <img [src]="item.images" class="img-fluid rounded-3" [alt]="item.name">
+                                            <img [src]="item.images[0] || 'assets/img/placeholder.png'" class="img-fluid rounded-3" [alt]="item.name">
                                         </div>
                                         <div class="col-md-3 col-lg-3 col-xl-3">
                                             <h6 class="mb-0">{{ item.name }}</h6>
@@ -67,7 +67,7 @@
                                     </div>
                                     <div class="d-flex justify-content-between mb-3">
                                         <h5 class="text-uppercase">Total price</h5>
-                                        <h5>{{ getTotalPrice() + 5 | currency }}</h5>
+                                        <h5>{{ getTotalPrice() | currency }}</h5>
                                     </div>
                                     <a  data-mdb-button-init data-mdb-ripple-init class="btn btn-common text-uppercase btn-link fs-5"
                                         data-mdb-ripple-color="dark" (click)="navigateToPayment()"

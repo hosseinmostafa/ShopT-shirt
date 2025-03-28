@@ -1,42 +1,48 @@
-import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, Renderer2, ViewChild } from '@angular/core';
 import { ProductService } from '../../Service/product.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Iproduct } from '../interface/Iproduct';
 import { CartService } from '../../Service/cart.service';
 import { WhatchlaterHarteService } from '../../Service/whatchlater-harte.service';
+import { Iproduct } from '../interface/Iproduct';
+import { throwError } from 'rxjs';
 
 @Component({
-  selector: 'app-product-details',
-  templateUrl: './product-details.component.html',
-  styleUrls: ['./product-details.component.scss']
+  selector: 'app-new-arrivals-productdetails',
+  templateUrl: './new-arrivals-productdetails.component.html',
+  styleUrl: './new-arrivals-productdetails.component.scss'
 })
-export class ProductDetailsComponent implements OnInit, OnDestroy, AfterViewInit  {
-  productId: string | null = null;
-  oneProduct: Iproduct | null = null;
-  mainImage: string = 'assets/img/placeholder.png';
-  errMsg: string | null = null;
+export class NewArrivalsProductdetailsComponent implements OnDestroy, AfterViewInit {
+  bigImgSrc: string = '';
+  oneProduct: any;
+  productId: any;
+  errMsg: any;
 
-  // المتغيرات الأخرى
   products: Iproduct[] = [];
   filteredProducts: Iproduct[] = [];
+  errMsgProduct: string | null = null;
   price: number = 0;
+
   colors: string[] = ['#000000', '#dc2626', '#2563eb', '#16a34a', 'yellow', '#8b5cf6', 'orange'];
   additionalColors: string[] = ['skyblue', 'palevioletred', 'white'];
   selectedColor: string | null = null;
+
   selectedCategories: string[] = [];
   selectedPriceRange: number = 0;
   selectedRating: number | null = null;
-  quantity: number = 1;
-  savedImages: any[] = [];
 
+  mainImage: string = '';
+
+
+  isZoomed = false;
+  zoomTransform = 'scale(1)';
+  zoomOrigin = 'center center';
+  private zoomMoveListener!: () => void;
+  private zoomOutListener!: () => void;
   
-    isZoomed = false;
-    zoomTransform = 'scale(1)';
-    zoomOrigin = 'center center';
-    private zoomMoveListener!: () => void;
-    private zoomOutListener!: () => void;
-    
-    @ViewChild('zoomContainer') zoomContainer!: ElementRef;
+  @ViewChild('zoomContainer') zoomContainer!: ElementRef;
+
+
+
   constructor(
     private productService: ProductService,
     private activatedRoute: ActivatedRoute,
@@ -48,81 +54,40 @@ export class ProductDetailsComponent implements OnInit, OnDestroy, AfterViewInit
 
   ngOnInit(): void {
     this.productId = this.activatedRoute.snapshot.paramMap.get('id');
-    const source = this.activatedRoute.snapshot.queryParamMap.get('source') || 'shop';
-
+    console.log('Product ID from route:', this.productId); // أضف هذا السطر
     if (this.productId) {
-      this.loadProduct(this.productId, source);
-    } else {
-      this.errMsg = 'Product ID is missing';
+      this.productService.getOneNewArrivalsProductDetails(this.productId).subscribe({
+        next: (data) => {
+          console.log('Product data received:', data); // أضف هذا السطر
+          this.oneProduct = data;
+          if (this.oneProduct.images && this.oneProduct.images.length > 0) {
+            this.mainImage = this.oneProduct.images[0];
+          }
+        },
+        error: (err) => {
+          console.error('Error loading product:', err); // أضف هذا السطر
+          this.errMsg = err.message || 'Product not found';
+          return throwError(() => err);
+        }
+      });
     }
   }
 
-  private loadProduct(id: string, source: string): void {
-    const productObservable = source === 'new'
-      ? this.productService.getOneNewProduct(id)
-      : source === 'home'
-        ? this.productService.getOneProductHome(id)
-        : this.productService.getOneProduct(id);
-
-    productObservable.subscribe({
-      next: (data) => {
-        this.handleProductData(data, source);
-      },
-      error: (err) => {
-        this.handleError(err);
-      }
-    });
-  }
-
-  private handleProductData(data: Iproduct | undefined, source: string): void {
-    if (!data) {
-      this.errMsg = 'Product data is empty';
-      return;
-    }
-
-    this.oneProduct = {
-      ...data,
-      quantity: data.quantity || 1,
-      source: source
-    };
-
-    this.mainImage = data.images?.[0] || 'assets/img/placeholder.png';
-  }
-
-  private handleError(err: any): void {
-    console.error('Error loading product:', err);
-    this.errMsg = 'Failed to load product details';
-    this.mainImage = 'assets/img/placeholder.png';
-  }
-
-  // changeMainImage(image: string): void {
-  //   this.mainImage = image || 'assets/img/placeholder.png';
-  // }
+  quantity: number = 1;
 
   increaseQuantity(): void {
-    if (this.oneProduct) {
-      this.oneProduct.quantity = (this.oneProduct.quantity || 1) + 1;
-      this.cartService.updateQuantity(this.oneProduct.id, this.oneProduct.quantity);
-    }
+    this.quantity++;
   }
 
   decreaseQuantity(): void {
-    if (this.oneProduct && this.oneProduct.quantity && this.oneProduct.quantity > 1) {
-      this.oneProduct.quantity--;
-      this.cartService.updateQuantity(this.oneProduct.id, this.oneProduct.quantity);
+    if (this.quantity > 1) {
+      this.quantity--;
     }
   }
 
   updatePrice(event: Event): void {
     const target = event.target as HTMLInputElement;
-    this.selectedPriceRange = parseFloat(target.value) || 0;
-  }
-
-  updateQuantity(newQuantity: number): void {
-    if (this.oneProduct) {
-      this.oneProduct.quantity = Math.max(1, newQuantity || 1);
-      this.cartService.updateQuantity(this.oneProduct.id, this.oneProduct.quantity);
-    }
+    this.selectedPriceRange = parseFloat(target.value);
   }
 
   selectColor(color: string): void {
@@ -137,6 +102,14 @@ export class ProductDetailsComponent implements OnInit, OnDestroy, AfterViewInit
     }
   }
 
+  selectRating(rating: number): void {
+    this.selectedRating = rating;
+  }
+
+  getOneNewArrivalsProductDetails(id: string): void {
+    this.router.navigate(['/new-arrivals', id]);
+  }
+
   addToCart(): void {
     if (this.oneProduct) {
       this.cartService.addToCart(this.oneProduct);
@@ -144,26 +117,10 @@ export class ProductDetailsComponent implements OnInit, OnDestroy, AfterViewInit
   }
 
   saveImage(product: any): void {
-    if (this.oneProduct) {
-      this.watchlater.saveImage(this.oneProduct, this.oneProduct.source || 'shop');
-    }
+    this.watchlater.saveImage(product, 'shop');
   }
-
-  loadSavedImages(): void {
-    this.savedImages = this.watchlater.getSavedImages();
-  }
-
-  removeImage(index: number): void {
-    this.watchlater.removeImage(index);
-    this.loadSavedImages();
-  }
-
   goToPymant(): void {
     this.router.navigate(['/pymant']);
-  }
-
-  getOneProduct(id: string): void {
-    this.router.navigate(['/product', id]);
   }
 
 
@@ -202,7 +159,7 @@ export class ProductDetailsComponent implements OnInit, OnDestroy, AfterViewInit
 
       // Update zoom origin and transform
       this.zoomOrigin = `${percentX}% ${percentY}%`;
-      this.zoomTransform = 'scale(2)';
+      this.zoomTransform = 'scale(2)'; // Adjust zoom level as needed
     }
   }
 
@@ -238,3 +195,5 @@ export class ProductDetailsComponent implements OnInit, OnDestroy, AfterViewInit
     this.zoomTransform = 'scale(1)';
   }
 }
+
+

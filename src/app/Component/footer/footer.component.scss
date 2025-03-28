@@ -10,6 +10,7 @@
 
 .footer {
   background: var(--color-background);
+  cursor: pointer;
 }
 
 .footer .copyright>span {
@@ -141,4 +142,8 @@
   background-color: rgba(0, 0, 0, 0.4);
   opacity: 0;
   transition: 0.6s ease-out;
+}
+
+.cursor-pointer{
+  cursor: pointer;
 }

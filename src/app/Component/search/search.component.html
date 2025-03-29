@@ -1,0 +1,25 @@
+<div class="container mt-4">
+    <h2>Search Results for "{{ searchTerm }}"</h2>
+
+    <div *ngIf="results.length > 0; else noResults">
+        <div class="row">
+            <div *ngFor="let item of results" class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ item.name }}</h5>
+                        <p class="card-text">Category: {{ item.category }}</p>
+                        <p class="card-text">Price: {{ item.price | currency }}</p>
+                        <p class="card-text">Description: {{ item.description }}</p>
+                        <a [routerLink]="['/shop', item.id]" class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <ng-template #noResults>
+        <div class="alert alert-info">
+            No results found for "{{ searchTerm }}"
+        </div>
+    </ng-template>
+</div>

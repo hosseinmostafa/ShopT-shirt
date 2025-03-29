@@ -17,7 +17,7 @@
 
 .filter-group {
     border-bottom: 1px solid #e5e7eb;
-    padding-bottom: 1rem;
+    // padding-bottom: 1rem;
     margin-bottom: 1rem;
 }
 
@@ -273,9 +273,9 @@ a.btn-link.text-light:after {
     transform: none !important;
 }
 
-.reversed-slider{
-    direction: rtl;
-}
+// .reversed-slider{
+//     direction: rtl;
+// }
 
 .color-option {
     width: 40px;
@@ -363,4 +363,12 @@ a.btn-link.text-light:after {
 .size-option.selected {
     background-color: black !important;
     color: white !important;
+}
+
+hr {
+     margin: 10px !important; 
+    color: inherit;
+    border: 0;
+    border-top: var(--bs-border-width) solid;
+    opacity: .25;
 }

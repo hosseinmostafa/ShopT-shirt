@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { debounceTime, distinctUntilChanged, Subscription } from 'rxjs';
 import { NavbarService } from '../../Service/navbar.service';
 import { CartService } from '../../Service/cart.service';
 import { AuthService } from '../../Service/auth.service';
 import { Router } from '@angular/router';
+import { SearchService } from '../../Service/search.service';
+import { HttpClient } from '@angular/common/http';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-nav',
@@ -23,12 +26,24 @@ export class NavComponent implements OnInit {
   showCustomAlert: boolean = false;
   alertTitle: string = '';
   alertMessage: string = '';
+  searchTerm: string = '';
+  showAuthAlert: boolean = false;
+  authAlertTitle: string = '';
+  authAlertMessage: string = '';
+
+  // متغيرات الـ Alert الخاصة بالبحث
+  showSearchAlert: boolean = false;
+  searchAlertTitle: string = '';
+  searchAlertMessage: string = '';
 
   constructor(
     private navbarService: NavbarService,
     private cartService: CartService,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private searchService: SearchService,
+    private http: HttpClient,
+    private spinner: NgxSpinnerService
   ) {
     this.subscription = this.navbarService.showNavbar.subscribe((value) => {
       this.showNavbar = value;
@@ -41,12 +56,12 @@ export class NavComponent implements OnInit {
   private messages = [
     { message: 'Sign up and get 20% off to your first order 🎉', button: 'Sign Up Now', link: '/signup' },
     { message: 'Limited time offer: Free shipping!', button: 'Shop Now', link: '/shop' },
-    // { message: 'Join our rewards program today!', button: 'Learn More' },
   ];
 
   private currentIndex: number = 0;
 
   ngOnInit(): void {
+    this.openSpinner1();
     this.startMessageRotation();
     this.cartService.cartItems$.subscribe((items) => {
       this.cartItemCount = this.cartService.getCartItemCount();
@@ -102,5 +117,98 @@ export class NavComponent implements OnInit {
   }
 
 
+  searchResults: any[] = [];
 
+  onSearchInput(event: Event) {
+    const term = (event.target as HTMLInputElement).value;
+    this.searchTerm = term;
+
+    if (term.trim().length > 0) {
+      this.searchService.search(term)
+        .pipe(
+          debounceTime(300),
+          distinctUntilChanged()
+        )
+        .subscribe({
+          next: (results) => {
+            this.searchResults = results.map(item => ({
+              ...item,
+              id: item.id || this.generateId(item)
+            }));
+          },
+          error: (err) => {
+            console.error('Search error:', err);
+            this.searchResults = [];
+          }
+        });
+    } else {
+      this.searchResults = [];
+    }
+  }
+
+  private generateId(item: any): string {
+    return item.name.toLowerCase().replace(/\s+/g, '-') + '-' + Math.random().toString(36).substr(2, 9);
+  }
+
+  onSearch() {
+    if (this.searchTerm.trim()) {
+      this.searchService.search(this.searchTerm).subscribe({
+        next: (results) => {
+          if (results.length > 0) {
+            this.router.navigate(['/search'], {
+              state: { results, term: this.searchTerm }
+            });
+          } else {
+            this.showSearchErrorAlert();
+          }
+        },
+        error: (err) => {
+          console.error('Search error:', err);
+          this.showSearchErrorAlert();
+        }
+      });
+    }
+  }
+
+  showSearchErrorAlert() {
+    this.searchAlertTitle = 'No Results Found';
+    this.searchAlertMessage = `No items found for "${this.searchTerm}"`;
+    this.showSearchAlert = true;
+  }
+
+  // دالة معالجة نعم لـ Alert البحث
+  onSearchAlertYes() {
+    this.showSearchAlert = false;
+    // يمكنك إضافة أي إجراء إضافي هنا
+  }
+
+  // دالة معالجة لا لـ Alert البحث
+  onSearchAlertNo() {
+    this.showSearchAlert = false;
+  }
+
+  showNoResultsAlert() {
+    this.alertTitle = 'No Results';
+    this.alertMessage = `No items found for "${this.searchTerm}"`;
+    this.showCustomAlert = true;
+  }
+
+  isSearchExpanded: boolean = false;
+  expandSearch() {
+    this.isSearchExpanded = true;
+    document.body.style.overflow = 'hidden';
+  }
+
+  collapseSearch() {
+    this.isSearchExpanded = false;
+    document.body.style.overflow = '';
+    this.searchTerm = '';
+    this.searchResults = [];
+  }
+  openSpinner1(): void {
+    this.spinner.show();
+    setTimeout(() => {
+      this.spinner.hide(); // Ensure the spinner hides after loading products
+    }, 2000);
+  }
 }

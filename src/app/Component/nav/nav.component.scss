@@ -98,6 +98,88 @@
 }
 
 
+
+.navbar-toggler-icon {
+  display: inline-block;
+  width: 1.5em;
+  height: 1.5em;
+  vertical-align: middle;
+  background-image: var(--bs-navbar-toggler-icon-bg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+
+}
+
+
+.search-container {
+  position: relative;
+}
+
+.search-results-dropdown {
+  z-index: 1000;
+  max-height: 300px;
+  overflow-y: auto;
+  top: 100%;
+  left: 0;
+
+  .dropdown-item {
+    cursor: pointer;
+
+    &:hover {
+      background-color: #f8f9fa;
+    }
+  }
+}
+
+.no-alert {
+  margin-top: 0 !important;
+}
+
+
+
+
+
+.search-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  backdrop-filter: blur(5px);
+}
+
+.form-ser {
+  transition: all 0.3s ease;
+  z-index: 1000;
+
+  &.expanded {
+    // position: fixed;
+    // top: 20px;
+    // left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 800px;
+
+    .search-container {
+      width: 100%;
+    }
+
+    input {
+      font-size: 1.2rem;
+    }
+  }
+}
+
+.search-results-dropdown {
+  max-height: 70vh;
+  overflow-y: auto;
+  z-index: 1001;
+}
+
+
 @media (max-width: 991px) {
   .sidebar {
     // display: none !important;
@@ -113,10 +195,6 @@
     color: white !important;
   }
 
-  // .form-control{
-  //   display: none;
-  // }
-  // input-container
   .input-container {
     display: none;
   }
@@ -125,22 +203,50 @@
     display: flex !important;
     justify-content: center;
     align-items: center;
-    margin-right: 5px;
+    margin-right: 106px;
   }
 
   .icon-shoping {
-    top: 10px;
+    top: -5px !important;
+  }
+
+  .form-control {
+    display: none !important;
+  }
+
+  .icon-sec {
+    display: none !important;
+  }
+
+  .btn .badge{
+    top: 6px;
   }
 }
 
-.navbar-toggler-icon {
-  display: inline-block;
-  width: 1.5em;
-  height: 1.5em;
-  vertical-align: middle;
-  background-image: var(--bs-navbar-toggler-icon-bg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 100%;
+// تخصيص Alert البحث
+.search-alert {
+  background-color: #f8f9fa;
+  border-color: #dee2e6;
 
+  .alert-title {
+    color: #6c757d;
+  }
+
+  .alert-message {
+    color: #495057;
+  }
+}
+
+// تخصيص Alert التسجيل
+.auth-alert {
+  background-color: #f1f8fe;
+  border-color: #bee3f8;
+
+  .alert-title {
+    color: #2b6cb0;
+  }
+
+  .alert-message {
+    color: #4a5568;
+  }
 }

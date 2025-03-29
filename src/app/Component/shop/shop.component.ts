@@ -6,6 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CartService } from '../../Service/cart.service';
 import { WhatchlaterHarteService } from '../../Service/whatchlater-harte.service';
 import AOS from 'aos';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-shop',
@@ -36,10 +37,12 @@ export class ShopComponent implements OnInit {
     private watchlater: WhatchlaterHarteService,
     private router: Router,
     private cartService: CartService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private spinner: NgxSpinnerService
   ) { }
 
   ngOnInit(): void {
+    this.openSpinner1();
     this.loadProducts();
     this.watchlater.getImages().subscribe((data: any) => {
       this.products = Object.keys(data).map(key => data[key]);
@@ -156,6 +159,13 @@ export class ShopComponent implements OnInit {
       });
     }
     console.log('Filtered Products:', this.filteredProducts);
+  }
+
+  openSpinner1(): void {
+    this.spinner.show();
+    setTimeout(() => {
+      this.spinner.hide(); // Ensure the spinner hides after loading products
+    }, 1000);
   }
 
 }

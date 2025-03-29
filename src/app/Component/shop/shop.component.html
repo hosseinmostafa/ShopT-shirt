@@ -1,12 +1,15 @@
+<ngx-spinner bdColor="rgb(0,0,0)" size="medium" color="#fff" type="square-jelly-box" [fullScreen]="true">
+  <p style="color: white"> Loading... </p>
+</ngx-spinner>
 <div class="container py-5">
   <!-- Top Bar -->
-  <div class="d-flex justify-content-between align-items-center mb-4">
+  <div class="d-flex justify-content-between align-items-center">
     <nav
       style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);"
       aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="#">Home</a></li>
-        <li class="breadcrumb-item active" aria-current="page">New Arrivals</li>
+        <li class="breadcrumb-item active" aria-current="page">Shop</li>
       </ol>
     </nav>
     <div class="d-flex gap-2 align-items-center">
@@ -19,7 +22,6 @@
           <li><a class="dropdown-item" (click)="filterByCategory('men')">Man</a></li>
           <li><a class="dropdown-item" (click)="filterByCategory('women')">Woman</a></li>
           <li><a class="dropdown-item" (click)="filterByCategory('kids')">Kids</a></li>
-          <li><a class="dropdown-item" (click)="filterByCategory('Accessories')">Accessories</a></li>
         </ul>
       </div>
     </div>
@@ -82,27 +84,27 @@
           <h6 class="mb-3">Sizing</h6>
           <div class="row mb-2">
             <div class="col-6">
-              <label class="btn rounded-5 size-option w-100" [ngClass]="{'selected': selectedSize === 'sizeXS'}"
+              <label class="btn rounded-5 size-option w-100" [ngClass]="{'selected': selectedSize === 'XX-Small'}"
                 (click)="selectSize('XX-Small')">XX-Small</label>
             </div>
             <div class="col-6">
-              <label class="btn rounded-5 size-option w-100" [ngClass]="{'selected': selectedSize === 'sizeS'}"
+              <label class="btn rounded-5 size-option w-100" [ngClass]="{'selected': selectedSize === 'X-Small'}"
                 (click)="selectSize('X-Small')">X-Small</label>
             </div>
             <div class="col-6">
-              <label class="btn rounded-5 size-option w-100" [ngClass]="{'selected': selectedSize === 'sizeM'}"
+              <label class="btn rounded-5 size-option w-100" [ngClass]="{'selected': selectedSize === 'Small'}"
                 (click)="selectSize('Small')">Small</label>
             </div>
             <div class="col-6">
-              <label class="btn rounded-5 size-option w-100" [ngClass]="{'selected': selectedSize === 'sizeL'}"
+              <label class="btn rounded-5 size-option w-100" [ngClass]="{'selected': selectedSize === 'Medium'}"
                 (click)="selectSize('Medium')">Medium</label>
             </div>
             <div class="col-6">
-              <label class="btn rounded-5 size-option w-100" [ngClass]="{'selected': selectedSize === 'sizeXL'}"
+              <label class="btn rounded-5 size-option w-100" [ngClass]="{'selected': selectedSize === 'Large'}"
                 (click)="selectSize('Large')">Large</label>
             </div>
             <div class="col-6">
-              <label class="btn rounded-5 size-option w-100" [ngClass]="{'selected': selectedSize === 'sizeXXL'}"
+              <label class="btn rounded-5 size-option w-100" [ngClass]="{'selected': selectedSize === 'X-Large'}"
                 (click)="selectSize('X-Large')">X-Large</label>
             </div>
           </div>
@@ -200,7 +202,8 @@
                                                         class="product-image img-fluid">
                                                 </a> -->
                         <a [routerLink]="['/product-details', product.id]"
-                          class="text-decoration-none mt-2 prod-details" data-after="Show Details">
+                          class="text-decoration-none mt-2 prod-details" data-after="Show Details"
+                          >
                           <span></span>
                         </a>
                       </div>

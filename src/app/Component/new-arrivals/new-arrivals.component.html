@@ -19,7 +19,6 @@
                     <li><a class="dropdown-item" (click)="filterByCategory('men')">Man</a></li>
                     <li><a class="dropdown-item" (click)="filterByCategory('women')">Woman</a></li>
                     <li><a class="dropdown-item" (click)="filterByCategory('kids')">Kids</a></li>
-                    <li><a class="dropdown-item" (click)="filterByCategory('accessories')">Accessories</a></li>
                 </ul>
             </div>
         </div>
@@ -48,7 +47,7 @@
                         <label class="form-check-label" for="t-shirts">T-shirts</label>
                     </div>
                     <div class="form-check mb-2">
-                        <input class="form-check-input" type="checkbox" id="shorts" (change)="toggleCategory('Shirt')">
+                        <input class="form-check-input" type="checkbox" id="shorts" (change)="toggleCategory('Shorts')">
                         <label class="form-check-label" for="shorts">Shorts</label>
                     </div>
                     <div class="form-check mb-2">
@@ -59,6 +58,16 @@
                     <div class="form-check mb-2">
                         <input class="form-check-input" type="checkbox" id="jeans" (change)="toggleCategory('Jeans')">
                         <label class="form-check-label" for="jeans">Jeans</label>
+                    </div>
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" id="Sweat-shirt"
+                            (change)="toggleCategory('Sweatshirt')">
+                        <label class="form-check-label" for="Sweat-shirt">Sweat-shirt</label>
+                    </div>
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" id="Accessories"
+                            (change)="toggleCategory('Accessories')">
+                        <label class="form-check-label" for="Accessories">Accessories</label>
                     </div>
                 </div>
 
@@ -77,33 +86,33 @@
                     <div class="row mb-2">
                         <div class="col-6">
                             <label class="btn rounded-5 size-option w-100"
-                                [ngClass]="{'selected': selectedSize === 'sizeXS'}"
-                                (click)="selectSize('sizeXS')">XX-Small</label>
+                                [ngClass]="{'selected': selectedSize === 'XX-Small'}"
+                                (click)="selectSize('XX-Small')">XX-Small</label>
                         </div>
                         <div class="col-6">
                             <label class="btn rounded-5 size-option w-100"
-                                [ngClass]="{'selected': selectedSize === 'sizeS'}"
-                                (click)="selectSize('sizeS')">X-Small</label>
+                                [ngClass]="{'selected': selectedSize === 'X-Small'}"
+                                (click)="selectSize('X-Small')">X-Small</label>
                         </div>
                         <div class="col-6">
                             <label class="btn rounded-5 size-option w-100"
-                                [ngClass]="{'selected': selectedSize === 'sizeM'}"
-                                (click)="selectSize('sizeM')">Small</label>
+                                [ngClass]="{'selected': selectedSize === 'Small'}"
+                                (click)="selectSize('Small')">Small</label>
                         </div>
                         <div class="col-6">
                             <label class="btn rounded-5 size-option w-100"
-                                [ngClass]="{'selected': selectedSize === 'sizeL'}"
-                                (click)="selectSize('sizeL')">Medium</label>
+                                [ngClass]="{'selected': selectedSize === 'Medium'}"
+                                (click)="selectSize('Medium')">Medium</label>
                         </div>
                         <div class="col-6">
                             <label class="btn rounded-5 size-option w-100"
-                                [ngClass]="{'selected': selectedSize === 'sizeXL'}"
-                                (click)="selectSize('sizeXL')">Large</label>
+                                [ngClass]="{'selected': selectedSize === 'Large'}"
+                                (click)="selectSize('Large')">Large</label>
                         </div>
                         <div class="col-6">
                             <label class="btn rounded-5 size-option w-100"
-                                [ngClass]="{'selected': selectedSize === 'sizeXXL'}"
-                                (click)="selectSize('sizeXXL')">X-Large</label>
+                                [ngClass]="{'selected': selectedSize === 'X-Large'}"
+                                (click)="selectSize('X-Large')">X-Large</label>
                         </div>
                     </div>
                 </div>
@@ -180,10 +189,6 @@
                                     data-aos="fade-up">
                                     <div class="product-item image-zoom-effect link-effect pb-3">
                                         <div class="image-holder position-relative">
-                                            <!-- <a [routerLink]="['/', product.id]">
-                                                <img [src]="product.images[0]" alt="{{ product.name }}"
-                                                    class="product-image img-fluid">
-                                            </a> -->
                                             <a [routerLink]="['/new-arrivals-productdetails', product.id]">
                                                 <img [src]="product.images[0]" alt="{{ product.name }}"
                                                     class="product-image img-fluid">
@@ -199,11 +204,8 @@
                                                     (click)="addToCart(product)">
                                                     <span>{{ product.price | currency }}</span>
                                                 </a>
-                                                <!-- <a [routerLink]="['/new-arrivals-productdetails', product.id]">
-                                                    <img [src]="product.images[0]" alt="{{ product.name }}"
-                                                        class="product-image img-fluid">
-                                                </a> -->
-                                                <a [routerLink]="['/new-arrivals-productdetails', product.id]" class="text-decoration-none mt-2 prod-details"
+                                                <a [routerLink]="['/new-arrivals-productdetails', product.id]"
+                                                    class="text-decoration-none mt-2 prod-details"
                                                     data-after="Show Details">
                                                     <span></span>
                                                 </a>

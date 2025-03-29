@@ -31,6 +31,8 @@ import { AnalyticsComponent } from './Component/dashboard/analytics/analytics.co
 import { NewPostComponent } from './Component/dashboard/new-post/new-post.component';
 import { EditPostComponent } from './Component/dashboard/edit-post/edit-post.component';
 import { NewArrivalsProductdetailsComponent } from './Component/new-arrivals-productdetails/new-arrivals-productdetails.component';
+import { SearchComponent } from './Component/search/search.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,7 +58,7 @@ import { NewArrivalsProductdetailsComponent } from './Component/new-arrivals-pro
     NewPostComponent,
     EditPostComponent,
     NewArrivalsProductdetailsComponent,
-
+    SearchComponent,
   ],
   imports: [
     BrowserModule,
@@ -81,6 +83,8 @@ import { NewArrivalsProductdetailsComponent } from './Component/new-arrivals-pro
       autoDismiss: true
     }),
     LucideAngularModule.pick({ UserX, ShoppingBasket, FileCog, ListCollapse, PackageCheck }),
+    NgxSpinnerModule,
+    BrowserAnimationsModule
   ],
 
   providers: [],

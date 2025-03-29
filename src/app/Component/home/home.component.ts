@@ -6,6 +6,7 @@ import { CartService } from '../../Service/cart.service';
 import { WhatchlaterHarteService } from '../../Service/whatchlater-harte.service';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import AOS from 'aos';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-home',
@@ -46,12 +47,14 @@ export class HomeComponent implements OnInit {
     private router: Router,
     private watchlater: WhatchlaterHarteService,
     private productService: ProductService,
-    private cartService: CartService
+    private cartService: CartService,
+    private spinner: NgxSpinnerService
   ) { }
 
   ngOnInit(): void {
     this.startCounters();
     this.loadProductsHome();
+    this.openSpinner1();
     AOS.init({
       // Settings that can be overridden on per-element basis, by `data-aos-*` attributes:
       offset: 120, // offset (in px) from the original trigger point
@@ -65,6 +68,13 @@ export class HomeComponent implements OnInit {
     });
   }
 
+
+  openSpinner1(): void {
+    this.spinner.show();
+    setTimeout(() => {
+      this.spinner.hide(); // Ensure the spinner hides after loading products
+    }, 2000);
+  }
   startCounters(): void {
     this.animateValue(0, 100, 2000, (value) => (this.brandCount1 = value));
     this.animateValue(0, 400, 2000, (value) => (this.brandCount2 = value));

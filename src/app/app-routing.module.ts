@@ -21,6 +21,7 @@ import { AnalyticsComponent } from './Component/dashboard/analytics/analytics.co
 import { NewPostComponent } from './Component/dashboard/new-post/new-post.component';
 import { NewArrivalsProductdetailsComponent } from './Component/new-arrivals-productdetails/new-arrivals-productdetails.component';
 import { roleGuard } from './Gard/role.guard';
+import { SearchComponent } from './Component/search/search.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -41,6 +42,7 @@ const routes: Routes = [
   { path: 'analytics', component: AnalyticsComponent, canActivate: [authGuardGuard] },
   { path: 'new-post', component: NewPostComponent, canActivate: [authGuardGuard] },
   { path: 'new-arrivals-productdetails/:id', component: NewArrivalsProductdetailsComponent, canActivate: [authGuardGuard] },
+  { path: 'search', component: SearchComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: ErrorPageComponent },
 

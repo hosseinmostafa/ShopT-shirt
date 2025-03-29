@@ -20,6 +20,7 @@ import { PostsComponent } from './Component/dashboard/posts/posts.component';
 import { AnalyticsComponent } from './Component/dashboard/analytics/analytics.component';
 import { NewPostComponent } from './Component/dashboard/new-post/new-post.component';
 import { NewArrivalsProductdetailsComponent } from './Component/new-arrivals-productdetails/new-arrivals-productdetails.component';
+import { roleGuard } from './Gard/role.guard';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -37,10 +38,9 @@ const routes: Routes = [
   { path: 'pay-serveses-in-dashpord', component: PayServesesInDashpordComponent },
   { path: 'new-arrivals', component: NewArrivalsComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate: [authGuardGuard] },
-  { path: 'posts', component: PostsComponent },
   { path: 'analytics', component: AnalyticsComponent, canActivate: [authGuardGuard] },
   { path: 'new-post', component: NewPostComponent, canActivate: [authGuardGuard] },
-  { path: 'new-arrivals-productdetails/:id', component: NewArrivalsProductdetailsComponent },
+  { path: 'new-arrivals-productdetails/:id', component: NewArrivalsProductdetailsComponent, canActivate: [authGuardGuard] },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: ErrorPageComponent },
 

@@ -1,7 +1,7 @@
 /* Sidebar */
 #sidebar {
     position: absolute;
-    top: 65px;
+    top: 110px;
     left: 0;
     height: 92vh;
     width: 280px;
@@ -179,4 +179,8 @@
     opacity: 0;
     pointer-events: none;
     display: none;
+}
+
+.icon-logout{
+    cursor: pointer;
 }

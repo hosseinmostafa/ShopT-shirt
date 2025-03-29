@@ -1,7 +1,9 @@
 import { Component, HostListener, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { LucideAngularModule, FileCog } from 'lucide-angular';
+import { AuthService } from '../../Service/auth.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -17,12 +19,15 @@ export class DashboardComponent implements OnInit {
 
   menuItems = [
     { icon: "fa-solid fa-chart-line", text: 'Analytics', active: true, link: '/analytics' },
-    { icon: "fa-solid fa-shop", text: 'Posts', active: false, link: '/posts' },
+    // { icon: "fa-solid fa-shop", text: 'Posts', active: false, link: '/posts' },
     { icon: "fa-solid fa-cart-plus", text: 'New Post', active: false, link: '/new-post' },
     // { icon: "fa-regular fa-pen-to-square", text: 'Edit Post', active: false, link: '/edit-post' },
   ];
 
-  constructor() {
+  constructor(
+    private authService: AuthService,
+    private router: Router
+  ) {
     this.checkIfMobile();
   }
 
@@ -55,7 +60,7 @@ export class DashboardComponent implements OnInit {
     setTimeout(() => {
       this.isLoading = false;
       console.log('Splash Screen');
-    }, 1000);
+    }, 5000);
 
     document.addEventListener('click', () => {
       this.playVideo(this.currentVideoIndex);
@@ -101,5 +106,34 @@ export class DashboardComponent implements OnInit {
   playNextVideo() {
     this.currentVideoIndex = (this.currentVideoIndex + 1) % this.videos.length;
     this.playVideo(this.currentVideoIndex);
+  }
+
+  showAlert: boolean = true;
+  message: string = 'Sign up and get 20% off to your first order 🎉';
+  button: string = 'Sign Up Now';
+  showNavbar: boolean = true;
+  cartItemCount: number = 0;
+  isLoggedIn: boolean = false;
+  currentLink: string = '';
+
+  showCustomAlert: boolean = false;
+  alertTitle: string = '';
+  alertMessage: string = '';
+  showCustomAlertMessage() {
+    this.alertTitle = 'Confirm exit';
+    this.alertMessage = 'Are you sure you want to log out?';
+    this.showCustomAlert = true;
+  }
+
+  onUserIconClick() {
+    if (this.isLoggedIn) {
+      this.showCustomAlertMessage();
+    } else {
+      this.router.navigate(['/signup']);
+    }
+  }
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/login']);
   }
 }

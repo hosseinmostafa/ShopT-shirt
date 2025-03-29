@@ -56,6 +56,7 @@ export class NewArrivalsComponent {
         this.filteredProducts = data;
         console.log('Products Loaded:', this.products);
       },
+
       error: (err) => {
         this.errMsg = err;
         console.error('Error loading products:', err);

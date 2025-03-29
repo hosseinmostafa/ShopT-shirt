@@ -44,14 +44,6 @@ export class ShopComponent implements OnInit {
     this.watchlater.getImages().subscribe((data: any) => {
       this.products = Object.keys(data).map(key => data[key]);
     });
-    this.route.queryParams.subscribe(params => {
-      const category = params['category'];
-      if (category) {
-        this.filterByCategory(category);
-      } else {
-        this.filteredProducts = this.products;
-      }
-    });
     AOS.init({
       // Settings that can be overridden on per-element basis, by `data-aos-*` attributes:
       offset: 120, // offset (in px) from the original trigger point
@@ -121,6 +113,8 @@ export class ShopComponent implements OnInit {
 
     this.isFilterOpen = false;
   }
+
+
   selectStyle(style: string): void {
     this.selectedStyle = this.selectedStyle === style ? null : style;
   }
@@ -141,30 +135,28 @@ export class ShopComponent implements OnInit {
   }
 
 
+
   addToCart(product: Iproduct): void {
     this.cartService.addToCart(product);
   }
 
   saveImage(product: any): void {
-    this.watchlater.saveImage(product, 'shop'); 
+    this.watchlater.saveImage(product, 'shop');
   }
 
   filterByCategory(category: string): void {
-    if (category === 'All' || !category) {
+    if (category === 'All') {
       this.filteredProducts = this.products;
     } else {
       this.filteredProducts = this.products.filter(product => {
         if (product.category && Array.isArray(product.category)) {
-          return product.category.some(cat =>
-            cat.toLowerCase() === category.toLowerCase()
-          );
+          return product.category.some(cat => cat.toLowerCase() === category.toLowerCase());
         }
         return false;
       });
     }
     console.log('Filtered Products:', this.filteredProducts);
   }
-
 
 }
 

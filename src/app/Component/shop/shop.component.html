@@ -6,7 +6,7 @@
       aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="#">Home</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Shop</li>
+        <li class="breadcrumb-item active" aria-current="page">New Arrivals</li>
       </ol>
     </nav>
     <div class="d-flex gap-2 align-items-center">
@@ -43,11 +43,11 @@
           <hr>
           <h6 class="mb-3">Type</h6>
           <div class="form-check mb-2">
-            <input class="form-check-input" type="checkbox" id="t-shirts" (change)="toggleCategory('T-shirt')">
+            <input class="form-check-input" type="checkbox" id="t-shirts" (change)="toggleCategory('T-shirts')">
             <label class="form-check-label" for="t-shirts">T-shirts</label>
           </div>
           <div class="form-check mb-2">
-            <input class="form-check-input" type="checkbox" id="shorts" (change)="toggleCategory('Short')">
+            <input class="form-check-input" type="checkbox" id="shorts" (change)="toggleCategory('Shirt')">
             <label class="form-check-label" for="shorts">Shorts</label>
           </div>
           <div class="form-check mb-2">
@@ -57,10 +57,6 @@
           <div class="form-check mb-2">
             <input class="form-check-input" type="checkbox" id="jeans" (change)="toggleCategory('Jeans')">
             <label class="form-check-label" for="jeans">Jeans</label>
-          </div>
-          <div class="form-check mb-2">
-            <input class="form-check-input" type="checkbox" id="jeans" (change)="toggleCategory('Sweatshirt')">
-            <label class="form-check-label" for="jeans">Sweat-shirt</label>
           </div>
         </div>
 
@@ -121,11 +117,11 @@
               <i class="fa-solid fa-filter mt-2"></i>
             </div>
             <div class="form-check mb-2">
-              <input class="form-check-input" type="checkbox" id="t-shirts-modal" (change)="toggleCategory('T-shirts')">
+              <input class="form-check-input" type="checkbox" id="t-shirts-modal" (change)="toggleCategory('T-shirt')">
               <label class="form-check-label" for="t-shirts-modal">T-shirts</label>
             </div>
             <div class="form-check mb-2">
-              <input class="form-check-input" type="checkbox" id="shorts-modal" (change)="toggleCategory('Shorts')">
+              <input class="form-check-input" type="checkbox" id="shorts-modal" (change)="toggleCategory('Short')">
               <label class="form-check-label" for="shorts-modal">Shorts</label>
             </div>
             <div class="form-check mb-2">
@@ -135,6 +131,10 @@
             <div class="form-check mb-2">
               <input class="form-check-input" type="checkbox" id="jeans-modal" (change)="toggleCategory('Jeans')">
               <label class="form-check-label" for="jeans-modal">Jeans</label>
+            </div>
+            <div class="form-check mb-2">
+              <input class="form-check-input" type="checkbox" id="jeans-modal" (change)="toggleCategory('Sweatshirt')">
+              <label class="form-check-label" for="jeans-modal">Sweat-shirt</label>
             </div>
           </div>
           <div class="filter-group">
@@ -153,9 +153,9 @@
       </div>
     </div>
 
-    <div class="col-lg-9" >
+    <div class="col-lg-9">
       <!-- New Arrivals -->
-      <section id="new-arrival" class="new-arrival product-carousel position-relative overflow-hidden" >
+      <section id="new-arrival" class="new-arrival product-carousel position-relative overflow-hidden">
         <div class="container">
           <div class="d-flex flex-wrap justify-content-between align-items-center mb-3">
             <h4 class="text-uppercase">Casual</h4>
@@ -165,7 +165,11 @@
               <div class="row">
                 <div class="col-6 col-sm-4 col-md-4" *ngFor="let product of filteredProducts" data-aos="fade-up">
                   <div class="product-item image-zoom-effect link-effect pb-3">
-                    <div class="image-holder position-relative" >
+                    <div class="image-holder position-relative">
+                      <!-- <a [routerLink]="['/', product.id]">
+                                                <img [src]="product.images[0]" alt="{{ product.name }}"
+                                                    class="product-image img-fluid">
+                                            </a> -->
                       <a [routerLink]="['/product-details', product.id]">
                         <img [src]="product.images[0]" alt="{{ product.name }}" class="product-image img-fluid">
                       </a>
@@ -179,8 +183,12 @@
                         <a class="text-decoration-none" data-after="Add to cart" (click)="addToCart(product)">
                           <span>{{ product.price | currency }}</span>
                         </a>
-                        <a [routerLink]="['/product-details', product.id]" class="text-decoration-none mt-2 prod-details"
-                          data-after="Show Details">
+                        <!-- <a [routerLink]="['/new-arrivals-productdetails', product.id]">
+                                                    <img [src]="product.images[0]" alt="{{ product.name }}"
+                                                        class="product-image img-fluid">
+                                                </a> -->
+                        <a [routerLink]="['/product-details', product.id]"
+                          class="text-decoration-none mt-2 prod-details" data-after="Show Details">
                           <span></span>
                         </a>
                       </div>

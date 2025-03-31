@@ -9,18 +9,12 @@
         <li class="nav-item" *ngFor="let item of menuItems" [class.active]="item.active">
             <a class="nav-link" routerLinkActive="active" [routerLink]="item.link">
                 <i [class]="item.icon"></i>
-                <span  class="ms-2">{{ item.text }}</span>
+                <span class="ms-2">{{ item.text }}</span>
             </a>
         </li>
     </ul>
 
     <ul class="nav flex-column p-3 mt-auto">
-        <!-- <li class="nav-item">
-            <a class="nav-link">
-                <i class="fa-solid fa-gear"></i>
-                <span class="ms-2">Settings</span>
-            </a>
-        </li> -->
         <li class="nav-item">
             <a class="nav-link text-danger icon-logout" (click)="logout()">
                 <i class="fa-solid fa-arrow-right-from-bracket"></i>
@@ -31,7 +25,6 @@
 </nav>
 
 <div class="overlay" [class.active]="isSidebarHidden && isMobile" (click)="toggleSidebar()"></div>
-<!-- Splash Screen -->
 <div *ngIf="isLoading" class="splash-screen">
     <h1 class="text-center text-white">Welcome to the Dashboard</h1>
     <p class="text-center text-white">This is the main content area.</p>

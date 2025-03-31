@@ -65,8 +65,8 @@ export class CartComponent {
 
   navigateToPayment(): void {
     const totalPrice = this.getTotalPrice();
-    this.sharedService.setTotalPrice(totalPrice); // Save total price in shared service
-    this.router.navigate(['/pymant']); // Navigate to payment page
+    this.sharedService.setTotalPrice(totalPrice);
+    this.router.navigate(['/pymant']);
   }
 
 }

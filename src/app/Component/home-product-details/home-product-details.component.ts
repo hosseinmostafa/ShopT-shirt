@@ -51,11 +51,6 @@ export class HomeProductDetailsComponent implements OnDestroy, AfterViewInit {
     private watchlater: WhatchlaterHarteService,
     private renderer: Renderer2
   ) { }
-
-  // changeMainImage(image: string): void {
-  //   this.mainImage = image;
-  // }
-
   ngOnInit(): void {
     this.productId = this.activatedRoute.snapshot.paramMap.get('id');
     if (this.productId) {
@@ -149,18 +144,12 @@ export class HomeProductDetailsComponent implements OnDestroy, AfterViewInit {
     if (this.isZoomed) {
       const container = this.zoomContainer.nativeElement;
       const rect = container.getBoundingClientRect();
-
-      // Calculate mouse position relative to container
       const x = event.clientX - rect.left;
       const y = event.clientY - rect.top;
-
-      // Calculate percentage position
       const percentX = (x / rect.width) * 100;
       const percentY = (y / rect.height) * 100;
-
-      // Update zoom origin and transform
       this.zoomOrigin = `${percentX}% ${percentY}%`;
-      this.zoomTransform = 'scale(2)'; // Adjust zoom level as needed
+      this.zoomTransform = 'scale(2)';
     }
   }
 
@@ -191,7 +180,6 @@ export class HomeProductDetailsComponent implements OnDestroy, AfterViewInit {
 
   changeMainImage(image: string): void {
     this.mainImage = image;
-    // Reset zoom when image changes
     this.isZoomed = false;
     this.zoomTransform = 'scale(1)';
   }

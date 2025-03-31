@@ -38,7 +38,7 @@ export class NewArrivalsProductdetailsComponent implements OnDestroy, AfterViewI
   zoomOrigin = 'center center';
   private zoomMoveListener!: () => void;
   private zoomOutListener!: () => void;
-  
+
   @ViewChild('zoomContainer') zoomContainer!: ElementRef;
 
 
@@ -65,7 +65,7 @@ export class NewArrivalsProductdetailsComponent implements OnDestroy, AfterViewI
           }
         },
         error: (err) => {
-          console.error('Error loading product:', err); // أضف هذا السطر
+          console.error('Error loading product:', err);
           this.errMsg = err.message || 'Product not found';
           return throwError(() => err);
         }
@@ -148,18 +148,12 @@ export class NewArrivalsProductdetailsComponent implements OnDestroy, AfterViewI
     if (this.isZoomed) {
       const container = this.zoomContainer.nativeElement;
       const rect = container.getBoundingClientRect();
-
-      // Calculate mouse position relative to container
       const x = event.clientX - rect.left;
       const y = event.clientY - rect.top;
-
-      // Calculate percentage position
       const percentX = (x / rect.width) * 100;
       const percentY = (y / rect.height) * 100;
-
-      // Update zoom origin and transform
       this.zoomOrigin = `${percentX}% ${percentY}%`;
-      this.zoomTransform = 'scale(2)'; // Adjust zoom level as needed
+      this.zoomTransform = 'scale(2)';
     }
   }
 
@@ -190,7 +184,6 @@ export class NewArrivalsProductdetailsComponent implements OnDestroy, AfterViewI
 
   changeMainImage(image: string): void {
     this.mainImage = image;
-    // Reset zoom when image changes
     this.isZoomed = false;
     this.zoomTransform = 'scale(1)';
   }

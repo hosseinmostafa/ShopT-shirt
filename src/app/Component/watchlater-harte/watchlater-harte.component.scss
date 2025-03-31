@@ -1,13 +1,14 @@
 .container {
     font-family: var(--font-pro);
 }
+
 .filter-sidebar {
     background: white;
     border-radius: 12px;
     position: sticky;
     top: 20px;
     height: fit-content;
-    
+
 }
 
 .filter-group {
@@ -62,20 +63,14 @@
 }
 
 .btn {
-    // background-color: #000 !important;
     color: black !important;
     border: none !important;
     padding: 10px;
 }
 
-
-
 a {
     text-decoration: none;
 }
-
-
-
 .icon-arrow {
     width: 90px;
     height: 90px;
@@ -180,7 +175,6 @@ a {
 
 .product-item .btn-wishlist:hover {
     color: red;
-    // background-color: red;
 }
 
 .product-item:hover .btn-wishlist {
@@ -202,8 +196,6 @@ a {
         transform: rotate(359deg);
     }
 }
-
-
 
 a.btn-link,
 a.btn-link:after {
@@ -269,7 +261,8 @@ a.btn-link.text-light:after {
 .reversed-slider {
     direction: rtl;
 }
-.btn-link{
+
+.btn-link {
     transform: none !important;
 }
 

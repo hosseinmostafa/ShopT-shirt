@@ -58,7 +58,7 @@ export class ProductService {
           style: response[key].style || "N/A",
         };
       });
-      
+
   }
   // shop ---------------------------------------------
   loadProducts(): void {

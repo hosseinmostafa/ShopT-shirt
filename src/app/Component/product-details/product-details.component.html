@@ -66,14 +66,13 @@
                     </ng-template>
                 </div>
             </aside>
-
             <main class="col-lg-6">
                 <div class="ps-lg-3">
                     <div *ngIf="oneProduct; else loadingDetails">
                         <h4 class="title text-dark">
                             {{ oneProduct.name }}
                         </h4>
-                        <div class="d-flex flex-row my-3" >
+                        <div class="d-flex flex-row my-3">
                             <div class="text-warning mb-1 me-2" style="color: black !important">
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
@@ -90,20 +89,13 @@
                         <div class="mb-3 price-text">
                             <span class="h5">{{ oneProduct.price | currency }}</span>
                         </div>
-
-
                         <div class="row">
-
-
                             <h6 class="col-3 mb-3">Color</h6>
                             <dd class="col-9 text-small">{{ (oneProduct.color || ['N/A']).join(', ') }}</dd>
-
                             <h6 class="col-3">Material</h6>
                             <dd class="col-9 text-small">{{ (oneProduct.material || ['N/A']).join(', ') }}</dd>
                         </div>
-
                         <hr />
-
                         <div class="row mb-4">
                             <div class="col-md-12 col-12">
                                 <label class="mb-2">Size</label>
@@ -117,7 +109,6 @@
                                 </select>
                             </div>
                         </div>
-
                         <div class="d-flex justify-content-between align-items-center">
                             <a (click)="goToPymant()" class="btn btn-link"><img width="28" height="25" class="me-2"
                                     src="https://img.icons8.com/windows/32/buy.png" alt="buy" />Buy now</a>
@@ -128,10 +119,6 @@
                                 <i class="me-1 fa fa-heart fa-lg"></i> Save
                             </a>
                         </div>
-
-
-
-
                         <div class="accordion accordion-flush my-3 " id="accordionFlushExample">
                             <div class="accordion-item ">
                                 <h2 class="accordion-header">

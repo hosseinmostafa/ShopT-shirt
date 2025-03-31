@@ -73,8 +73,7 @@
 .icon-shoping {
   position: relative;
   top: -10px;
-  // font-size: 2px;
-  // background-color: black !important;
+
 }
 
 .bg-danger {
@@ -156,9 +155,7 @@
   z-index: 1000;
 
   &.expanded {
-    // position: fixed;
-    // top: 20px;
-    // left: 50%;
+
     transform: translateX(-50%);
     width: 90%;
     max-width: 800px;
@@ -182,7 +179,6 @@
 
 @media (max-width: 991px) {
   .sidebar {
-    // display: none !important;
     background-color: rgba(255, 255, 255, 0.15) !important;
     backdrop-filter: blur(10px) !important;
     -webkit-backdrop-filter: blur(10px) !important;
@@ -218,12 +214,11 @@
     display: none !important;
   }
 
-  .btn .badge{
+  .btn .badge {
     top: 6px;
   }
 }
 
-// تخصيص Alert البحث
 .search-alert {
   background-color: #f8f9fa;
   border-color: #dee2e6;
@@ -237,7 +232,6 @@
   }
 }
 
-// تخصيص Alert التسجيل
 .auth-alert {
   background-color: #f1f8fe;
   border-color: #bee3f8;

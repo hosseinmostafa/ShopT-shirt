@@ -16,11 +16,9 @@ import { PymantComponent } from './Component/pymant/pymant.component';
 import { PayServesesInDashpordComponent } from './Component/pay-serveses-in-dashpord/pay-serveses-in-dashpord.component';
 import { NewArrivalsComponent } from './Component/new-arrivals/new-arrivals.component';
 import { DashboardComponent } from './Component/dashboard/dashboard.component';
-import { PostsComponent } from './Component/dashboard/posts/posts.component';
 import { AnalyticsComponent } from './Component/dashboard/analytics/analytics.component';
 import { NewPostComponent } from './Component/dashboard/new-post/new-post.component';
 import { NewArrivalsProductdetailsComponent } from './Component/new-arrivals-productdetails/new-arrivals-productdetails.component';
-import { roleGuard } from './Gard/role.guard';
 import { SearchComponent } from './Component/search/search.component';
 
 const routes: Routes = [

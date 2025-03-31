@@ -236,18 +236,10 @@ h6 {
 
 }
 
-
-
-/* Add these styles to your existing CSS */
-
 .zoom-container {
     position: relative;
     overflow: hidden;
-    // width: 100%;
-    // height: 500px;
-    /* Adjust based on your needs */
     cursor: grab;
-
     &.zoomed {
         cursor: grab;
     }

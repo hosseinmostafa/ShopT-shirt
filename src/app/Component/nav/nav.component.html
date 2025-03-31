@@ -1,8 +1,5 @@
 <app-custom-alert [visible]="showCustomAlert" [title]="alertTitle" [message]="alertMessage" (onYes)="onAlertYes()"
   (onNo)="onAlertNo()"></app-custom-alert>
-
-
-
 <ngx-spinner bdColor="rgb(0,0,0)" size="medium" color="#fff" type="square-jelly-box" [fullScreen]="true">
   <p style="color: white"> Loading... </p>
 </ngx-spinner>
@@ -19,24 +16,18 @@
 </div>
 <nav class="navbar navbar-expand-lg navbar-dark bg-white sticky-top">
   <div class="container-fluid">
-    <!-- logo -->
     <a class="navbar-brand text-dark fw-bold fs-3 text-uppercase text-logo" routerLink="/">SHOP.CO</a>
-    <!-- tagil btn -->
     <button class="navbar-toggler shadow-none border-0 btn-nav" type="button" data-bs-toggle="offcanvas"
       data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-      <!-- <span class="navbar-toggler-icon text-dark"></span> -->
       <i class="fa-solid fa-bars text-dark fs-3"></i>
     </button>
-    <!-- sid -->
     <div class="sidebar offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar"
       aria-labelledby="offcanvasNavbarLabel">
-      <!-- sidebar Header -->
       <div class="offcanvas-header text-white border-bottom">
         <h5 class="offcanvas-title text-white" id="offcanvasNavbarLabel" routerLink="/">SHOP.CO</h5>
         <button type="button" class="btn-close btn-close-white shadow-none" data-bs-dismiss="offcanvas"
           aria-label="Close"></button>
       </div>
-      <!-- sidebar body -->
       <div class="offcanvas-body d-flex flex-column flex-lg-row p-4 p-lg-0">
         <ul
           class="navbar-nav flex-column flex-lg-row justify-content-center align-items-center fs-5 flex-grow-1 pe-3 me-auto mb-2 mb-lg-0 link-nav  mx-auto">

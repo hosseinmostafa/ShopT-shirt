@@ -176,13 +176,10 @@ export class NavComponent implements OnInit {
     this.showSearchAlert = true;
   }
 
-  // دالة معالجة نعم لـ Alert البحث
   onSearchAlertYes() {
     this.showSearchAlert = false;
-    // يمكنك إضافة أي إجراء إضافي هنا
   }
 
-  // دالة معالجة لا لـ Alert البحث
   onSearchAlertNo() {
     this.showSearchAlert = false;
   }
@@ -208,7 +205,7 @@ export class NavComponent implements OnInit {
   openSpinner1(): void {
     this.spinner.show();
     setTimeout(() => {
-      this.spinner.hide(); // Ensure the spinner hides after loading products
+      this.spinner.hide(); 
     }, 2000);
   }
 }

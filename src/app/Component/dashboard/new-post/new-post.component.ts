@@ -82,10 +82,10 @@ export class NewPostComponent {
   }
 
   private readonly allowedImagePatterns = [
-    /^https?:\/\/(?:drive\.google\.com\/uc\?id=|.*\.googleusercontent\.com\/)/, // Google Drive
-    /^https?:\/\/(?:www\.)?dropbox\.com\/.*\.(jpg|jpeg|png|gif)/, // Dropbox
-    /^https?:\/\/(?:i\.)?imgur\.com\/.*\.(jpg|jpeg|png|gif)/, // Imgur
-    /^https?:\/\/.*\.(jpg|jpeg|png|gif|webp|bmp)$/i // أي رابط ينتهي بامتداد صورة
+    /^https?:\/\/(?:drive\.google\.com\/uc\?id=|.*\.googleusercontent\.com\/)/,
+    /^https?:\/\/(?:www\.)?dropbox\.com\/.*\.(jpg|jpeg|png|gif)/,
+    /^https?:\/\/(?:i\.)?imgur\.com\/.*\.(jpg|jpeg|png|gif)/,
+    /^https?:\/\/.*\.(jpg|jpeg|png|gif|webp|bmp)$/i
   ];
   addImageLink(): void {
     if (this.newImageLink && this.newImageLink.trim()) {
@@ -130,13 +130,12 @@ export class NewPostComponent {
 
     this.isLoading = true;
 
-    // لم نعد بحاجة لرفع الصور، سنستخدم الروابط مباشرة
     const formValue = this.productForm.value;
     const newProduct: Iproduct = {
       id: '',
       name: formValue.name,
       price: formValue.price,
-      images: this.imageLinks, // استخدام مصفوفة الروابط مباشرة
+      images: this.imageLinks,
       category: formValue.categories,
       color: formValue.colors,
       description: formValue.description,
@@ -164,12 +163,9 @@ export class NewPostComponent {
   }
 
   private isValidImageLink(url: string): boolean {
-    // التحقق من أن الرابط يبدأ بـ http أو https
     if (!url.startsWith('http://') && !url.startsWith('https://')) {
       return false;
     }
-
-    // التحقق من أن الرابط يتطابق مع أحد الأنماط المسموح بها
     return this.allowedImagePatterns.some(pattern => pattern.test(url));
   }
 }

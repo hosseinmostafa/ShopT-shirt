@@ -6,7 +6,7 @@ import { CartService } from '../../Service/cart.service';
 import { WhatchlaterHarteService } from '../../Service/whatchlater-harte.service';
 
 @Component({
-  selector: 'app-product-details',
+  selector: 'ap',
   templateUrl: './product-details.component.html',
   styleUrls: ['./product-details.component.scss']
 })
@@ -14,10 +14,7 @@ export class ProductDetailsComponent implements OnInit, OnDestroy, AfterViewInit
   productId: string | null = null;
   oneProduct: Iproduct | null = null;
   mainImage: string = 'assets/img/placeholder.png';
-  errMsg: string | null = null;
-
-  // المتغيرات الأخرى
-  products: Iproduct[] = [];
+  errMsg: string | null = null;  products: Iproduct[] = [];
   filteredProducts: Iproduct[] = [];
   price: number = 0;
   colors: string[] = ['#000000', '#dc2626', '#2563eb', '#16a34a', 'yellow', '#8b5cf6', 'orange'];
@@ -95,10 +92,6 @@ export class ProductDetailsComponent implements OnInit, OnDestroy, AfterViewInit
     this.mainImage = 'assets/img/placeholder.png';
   }
 
-  // changeMainImage(image: string): void {
-  //   this.mainImage = image || 'assets/img/placeholder.png';
-  // }
-
   increaseQuantity(): void {
     if (this.oneProduct) {
       this.oneProduct.quantity = (this.oneProduct.quantity || 1) + 1;
@@ -171,7 +164,6 @@ export class ProductDetailsComponent implements OnInit, OnDestroy, AfterViewInit
 
   ngAfterViewInit(): void {
     this.setupZoomListeners();
-    // this.enableMobileZoom();
   }
 
   ngOnDestroy(): void {
@@ -191,16 +183,10 @@ export class ProductDetailsComponent implements OnInit, OnDestroy, AfterViewInit
     if (this.isZoomed) {
       const container = this.zoomContainer.nativeElement;
       const rect = container.getBoundingClientRect();
-
-      // Calculate mouse position relative to container
       const x = event.clientX - rect.left;
       const y = event.clientY - rect.top;
-
-      // Calculate percentage position
       const percentX = (x / rect.width) * 100;
       const percentY = (y / rect.height) * 100;
-
-      // Update zoom origin and transform
       this.zoomOrigin = `${percentX}% ${percentY}%`;
       this.zoomTransform = 'scale(2)';
     }
@@ -233,7 +219,6 @@ export class ProductDetailsComponent implements OnInit, OnDestroy, AfterViewInit
 
   changeMainImage(image: string): void {
     this.mainImage = image;
-    // Reset zoom when image changes
     this.isZoomed = false;
     this.zoomTransform = 'scale(1)';
   }

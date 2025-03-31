@@ -35,23 +35,6 @@ export class CartService {
     }
   }
 
-  // addToCart(product: Iproduct): void {
-  //   const userEmail = localStorage.getItem('userEmail');
-  //   if (!userEmail) return;
-
-  //   const currentItems = this.cartItemsSubject.getValue();
-  //   const existingItem = currentItems.find(item => item.id === product.id);
-
-  //   if (existingItem) {
-  //     existingItem.quantity++;
-  //   } else {
-  //     const newProduct = { ...product, quantity: 1 };
-  //     currentItems.push(newProduct);
-  //   }
-  //   this.cartItemsSubject.next([...currentItems]);
-  //   this.saveCartItems(userEmail, currentItems);
-  // }
-
   addToCart(product: Iproduct): void {
     const userEmail = localStorage.getItem('userEmail');
     if (!userEmail) return;
@@ -65,7 +48,6 @@ export class CartService {
       const newProduct = {
         ...product,
         quantity: 1,
-        // Ensure images remains an array
         images: Array.isArray(product.images) ? product.images : [product.images]
       };
       currentItems.push(newProduct);

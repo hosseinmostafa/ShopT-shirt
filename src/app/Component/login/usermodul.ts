@@ -6,9 +6,9 @@ export class USERModul {
         public email: string,
         public password: string,
         public isChecked: boolean,
-        public City: string, // Add City property
-        public Address: string, // Add Address property
-        public cardNumber: string, // Add cardNumber property
-        public CVV: string // Add CVV property
+        public City: string,
+        public Address: string,
+        public cardNumber: string,
+        public CVV: string
     ) { }
 }

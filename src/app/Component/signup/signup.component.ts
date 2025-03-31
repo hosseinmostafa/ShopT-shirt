@@ -3,7 +3,7 @@ import { FooterService } from '../../Service/footer.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr'; // Import ToastrService
+import { ToastrService } from 'ngx-toastr';
 import { NavbarService } from '../../Service/navbar.service';
 
 @Component({

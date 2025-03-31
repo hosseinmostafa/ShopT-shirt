@@ -180,10 +180,6 @@
                 <div class="col-6 col-sm-4 col-md-4" *ngFor="let product of filteredProducts" data-aos="fade-up">
                   <div class="product-item image-zoom-effect link-effect pb-3">
                     <div class="image-holder position-relative">
-                      <!-- <a [routerLink]="['/', product.id]">
-                                                <img [src]="product.images[0]" alt="{{ product.name }}"
-                                                    class="product-image img-fluid">
-                                            </a> -->
                       <a [routerLink]="['/product-details', product.id]">
                         <img [src]="product.images[0]" alt="{{ product.name }}" class="product-image img-fluid">
                       </a>
@@ -197,10 +193,6 @@
                         <a class="text-decoration-none" data-after="Add to cart" (click)="addToCart(product)">
                           <span>{{ product.price | currency }}</span>
                         </a>
-                        <!-- <a [routerLink]="['/new-arrivals-productdetails', product.id]">
-                                                    <img [src]="product.images[0]" alt="{{ product.name }}"
-                                                        class="product-image img-fluid">
-                            </a> -->
                         <a [routerLink]="['/product-details', product.id]"
                           class="text-decoration-none mt-2 prod-details" data-after="Show Details">
                           <span></span>

@@ -26,10 +26,8 @@ import { CustomAlertComponent } from './Component/custom-alert/custom-alert.comp
 import { PymantComponent } from './Component/pymant/pymant.component';
 import { DashboardComponent } from './Component/dashboard/dashboard.component';
 import { NewArrivalsComponent } from './Component/new-arrivals/new-arrivals.component';
-import { PostsComponent } from './Component/dashboard/posts/posts.component';
 import { AnalyticsComponent } from './Component/dashboard/analytics/analytics.component';
 import { NewPostComponent } from './Component/dashboard/new-post/new-post.component';
-import { EditPostComponent } from './Component/dashboard/edit-post/edit-post.component';
 import { NewArrivalsProductdetailsComponent } from './Component/new-arrivals-productdetails/new-arrivals-productdetails.component';
 import { SearchComponent } from './Component/search/search.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
@@ -53,10 +51,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     PymantComponent,
     DashboardComponent,
     NewArrivalsComponent,
-    PostsComponent,
     AnalyticsComponent,
     NewPostComponent,
-    EditPostComponent,
     NewArrivalsProductdetailsComponent,
     SearchComponent,
   ],

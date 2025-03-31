@@ -6,11 +6,6 @@ li {
     list-style: none;
 }
 
-body {
-    background-color: var(--grey);
-    overflow: hidden;
-}
-
 #sidebar {
     position: fixed;
     top: 0;
@@ -679,7 +674,7 @@ body {
 
 path {
     stroke-linecap: round;
-    
+
 }
 
 .btn-delete {
@@ -694,9 +689,11 @@ path {
     gap: 5px;
     font-size: 12px;
     transition: all 0.3s;
+
     &:hover {
         background: #000000da;
     }
+
     i {
         font-size: 14px;
     }

@@ -40,7 +40,6 @@
                                 <i #icon class="fa-solid fa-eye-slash"></i>
                             </button>
                         </div>
-
                         <div *ngIf="signupForm.get('password')?.invalid && signupForm.get('password')?.touched"
                             class="text-danger">
                             <small *ngIf="signupForm.get('password')?.errors?.['required']">Password is
@@ -49,7 +48,6 @@
                                 characters.</small>
                             <small *ngIf="signupForm.get('password')?.errors?.['pattern']">Password must contain at
                                 least one uppercase letter, one lowercase letter, one number.</small>
-
                         </div>
                     </div>
                     <div class="mb-4 mt-3">

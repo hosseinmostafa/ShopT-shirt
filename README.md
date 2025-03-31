@@ -2,7 +2,7 @@
 
 Shop.co is an e-commerce platform built with **Angular**, providing a seamless shopping experience for men's, women's, and children's clothing, as well as accessories.
 
-![Shop.co Homepage](Screenshot%20(656).png)
+![Image](https://github.com/user-attachments/assets/5559e5e1-5549-4c2b-8504-2da914bce160)
 
 ## Technologies Used
 

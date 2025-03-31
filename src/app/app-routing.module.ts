@@ -26,8 +26,8 @@ const routes: Routes = [
   { path: 'shop', component: ShopComponent },
   { path: 'cart', component: CartComponent, canActivate: [authGuardGuard] },
   { path: 'login', component: LoginComponent },
-  { path: 'product-details/:id', component: ProductDetailsComponent, canActivate: [authGuardGuard] },
-  { path: "home-product-details/:id", component: HomeProductDetailsComponent, canActivate: [authGuardGuard] },
+  { path: 'product-details/:id', component: ProductDetailsComponent},
+  { path: "home-product-details/:id", component: HomeProductDetailsComponent},
   { path: 'writ-problem', component: WritProblemComponent },
   { path: 'watchlater-harte', component: WatchlaterHarteComponent, canActivate: [authGuardGuard] },
   { path: 'login', component: LoginComponent },
@@ -39,11 +39,10 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent, canActivate: [authGuardGuard] },
   { path: 'analytics', component: AnalyticsComponent, canActivate: [authGuardGuard] },
   { path: 'new-post', component: NewPostComponent, canActivate: [authGuardGuard] },
-  { path: 'new-arrivals-productdetails/:id', component: NewArrivalsProductdetailsComponent, canActivate: [authGuardGuard] },
+  { path: 'new-arrivals-productdetails/:id', component: NewArrivalsProductdetailsComponent},
   { path: 'search', component: SearchComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: ErrorPageComponent },
-
 ];
 
 @NgModule({

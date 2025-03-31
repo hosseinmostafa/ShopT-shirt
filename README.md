@@ -37,7 +37,7 @@ Shop.co is an e-commerce platform built with **Angular**, providing a seamless s
    ```sh
    ng serve
    ```
-4. Open in your browser: `http://localhost:4200`
+4. Open in your browser: `https://shop-tshirt.netlify.app`
 
 ## Deployment
 

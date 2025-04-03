@@ -30,8 +30,6 @@ export class NavComponent implements OnInit {
   showAuthAlert: boolean = false;
   authAlertTitle: string = '';
   authAlertMessage: string = '';
-
-  // متغيرات الـ Alert الخاصة بالبحث
   showSearchAlert: boolean = false;
   searchAlertTitle: string = '';
   searchAlertMessage: string = '';

@@ -6,7 +6,7 @@ import { CartService } from '../../Service/cart.service';
 import { WhatchlaterHarteService } from '../../Service/whatchlater-harte.service';
 
 @Component({
-  selector: 'ap',
+  selector: 'app-product-details',
   templateUrl: './product-details.component.html',
   styleUrls: ['./product-details.component.scss']
 })

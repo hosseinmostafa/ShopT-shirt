@@ -17,6 +17,7 @@ import { PayServesesInDashpordComponent } from './Component/pay-serveses-in-dash
 import { NewArrivalsComponent } from './Component/new-arrivals/new-arrivals.component';
 import { NewArrivalsProductdetailsComponent } from './Component/new-arrivals-productdetails/new-arrivals-productdetails.component';
 import { SearchComponent } from './Component/search/search.component';
+import { NewPostComponent } from './Component/dashboard/new-post/new-post.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -34,6 +35,7 @@ const routes: Routes = [
   { path: 'pay-serveses-in-dashpord', component: PayServesesInDashpordComponent },
   { path: 'new-arrivals', component: NewArrivalsComponent },
   { path: 'new-arrivals-productdetails/:id', component: NewArrivalsProductdetailsComponent},
+  { path: 'new-post', component: NewPostComponent, canActivate: [authGuardGuard]},
   { path: 'search', component: SearchComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: ErrorPageComponent },

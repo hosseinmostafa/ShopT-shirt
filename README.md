@@ -22,6 +22,11 @@ Shop.co is an e-commerce platform built with **Angular**, providing a seamless s
 - Wishlist and cart functionality
 - User authentication with Firebase
 
+## UI/UX Design
+
+You can view the UI/UX design for this project on Figma:
+[E-commerce Website Template – Figma Design](https://www.figma.com/design/qj7fQx3lVGNUp3fyn0FTXg/E-commerce-Website-Template--Freebie---Community-?node-id=39-1402&t=78AwMkY8GKo4eJFT-1)
+
 ## Installation
 
 1. Clone the repository:
@@ -80,4 +85,7 @@ shop.co/
 ## License
 
 This project is licensed under the MIT License.
+
+You can view the UI/UX design for this project on Figma via the following link:
+[E-commerce Website Template – Figma Design](https://www.figma.com/design/qj7fQx3lVGNUp3fyn0FTXg/E-commerce-Website-Template--Freebie---Community-?node-id=39-1402&t=78AwMkY8GKo4eJFT-1)
 
